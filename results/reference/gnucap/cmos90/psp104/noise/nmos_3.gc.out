@@ -1,0 +1,434 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+resistor: already installed, replacing
+stashing as resistor:0
+resistor: already installed, replacing
+stashing as resistor:1
+paramset NMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+paramset PMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+ground gnd;
+NMOS #(.l(L),.w(WN)) M1 (.d(out),.g(g),.s(gnd),.b(gnd));
+resistor #(.r(10k),.noisy(1.0)) RD (.p(vdd),.n(out));
+vsource #(.dc(VNOM)) Vdd (.p(vdd),.n(gnd));
+vsource #(.dc(0.5*VNOM)) Vg (.p(g),.n(gnd));
+// Total noise power at the drain node
+meas_noise #() n_out (.p(out));
+#              
+ 0.            
+#Freq           npwr(n_out)   
+ 1.             23.873993E-15 
+ 1.04712855     22.799697E-15 
+ 1.0964782      21.773752E-15 
+ 1.14815362     20.793982E-15 
+ 1.20226443     19.858308E-15 
+ 1.25892541     18.964748E-15 
+ 1.31825674     18.111404E-15 
+ 1.38038426     17.296466E-15 
+ 1.44543977     16.518207E-15 
+ 1.51356125     15.774976E-15 
+ 1.58489319     15.065195E-15 
+ 1.65958691     14.38736E-15  
+ 1.73780083     13.740032E-15 
+ 1.81970086     13.121839E-15 
+ 1.90546072     12.531469E-15 
+ 1.99526231     11.96767E-15  
+ 2.08929613     11.429247E-15 
+ 2.18776162     10.915056E-15 
+ 2.29086765     10.424008E-15 
+ 2.39883292     9.95506E-15   
+ 2.51188643     9.507219E-15  
+ 2.63026799     9.079534E-15  
+ 2.7542287      8.671098E-15  
+ 2.8840315      8.281044E-15  
+ 3.01995172     7.908546E-15  
+ 3.16227766     7.552813E-15  
+ 3.31131121     7.213091E-15  
+ 3.4673685      6.888658E-15  
+ 3.63078055     6.578828E-15  
+ 3.80189396     6.282942E-15  
+ 3.98107171     6.000373E-15  
+ 4.16869383     5.730522E-15  
+ 4.36515832     5.472816E-15  
+ 4.5708819      5.226709E-15  
+ 4.78630092     4.991679E-15  
+ 5.01187234     4.767227E-15  
+ 5.2480746      4.552876E-15  
+ 5.49540874     4.348173E-15  
+ 5.75439937     4.152683E-15  
+ 6.02559586     3.965992E-15  
+ 6.30957344     3.787703E-15  
+ 6.60693448     3.617439E-15  
+ 6.91830971     3.454837E-15  
+ 7.2443596      3.299554E-15  
+ 7.58577575     3.15126E-15   
+ 7.94328235     3.00964E-15   
+ 8.31763771     2.874394E-15  
+ 8.7096359      2.745235E-15  
+ 9.12010839     2.62189E-15   
+ 9.54992586     2.504095E-15  
+ 10.            2.391603E-15  
+ 10.4712855     2.284173E-15  
+ 10.964782      2.181579E-15  
+ 11.4815362     2.083602E-15  
+ 12.0226443     1.990034E-15  
+ 12.5892541     1.900678E-15  
+ 13.1825674     1.815344E-15  
+ 13.8038426     1.73385E-15   
+ 14.4543977     1.656024E-15  
+ 15.1356125     1.581701E-15  
+ 15.8489319     1.510723E-15  
+ 16.5958691     1.442939E-15  
+ 17.3780083     1.378207E-15  
+ 18.1970086     1.316387E-15  
+ 19.0546072     1.25735E-15   
+ 19.9526231     1.20097E-15   
+ 20.8929613     1.147128E-15  
+ 21.8776162     1.095709E-15  
+ 22.9086765     1.046604E-15  
+ 23.9883292     999.709E-18   
+ 25.1188643     954.925E-18   
+ 26.3026799     912.157E-18   
+ 27.542287      871.313E-18   
+ 28.840315      832.308E-18   
+ 30.1995172     795.058E-18   
+ 31.6227766     759.485E-18   
+ 33.1131121     725.512E-18   
+ 34.673685      693.069E-18   
+ 36.3078055     662.086E-18   
+ 38.0189396     632.498E-18   
+ 39.8107171     604.241E-18   
+ 41.6869383     577.256E-18   
+ 43.6515832     551.485E-18   
+ 45.708819      526.874E-18   
+ 47.8630092     503.371E-18   
+ 50.1187234     480.926E-18   
+ 52.480746      459.491E-18   
+ 54.9540874     439.021E-18   
+ 57.5439937     419.472E-18   
+ 60.2559586     400.803E-18   
+ 63.0957344     382.974E-18   
+ 66.0693448     365.947E-18   
+ 69.1830971     349.687E-18   
+ 72.443596      334.159E-18   
+ 75.8577575     319.329E-18   
+ 79.4328235     305.167E-18   
+ 83.1763771     291.643E-18   
+ 87.096359      278.727E-18   
+ 91.2010839     266.392E-18   
+ 95.4992586     254.613E-18   
+ 100.           243.364E-18   
+ 104.712855     232.621E-18   
+ 109.64782      222.361E-18   
+ 114.815362     212.564E-18   
+ 120.226443     203.207E-18   
+ 125.892541     194.271E-18   
+ 131.825674     185.738E-18   
+ 138.038426     177.588E-18   
+ 144.543977     169.806E-18   
+ 151.356125     162.374E-18   
+ 158.489319     155.276E-18   
+ 165.958691     148.497E-18   
+ 173.780083     142.024E-18   
+ 181.970086     135.842E-18   
+ 190.546072     129.938E-18   
+ 199.526231     124.3E-18     
+ 208.929613     118.916E-18   
+ 218.776162     113.774E-18   
+ 229.086765     108.864E-18   
+ 239.883292     104.174E-18   
+ 251.188643     99.696E-18    
+ 263.026799     95.419E-18    
+ 275.42287      91.335E-18    
+ 288.40315      87.434E-18    
+ 301.995172     83.709E-18    
+ 316.227766     80.152E-18    
+ 331.131121     76.755E-18    
+ 346.73685      73.51E-18     
+ 363.078055     70.412E-18    
+ 380.189396     67.453E-18    
+ 398.107171     64.628E-18    
+ 416.869383     61.929E-18    
+ 436.515832     59.352E-18    
+ 457.08819      56.891E-18    
+ 478.630092     54.541E-18    
+ 501.187234     52.296E-18    
+ 524.80746      50.153E-18    
+ 549.540874     48.105E-18    
+ 575.439937     46.151E-18    
+ 602.559586     44.284E-18    
+ 630.957344     42.501E-18    
+ 660.693448     40.798E-18    
+ 691.830971     39.172E-18    
+ 724.43596      37.619E-18    
+ 758.577575     36.136E-18    
+ 794.328235     34.72E-18     
+ 831.763771     33.368E-18    
+ 870.96359      32.076E-18    
+ 912.010839     30.843E-18    
+ 954.992586     29.665E-18    
+ 1.E+3          28.54E-18     
+ 1.04712855E+3  27.465E-18    
+ 1.0964782E+3   26.44E-18     
+ 1.14815362E+3  25.46E-18     
+ 1.20226443E+3  24.524E-18    
+ 1.25892541E+3  23.631E-18    
+ 1.31825674E+3  22.777E-18    
+ 1.38038426E+3  21.962E-18    
+ 1.44543977E+3  21.184E-18    
+ 1.51356125E+3  20.441E-18    
+ 1.58489319E+3  19.731E-18    
+ 1.65958691E+3  19.053E-18    
+ 1.73780083E+3  18.406E-18    
+ 1.81970086E+3  17.788E-18    
+ 1.90546072E+3  17.197E-18    
+ 1.99526231E+3  16.633E-18    
+ 2.08929613E+3  16.095E-18    
+ 2.18776162E+3  15.581E-18    
+ 2.29086765E+3  15.09E-18     
+ 2.39883292E+3  14.621E-18    
+ 2.51188643E+3  14.173E-18    
+ 2.63026799E+3  13.745E-18    
+ 2.7542287E+3   13.337E-18    
+ 2.8840315E+3   12.947E-18    
+ 3.01995172E+3  12.574E-18    
+ 3.16227766E+3  12.219E-18    
+ 3.31131121E+3  11.879E-18    
+ 3.4673685E+3   11.554E-18    
+ 3.63078055E+3  11.245E-18    
+ 3.80189396E+3  10.949E-18    
+ 3.98107171E+3  10.666E-18    
+ 4.16869383E+3  10.396E-18    
+ 4.36515832E+3  10.139E-18    
+ 4.5708819E+3   9.893E-18     
+ 4.78630092E+3  9.657E-18     
+ 5.01187234E+3  9.433E-18     
+ 5.2480746E+3   9.219E-18     
+ 5.49540874E+3  9.014E-18     
+ 5.75439937E+3  8.818E-18     
+ 6.02559586E+3  8.632E-18     
+ 6.30957344E+3  8.454E-18     
+ 6.60693448E+3  8.283E-18     
+ 6.91830971E+3  8.121E-18     
+ 7.2443596E+3   7.965E-18     
+ 7.58577575E+3  7.817E-18     
+ 7.94328235E+3  7.675E-18     
+ 8.31763771E+3  7.54E-18      
+ 8.7096359E+3   7.411E-18     
+ 9.12010839E+3  7.288E-18     
+ 9.54992586E+3  7.17E-18      
+ 10.E+3         7.057E-18     
+ 10.4712855E+3  6.95E-18      
+ 10.964782E+3   6.847E-18     
+ 11.4815362E+3  6.749E-18     
+ 12.0226443E+3  6.656E-18     
+ 12.5892541E+3  6.566E-18     
+ 13.1825674E+3  6.481E-18     
+ 13.8038426E+3  6.4E-18       
+ 14.4543977E+3  6.322E-18     
+ 15.1356125E+3  6.248E-18     
+ 15.8489319E+3  6.177E-18     
+ 16.5958691E+3  6.109E-18     
+ 17.3780083E+3  6.044E-18     
+ 18.1970086E+3  5.982E-18     
+ 19.0546072E+3  5.923E-18     
+ 19.9526231E+3  5.867E-18     
+ 20.8929613E+3  5.813E-18     
+ 21.8776162E+3  5.762E-18     
+ 22.9086765E+3  5.712E-18     
+ 23.9883292E+3  5.666E-18     
+ 25.1188643E+3  5.621E-18     
+ 26.3026799E+3  5.578E-18     
+ 27.542287E+3   5.537E-18     
+ 28.840315E+3   5.498E-18     
+ 30.1995172E+3  5.461E-18     
+ 31.6227766E+3  5.425E-18     
+ 33.1131121E+3  5.391E-18     
+ 34.673685E+3   5.359E-18     
+ 36.3078055E+3  5.328E-18     
+ 38.0189396E+3  5.298E-18     
+ 39.8107171E+3  5.27E-18      
+ 41.6869383E+3  5.243E-18     
+ 43.6515832E+3  5.217E-18     
+ 45.708819E+3   5.193E-18     
+ 47.8630092E+3  5.169E-18     
+ 50.1187234E+3  5.147E-18     
+ 52.480746E+3   5.125E-18     
+ 54.9540874E+3  5.105E-18     
+ 57.5439937E+3  5.085E-18     
+ 60.2559586E+3  5.067E-18     
+ 63.0957344E+3  5.049E-18     
+ 66.0693448E+3  5.032E-18     
+ 69.1830971E+3  5.015E-18     
+ 72.443596E+3   5.E-18        
+ 75.8577575E+3  4.985E-18     
+ 79.4328235E+3  4.971E-18     
+ 83.1763771E+3  4.957E-18     
+ 87.096359E+3   4.945E-18     
+ 91.2010839E+3  4.932E-18     
+ 95.4992586E+3  4.92E-18      
+ 100.E+3        4.909E-18     
+ 104.712855E+3  4.898E-18     
+ 109.64782E+3   4.888E-18     
+ 114.815362E+3  4.878E-18     
+ 120.226443E+3  4.869E-18     
+ 125.892541E+3  4.86E-18      
+ 131.825674E+3  4.852E-18     
+ 138.038426E+3  4.843E-18     
+ 144.543977E+3  4.836E-18     
+ 151.356125E+3  4.828E-18     
+ 158.489319E+3  4.821E-18     
+ 165.958691E+3  4.814E-18     
+ 173.780083E+3  4.808E-18     
+ 181.970086E+3  4.802E-18     
+ 190.546072E+3  4.796E-18     
+ 199.526231E+3  4.79E-18      
+ 208.929613E+3  4.785E-18     
+ 218.776162E+3  4.78E-18      
+ 229.086765E+3  4.775E-18     
+ 239.883292E+3  4.77E-18      
+ 251.188643E+3  4.765E-18     
+ 263.026799E+3  4.761E-18     
+ 275.42287E+3   4.757E-18     
+ 288.40315E+3   4.753E-18     
+ 301.995172E+3  4.75E-18      
+ 316.227766E+3  4.746E-18     
+ 331.131121E+3  4.743E-18     
+ 346.73685E+3   4.739E-18     
+ 363.078055E+3  4.736E-18     
+ 380.189396E+3  4.733E-18     
+ 398.107171E+3  4.73E-18      
+ 416.869383E+3  4.728E-18     
+ 436.515832E+3  4.725E-18     
+ 457.08819E+3   4.723E-18     
+ 478.630092E+3  4.72E-18      
+ 501.187234E+3  4.718E-18     
+ 524.80746E+3   4.716E-18     
+ 549.540874E+3  4.714E-18     
+ 575.439937E+3  4.712E-18     
+ 602.559586E+3  4.71E-18      
+ 630.957344E+3  4.708E-18     
+ 660.693448E+3  4.707E-18     
+ 691.830971E+3  4.705E-18     
+ 724.43596E+3   4.703E-18     
+ 758.577575E+3  4.702E-18     
+ 794.328235E+3  4.701E-18     
+ 831.763771E+3  4.699E-18     
+ 870.96359E+3   4.698E-18     
+ 912.010839E+3  4.697E-18     
+ 954.992586E+3  4.695E-18     
+ 1.E+6          4.694E-18     

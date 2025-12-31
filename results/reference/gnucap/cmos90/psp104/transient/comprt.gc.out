@@ -1,0 +1,294 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+paramset PMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+// 1-bit Digital Comparator module
+// Not-gate
+module NOT (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in;
+      output out;
+      electrical in,out,vdd,gnd;
+  PMOS #(.w(WP),.l(L)) M1 (.d(out),.g(in),.s(vdd),.b(vdd));
+  NMOS #(.w(WN),.l(L)) M2 (.d(out),.g(in),.s(gnd),.b(gnd));
+endmodule // NOT
+
+// CMOS AND2 Gate
+// CMOS NAND2 Gate
+module NAND2 (.in1(in1),.in2(in2),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in1, in2;
+      output out;
+      electrical in1, in2, out, vdd, gnd;
+      electrical t1;
+  PMOS #(.w(WP),.l(L)) MP1 (.d(vdd),.g(in1),.s(out),.b(vdd));
+  PMOS #(.w(WP),.l(L)) MP2 (.d(vdd),.g(in2),.s(out),.b(vdd));
+  NMOS #(.w(WN),.l(L)) MN1 (.d(t1),.g(in1),.s(out),.b(gnd));
+  NMOS #(.w(WN),.l(L)) MN2 (.d(gnd),.g(in2),.s(t1),.b(gnd));
+endmodule // NAND2
+
+// Not-gate
+module NOT (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in;
+      output out;
+      electrical in,out,vdd,gnd;
+  PMOS #(.w(WP),.l(L)) M1 (.d(out),.g(in),.s(vdd),.b(vdd));
+  NMOS #(.w(WN),.l(L)) M2 (.d(out),.g(in),.s(gnd),.b(gnd));
+endmodule // NOT
+
+module AND2 (.in1(in1),.in2(in2),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in1, in2;
+      output out;
+      electrical in1, in2, out, vdd, gnd;
+  NAND2 #(.WN(WN),.WP(WP),.L(L)) XNAND2 (in1, in2, out1, vdd, gnd);
+  NOT #(.WN(WN),.WP(WP),.L(L)) XNOT (out1, out, vdd, gnd);
+endmodule // AND2
+
+// CMOS OR2 Gate
+// CMOS NOR2 Gate
+module NOR2 (.in1(in1),.in2(in2),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in1, in2;
+      output out;
+      electrical in1, in2, out, vdd, gnd;
+  PMOS #(.w(WP),.l(L)) MP1 (.d(t1),.g(in1),.s(out),.b(vdd));
+  PMOS #(.w(WP),.l(L)) MP2 (.d(vdd),.g(in2),.s(t1),.b(vdd));
+  NMOS #(.w(WN),.l(L)) MN1 (.d(gnd),.g(in1),.s(out),.b(gnd));
+  NMOS #(.w(WN),.l(L)) MN2 (.d(gnd),.g(in2),.s(out),.b(gnd));
+endmodule // NOR2
+
+// Not-gate
+module NOT (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in;
+      output out;
+      electrical in,out,vdd,gnd;
+  PMOS #(.w(WP),.l(L)) M1 (.d(out),.g(in),.s(vdd),.b(vdd));
+  NMOS #(.w(WN),.l(L)) M2 (.d(out),.g(in),.s(gnd),.b(gnd));
+endmodule // NOT
+
+module OR2 (.in1(in1),.in2(in2),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input  in1, in2, vdd, gnd;
+      output out;
+      electrical in1, in2, out, vdd, gnd;
+  NOR2 #(.WN(WN),.WP(WP),.L(L)) U1 (in1, in2, nor_out, vdd, gnd);
+  NOT #(.WN(WN),.WP(WP),.L(L)) U2 (nor_out, out, vdd, gnd);
+endmodule // OR2
+
+module comparator (.A(A),.B(B),.A_GT_B(A_GT_B),.A_LT_B(A_LT_B),.A_EQ_B(A_EQ_B),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      parameter real RSH=1G;
+      input A, B, vdd, gnd;
+      output A_GT_B, A_LT_B, A_EQ_B;
+      electrical A, B, A_GT_B, A_LT_B, A_EQ_B, vdd, gnd;
+  //    // Inverters
+  NOT #(.L(L),.WN(WN),.WP(WP)) NOT1 (A, Anot, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) NOT2 (B, Bnot, vdd, gnd);
+  //    // A > B
+  AND2 #(.L(L),.WN(WN),.WP(WP)) X1AND2 (A, Bnot, A_GT_B, vdd, gnd);
+  //    // A < B
+  AND2 #(.L(L),.WN(WN),.WP(WP)) X2AND2 (Anot, B, A_LT_B, vdd, gnd);
+  //    // A = B
+  AND2 #(.L(L),.WN(WN),.WP(WP)) X3AND2 (A, B, t1, vdd, gnd);
+  AND2 #(.L(L),.WN(WN),.WP(WP)) X4AND2 (Anot, Bnot, t2, vdd, gnd);
+  OR2 #(.L(L),.WN(WN),.WP(WP)) XOR2 (t1, t2, A_EQ_B, vdd, gnd);
+  resistor #(.r(RSH)) Rsh_Anot (Anot, gnd);
+  resistor #(.r(RSH)) Rsh_Bnot (Bnot, gnd);
+  resistor #(.r(RSH)) Rsh_t1 (t1, gnd);
+  resistor #(.r(RSH)) Rsh_t2 (t2, gnd);
+  resistor #(.r(RSH)) RshA (A, gnd);
+  resistor #(.r(RSH)) RshB (B, gnd);
+  resistor #(.r(RSH)) RshGT (A_GT_B, gnd);
+  resistor #(.r(RSH)) RshLT (A_LT_B, gnd);
+  resistor #(.r(RSH)) RshEQ (A_EQ_B, gnd);
+endmodule // comparator
+
+//TODO: workaround for op convergence issues
+//vmin/vmax are clamped to stabilize initial DC solution
+ground gnd;
+comparator #(.WN(WN),.WP(WP),.L(L)) UCOMP (A, B, A_GT_B, A_LT_B, A_EQ_B, vdd, gnd);
+vsource #(.dc(VNOM)) Vdd (.p(vdd),.n(gnd));
+vpulse #(.val0(0.0),.val1(VNOM),.td(0.1n),.rise(0.1n),.fall(0.1n),.width(2.0n),.period(4.0n)) Vin1 (.p(A),.n(gnd));
+vpulse #(.val0(0.0),.val1(VNOM),.td(1.1n),.rise(0.1n),.fall(0.1n),.width(2.0n),.period(4.0n)) Vin2 (.p(B),.n(gnd));
+UCOMP.NOT1 ambiguous overload in NOT
+UCOMP.NOT1 ambiguous overload in NOT
+UCOMP.NOT2 ambiguous overload in NOT
+UCOMP.NOT2 ambiguous overload in NOT
+UCOMP.X1AND2.XNOT ambiguous overload in NOT
+UCOMP.X1AND2.XNOT ambiguous overload in NOT
+UCOMP.X2AND2.XNOT ambiguous overload in NOT
+UCOMP.X2AND2.XNOT ambiguous overload in NOT
+UCOMP.X3AND2.XNOT ambiguous overload in NOT
+UCOMP.X3AND2.XNOT ambiguous overload in NOT
+UCOMP.X4AND2.XNOT ambiguous overload in NOT
+UCOMP.X4AND2.XNOT ambiguous overload in NOT
+UCOMP.XOR2.U2 ambiguous overload in NOT
+UCOMP.XOR2.U2 ambiguous overload in NOT
+#Time       v(A)       v(B)       v(A_GT_B)  v(A_LT_B)  v(A_EQ_B) 
+open circuit: internal node 279
+open circuit: internal node 95
+open circuit: internal node 371
+did not converge
+ 0.         0.         0.         5.1237E-9  5.1237E-9  1.2       
+ 10.E-12    1.53E-12  -4.705E-12  25.998E-9  497.72E-9  1.2       
+ 20.E-12   -1.56E-12   4.64E-12  -15.063E-9 -345.45E-9  1.2       
+ 30.E-12   -1.624E-12  4.567E-12 -770.7E-12 -34.042E-9  1.2       
+ 40.E-12   -1.636E-12  4.554E-12  3.5588E-9 -708.4E-12  1.2       
+ 50.E-12    1.641E-12 -4.55E-12   5.2331E-9  5.2199E-9  1.2       
+ 60.E-12   -1.641E-12  4.55E-12   5.1875E-9  5.598E-9   1.2       
+ 70.E-12    1.642E-12 -4.55E-12   4.9616E-9  5.1189E-9  1.2       
+ 80.E-12   -1.641E-12  4.55E-12   5.518E-9   5.0524E-9  1.2       
+ 90.E-12   -1.641E-12  4.55E-12   5.3225E-9  5.637E-9   1.2       
+ 100.E-12   1.641E-12 -4.55E-12   5.3512E-9  5.303E-9   1.2       
+ 110.E-12   0.12       4.8557E-9  0.0018497 -182.81E-6  1.1999    
+ 120.E-12   0.24       4.9132E-9  901.65E-6 -93.744E-6  1.2       
+ 130.E-12   0.36      -2.874E-9   980.61E-6  1.2062E-6  1.2       
+ 140.E-12   0.48       4.943E-9   913.03E-6 -36.332E-6  1.2       
+ 150.E-12   0.6       -3.0435E-9 -749.16E-6 -311.11E-6  1.2       
+ 160.E-12   0.72       4.4861E-9 -0.0043515 -709.54E-6  1.2       
+ 170.E-12   0.84      -3.8623E-9 -0.011194  -0.0012376  1.2       
+ 180.E-12   0.96       3.6223E-9 -0.020703  -0.0014976  1.2       
+ 190.E-12   1.08      -4.4513E-9 -0.03184   -0.0014768  1.2       
+ 200.E-12   1.2        3.4064E-9 -0.046668  -0.0010879  1.2       
+ 210.E-12   1.2        7.0368E-9 -0.069197   0.0017481  1.2002    
+ 220.E-12   1.2        7.7306E-9  951.21E-6  0.001855   1.2001    
+ 230.E-12   1.2        8.1333E-9  0.26894    0.0013306  1.2001    
+ 240.E-12   1.2        7.6456E-9  0.71981    608.46E-6  1.1996    
+ 250.E-12   1.2        6.3446E-9  1.1155    -64.621E-6  1.1978    
+ 260.E-12   1.2        6.8445E-9  1.1744     149.91E-6  1.1978    
+ 270.E-12   1.2        7.8926E-9  1.1852     421.65E-6  1.1991    
+ 280.E-12   1.2        7.8909E-9  1.1909     230.04E-6  1.2015    

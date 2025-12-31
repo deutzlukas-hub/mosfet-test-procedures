@@ -1,0 +1,570 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+paramset PMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+// Inverter chain
+// Not-gate
+module NOT (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in;
+      output out;
+      electrical in,out,vdd,gnd;
+  PMOS #(.w(WP),.l(L)) M1 (.d(out),.g(in),.s(vdd),.b(vdd));
+  NMOS #(.w(WN),.l(L)) M2 (.d(out),.g(in),.s(gnd),.b(gnd));
+endmodule // NOT
+
+module inv_chain (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      parameter real RSH=1G;
+      input in, vdd, gnd;
+      output out;
+      electrical in, out, vdd, gnd;
+  //    // TODO: Generalize to N inverters
+  NOT #(.L(L),.WN(WN),.WP(WP)) U1 (in, n1, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U2 (n1, n2, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U3 (n2, n3, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U4 (n3, n4, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U5 (n4, out, vdd, gnd);
+  //    // Weak shunt resistors (numerical stabilization)
+  resistor #(.r(RSH)) Rsh1 (n1, gnd);
+  resistor #(.r(RSH)) Rsh2 (n2, gnd);
+  resistor #(.r(RSH)) Rsh3 (n3, gnd);
+  resistor #(.r(RSH)) Rsh4 (n4, gnd);
+  resistor #(.r(RSH)) Rsh5 (out, gnd);
+endmodule // inv_chain
+
+//TODO: workaround for op convergencen issues
+//vmin/vmax are clamped to stabilize initial DC solution
+ground gnd;
+inv_chain #(.WN(WN),.WP(WP),.L(L)) UCHAIN (in, out, vdd, gnd);
+capacitor #(.c(10f)) Cload (.p(out),.n(gnd));
+resistor #(.r(100k)) R_load (.p(out),.n(gnd));
+vsource #(.dc(VNOM)) Vdd (.p(vdd),.n(gnd));
+vpulse #(.val0(0.0),.val1(VNOM),.td(1.0n),.rise(0.1n),.fall(0.1n),.width(0.5n),.period(1.4n)) Vin (.p(in),.n(gnd));
+#Time       v(in)      v(out)     iter(0)   
+did not converge
+ 0.         0.         1.1997     5.198E+3  
+ 10.E-12    6.E-15     1.1997     18.       
+ 20.E-12   -7.E-15     1.1997     7.        
+ 30.E-12    7.E-15     1.1997     4.        
+ 40.E-12   -7.E-15     1.1997     18.       
+ 50.E-12    7.E-15     1.1997     8.        
+ 60.E-12    7.E-15     1.1997     31.       
+ 70.E-12   -7.E-15     1.1997     9.        
+ 80.E-12    7.E-15     1.1997     6.        
+ 90.E-12   -7.E-15     1.1997     4.        
+ 100.E-12   7.E-15     1.1997     4.        
+ 110.E-12  -7.E-15     1.1997     4.        
+ 120.E-12   7.E-15     1.1997     4.        
+ 130.E-12  -7.E-15     1.1997     7.        
+ 140.E-12   7.E-15     1.1997     8.        
+ 150.E-12  -7.E-15     1.1997     8.        
+ 160.E-12   7.E-15     1.1997     4.        
+ 170.E-12  -7.E-15     1.1997     9.        
+ 180.E-12  -7.E-15     1.1997     31.       
+ 190.E-12   7.E-15     1.1997     8.        
+ 200.E-12  -7.E-15     1.1997     5.        
+ 210.E-12   7.E-15     1.1997     6.        
+ 220.E-12  -7.E-15     1.1997     14.       
+ 230.E-12   7.E-15     1.1997     4.        
+ 240.E-12  -7.E-15     1.1997     5.        
+ 250.E-12   7.E-15     1.1997     4.        
+ 260.E-12  -7.E-15     1.1997     8.        
+ 270.E-12   7.E-15     1.1997     7.        
+ 280.E-12  -7.E-15     1.1997     7.        
+ 290.E-12   7.E-15     1.1997     5.        
+ 300.E-12  -7.E-15     1.1997     16.       
+ 310.E-12   7.E-15     1.1997     11.       
+ 320.E-12   7.E-15     1.1997     31.       
+ 330.E-12  -7.E-15     1.1997     7.        
+ 340.E-12   7.E-15     1.1997     5.        
+ 350.E-12  -7.E-15     1.1997     4.        
+ 360.E-12   7.E-15     1.1997     17.       
+ 370.E-12  -7.E-15     1.1997     10.       
+ 380.E-12   7.E-15     1.1997     16.       
+ 390.E-12   7.E-15     1.1997     33.       
+ 400.E-12  -7.E-15     1.1997     16.       
+ 410.E-12   7.E-15     1.1997     14.       
+ 420.E-12  -7.E-15     1.1997     18.       
+ 430.E-12   7.E-15     1.1997     7.        
+ 440.E-12   7.E-15     1.1997     33.       
+ 450.E-12  -7.E-15     1.1997     17.       
+ 460.E-12   7.E-15     1.1997     8.        
+ 470.E-12   7.E-15     1.1997     32.       
+ 480.E-12  -7.E-15     1.1997     8.        
+ 490.E-12   7.E-15     1.1997     8.        
+ 500.E-12  -7.E-15     1.1997     14.       
+ 510.E-12   7.E-15     1.1997     4.        
+ 520.E-12  -7.E-15     1.1997     13.       
+ 530.E-12   7.E-15     1.1997     6.        
+ 540.E-12  -7.E-15     1.1997     6.        
+ 550.E-12  -7.E-15     1.1997     33.       
+ 560.E-12   7.E-15     1.1997     8.        
+ 570.E-12  -7.E-15     1.1997     16.       
+ 580.E-12   7.E-15     1.1997     17.       
+ 590.E-12   8.E-15     1.1997     31.       
+ 600.E-12   8.E-15     1.1997     32.       
+ 610.E-12  -8.E-15     1.1997     5.        
+ 620.E-12   8.E-15     1.1997     6.        
+ 630.E-12  -8.E-15     1.1997     12.       
+ 640.E-12   8.E-15     1.1997     4.        
+ 650.E-12  -8.E-15     1.1997     6.        
+ 660.E-12   8.E-15     1.1997     14.       
+ 670.E-12  -8.E-15     1.1997     14.       
+ 680.E-12   8.E-15     1.1997     5.        
+ 690.E-12   8.E-15     1.1997     31.       
+ 700.E-12  -8.E-15     1.1997     7.        
+ 710.E-12   8.E-15     1.1997     16.       
+ 720.E-12  -8.E-15     1.1997     5.        
+ 730.E-12  -8.E-15     1.1997     33.       
+ 740.E-12  -8.E-15     1.1997     32.       
+ 750.E-12   8.E-15     1.1997     7.        
+ 760.E-12  -8.E-15     1.1997     17.       
+ 770.E-12   8.E-15     1.1997     5.        
+ 780.E-12  -8.E-15     1.1997     7.        
+ 790.E-12   8.E-15     1.1997     6.        
+ 800.E-12  -8.E-15     1.1997     8.        
+ 810.E-12   8.E-15     1.1997     16.       
+ 820.E-12  -8.E-15     1.1997     14.       
+ 830.E-12   7.E-15     1.1997     18.       
+ 840.E-12  -8.E-15     1.1997     7.        
+ 850.E-12   8.E-15     1.1997     16.       
+ 860.E-12  -7.E-15     1.1997     4.        
+ 870.E-12   8.E-15     1.1997     7.        
+ 880.E-12  -8.E-15     1.1997     8.        
+ 890.E-12   8.E-15     1.1997     7.        
+ 900.E-12  -8.E-15     1.1997     4.        
+ 910.E-12   8.E-15     1.1997     7.        
+ 920.E-12  -8.E-15     1.1997     4.        
+ 930.E-12   8.E-15     1.1997     16.       
+ 940.E-12  -8.E-15     1.1997     7.        
+ 950.E-12   8.E-15     1.1997     5.        
+ 960.E-12  -8.E-15     1.1997     7.        
+ 970.E-12   8.E-15     1.1997     4.        
+ 980.E-12  -8.E-15     1.1997     16.       
+ 990.E-12   8.E-15     1.1997     14.       
+ 1.E-9     -8.E-15     1.1997     16.       
+ 1.01E-9    0.12       1.1997     27.       
+ 1.02E-9    0.24       1.1997     8.        
+ 1.03E-9    0.36       1.1997     5.        
+ 1.04E-9    0.48       1.1997     5.        
+ 1.05E-9    0.6        1.1997     5.        
+ 1.06E-9    0.72       1.1997     5.        
+ 1.07E-9    0.84       1.1997     5.        
+ 1.08E-9    0.96       1.1997     5.        
+ 1.09E-9    1.08       1.1997     5.        
+ 1.1E-9     1.2        1.2001     5.        
+ 1.11E-9    1.2        1.2004     20.       
+ 1.12E-9    1.2        1.1998     10.       
+ 1.13E-9    1.2        1.1942     10.       
+ 1.14E-9    1.2        1.1939     10.       
+ 1.15E-9    1.2        1.1974     10.       
+ 1.16E-9    1.2        1.2254     10.       
+ 1.17E-9    1.2        1.2761     10.       
+ 1.18E-9    1.2        1.3113     10.       
+ 1.19E-9    1.2        0.93822    10.       
+ 1.2E-9     1.2        0.30878    10.       
+ 1.21E-9    1.2        0.036843   10.       
+ 1.22E-9    1.2        0.00501    10.       
+ 1.23E-9    1.2        863.06E-6  10.       
+ 1.24E-9    1.2        144.9E-6   5.        
+ 1.25E-9    1.2        39.493E-6  5.        
+ 1.26E-9    1.2        14.039E-6  5.        
+ 1.27E-9    1.2        2.6133E-6  4.        
+ 1.28E-9    1.2        1.7071E-6  4.        
+ 1.29E-9    1.2       -45.058E-9  5.        
+ 1.3E-9     1.2        326.86E-9  5.        
+ 1.31E-9    1.2       -99.172E-9  5.        
+ 1.32E-9    1.2        4.6661E-9  31.       
+ 1.33E-9    1.2        12.53E-9   11.       
+ 1.34E-9    1.2        5.3529E-9  8.        
+ 1.35E-9    1.2        3.4333E-9  14.       
+ 1.36E-9    1.2        8.7435E-9  7.        
+ 1.37E-9    1.2        992.7E-12  7.        
+ 1.38E-9    1.2       -272.6E-12  34.       
+ 1.39E-9    1.2       -123.E-12   33.       
+ 1.4E-9     1.2        10.626E-9  7.        
+ 1.41E-9    1.2       -376.1E-12  13.       
+ 1.42E-9    1.2        10.613E-9  10.       
+ 1.43E-9    1.2       -210.9E-12  8.        
+ 1.44E-9    1.2       -272.8E-12  32.       
+ 1.45E-9    1.2        10.583E-9  8.        
+ 1.46E-9    1.2       -273.4E-12  13.       
+ 1.47E-9    1.2        10.501E-9  8.        
+ 1.48E-9    1.2       -202.5E-12  12.       
+ 1.49E-9    1.2        10.739E-9  13.       
+ 1.5E-9     1.2       -341.2E-12  6.        
+ 1.51E-9    1.2        10.712E-9  13.       
+ 1.52E-9    1.2       -61.75E-12  7.        
+ 1.53E-9    1.2        10.561E-9  8.        
+ 1.54E-9    1.2       -206.6E-12  8.        
+ 1.55E-9    1.2        10.695E-9  7.        
+ 1.56E-9    1.2       -295.5E-12  8.        
+ 1.57E-9    1.2        10.707E-9  5.        
+ 1.58E-9    1.2       -442.4E-12  14.       
+ 1.59E-9    1.2       -384.9E-12  31.       
+ 1.6E-9     1.2        10.638E-9  12.       
+ 1.61E-9    1.08       40.033E-6  23.       
+ 1.62E-9    0.96      -29.532E-6  5.        
+ 1.63E-9    0.84      -3.9549E-6  5.        
+ 1.64E-9    0.72       7.5836E-6  5.        
+ 1.65E-9    0.6        22.561E-6  5.        
+ 1.66E-9    0.48       26.915E-6  5.        
+ 1.67E-9    0.36       42.692E-6  5.        
+ 1.68E-9    0.24       55.94E-6   5.        
+ 1.69E-9    0.12      -834.48E-6  5.        
+ 1.7E-9     45.175E-9 -0.0011272  5.        
+ 1.71E-9    41.122E-9  323.17E-6  25.       
+ 1.72E-9    41.498E-9  0.0058609  10.       
+ 1.73E-9    41.545E-9  0.010485   10.       
+ 1.74E-9    40.954E-9  0.0098092  10.       
+ 1.75E-9    40.507E-9 -0.04065    10.       
+ 1.76E-9    41.011E-9 -0.098648   10.       
+ 1.77E-9    41.001E-9 -0.11392    10.       
+ 1.78E-9    40.836E-9  0.21381    10.       
+ 1.79E-9    40.759E-9  0.87561    10.       
+ 1.8E-9     40.841E-9  1.1684     10.       
+ 1.81E-9    40.713E-9  1.1889     10.       
+ 1.82E-9    40.736E-9  1.1962     10.       
+ 1.83E-9    40.75E-9   1.1986     9.        
+ 1.84E-9   -40.748E-9  1.1993     5.        
+ 1.85E-9    40.751E-9  1.1996     5.        
+ 1.86E-9   -40.75E-9   1.1997     5.        
+ 1.87E-9    40.75E-9   1.1997     4.        
+ 1.88E-9   -40.75E-9   1.1997     4.        
+ 1.89E-9    40.75E-9   1.1997     4.        
+ 1.9E-9    -40.75E-9   1.1997     4.        
+ 1.91E-9    40.75E-9   1.1997     5.        
+ 1.92E-9   -40.75E-9   1.1997     6.        
+ 1.93E-9    40.75E-9   1.1997     7.        
+ 1.94E-9   -40.75E-9   1.1997     5.        
+ 1.95E-9    40.75E-9   1.1997     4.        
+ 1.96E-9   -40.75E-9   1.1997     4.        
+ 1.97E-9    40.75E-9   1.1997     7.        
+ 1.98E-9   -40.75E-9   1.1997     5.        
+ 1.99E-9    40.75E-9   1.1997     9.        
+ 2.E-9     -40.75E-9   1.1997     6.        
+ 2.01E-9    40.75E-9   1.1997     15.       
+ 2.02E-9   -40.75E-9   1.1997     6.        
+ 2.03E-9    40.75E-9   1.1997     61.       
+ 2.04E-9   -40.75E-9   1.1997     11.       
+ 2.05E-9    40.75E-9   1.1997     14.       
+ 2.06E-9   -40.75E-9   1.1997     6.        
+ 2.07E-9    40.75E-9   1.1997     14.       
+ 2.08E-9   -40.749E-9  1.1997     8.        
+ 2.09E-9    40.749E-9  1.1997     20.       
+ 2.1E-9    -40.749E-9  1.1997     5.        
+ 2.11E-9    40.749E-9  1.1997     19.       
+ 2.12E-9   -40.749E-9  1.1997     5.        
+ 2.13E-9    40.749E-9  1.1997     12.       
+ 2.14E-9    40.749E-9  1.1997     36.       
+ 2.15E-9   -40.749E-9  1.1997     6.        
+ 2.16E-9    40.749E-9  1.1997     5.        
+ 2.17E-9   -40.749E-9  1.1997     5.        
+ 2.18E-9    40.749E-9  1.1997     21.       
+ 2.19E-9   -40.749E-9  1.1997     11.       
+ 2.2E-9     40.749E-9  1.1997     7.        
+ 2.21E-9    40.749E-9  1.1997     37.       
+ 2.22E-9   -40.749E-9  1.1997     6.        
+ 2.23E-9    40.749E-9  1.1997     12.       
+ 2.24E-9   -40.749E-9  1.1997     5.        
+ 2.25E-9    40.749E-9  1.1997     20.       
+ 2.26E-9   -40.749E-9  1.1997     6.        
+ 2.27E-9    40.749E-9  1.1997     10.       
+ 2.28E-9   -40.749E-9  1.1997     5.        
+ 2.29E-9    40.749E-9  1.1997     18.       
+ 2.3E-9    -40.748E-9  1.1997     58.       
+ 2.31E-9    40.748E-9  1.1997     7.        
+ 2.32E-9   -40.748E-9  1.1997     5.        
+ 2.33E-9    40.748E-9  1.1997     20.       
+ 2.34E-9   -40.748E-9  1.1997     5.        
+ 2.35E-9    40.748E-9  1.1997     8.        
+ 2.36E-9   -40.748E-9  1.1997     5.        
+ 2.37E-9    40.748E-9  1.1997     9.        
+ 2.38E-9    40.748E-9  1.1997     33.       
+ 2.39E-9   -40.748E-9  1.1997     58.       
+ 2.4E-9     40.747E-9  1.1997     10.       
+ 2.41E-9    0.12       1.1997     27.       
+ 2.42E-9    0.24       1.1997     8.        
+ 2.43E-9    0.36       1.1997     5.        
+ 2.44E-9    0.48       1.1997     5.        
+ 2.45E-9    0.6        1.1997     5.        
+ 2.46E-9    0.72       1.1997     5.        
+ 2.47E-9    0.84       1.1997     5.        
+ 2.48E-9    0.96       1.1997     5.        
+ 2.49E-9    1.08       1.1997     5.        
+ 2.5E-9     1.2        1.2001     5.        
+ 2.51E-9    1.2        1.2004     20.       
+ 2.52E-9    1.2        1.1998     10.       
+ 2.53E-9    1.2        1.1942     10.       
+ 2.54E-9    1.2        1.1939     10.       
+ 2.55E-9    1.2        1.1974     10.       
+ 2.56E-9    1.2        1.2254     10.       
+ 2.57E-9    1.2        1.2761     10.       
+ 2.58E-9    1.2        1.3113     10.       
+ 2.59E-9    1.2        0.93822    10.       
+ 2.6E-9     1.2        0.30878    10.       
+ 2.61E-9    1.2        0.036843   10.       
+ 2.62E-9    1.2        0.00501    10.       
+ 2.63E-9    1.2        863.07E-6  10.       
+ 2.64E-9    1.2        144.88E-6  5.        
+ 2.65E-9    1.2        39.505E-6  5.        
+ 2.66E-9    1.2        14.028E-6  5.        
+ 2.67E-9    1.2        2.6247E-6  4.        
+ 2.68E-9    1.2        1.6957E-6  4.        
+ 2.69E-9    1.2       -33.743E-9  4.        
+ 2.7E-9     1.2        315.73E-9  6.        
+ 2.71E-9    1.2       -87.916E-9  5.        
+ 2.72E-9    1.2        81.445E-9  14.       
+ 2.73E-9    1.2       -26.973E-9  6.        
+ 2.74E-9    1.2        20.087E-9  14.       
+ 2.75E-9    1.2        3.3013E-9  5.        
+ 2.76E-9    1.2       -47.24E-12  8.        
+ 2.77E-9    1.2        14.973E-9  8.        
+ 2.78E-9    1.2       -7.3406E-9  16.       
+ 2.79E-9    1.2        18.867E-9  7.        
+ 2.8E-9     1.2       -11.755E-9  60.       
+ 2.81E-9    1.2        21.898E-9  6.        
+ 2.82E-9    1.2       -11.348E-9  5.        
+ 2.83E-9    1.2        21.76E-9   7.        
+ 2.84E-9    1.2        21.645E-9  33.       
+ 2.85E-9    1.2       -11.534E-9  18.       
+ 2.86E-9    1.2        21.617E-9  7.        
+ 2.87E-9    1.2       -11.672E-9  62.       
+ 2.88E-9    1.2        22.033E-9  5.        
+ 2.89E-9    1.2       -11.697E-9  9.        
+ 2.9E-9     1.2        21.563E-9  4.        
+ 2.91E-9    1.2       -11.798E-9  18.       
+ 2.92E-9    1.2        21.885E-9  8.        
+ 2.93E-9    1.2       -11.735E-9  60.       
+ 2.94E-9    1.2        21.85E-9   5.        
+ 2.95E-9    1.2       -11.58E-9   8.        
+ 2.96E-9    1.2        21.882E-9  4.        
+ 2.97E-9    1.2       -11.936E-9  17.       
+ 2.98E-9    1.2        21.489E-9  7.        
+ 2.99E-9    1.2       -11.457E-9  13.       
+ 3.E-9      1.2        21.978E-9  5.        
+ 3.01E-9    1.08       52.168E-6  19.       
+ 3.02E-9    0.96      -23.489E-6  9.        
+ 3.03E-9    0.84      -2.7792E-6  5.        
+ 3.04E-9    0.72       6.1498E-6  5.        
+ 3.05E-9    0.6        23.098E-6  5.        
+ 3.06E-9    0.48       26.625E-6  5.        
+ 3.07E-9    0.36       42.857E-6  5.        
+ 3.08E-9    0.24       55.838E-6  5.        
+ 3.09E-9    0.12      -834.45E-6  5.        
+ 3.1E-9     85.914E-9 -0.0011272  5.        
+ 3.11E-9    81.945E-9  289.35E-6  26.       
+ 3.12E-9    82.257E-9  0.0058301  10.       
+ 3.13E-9    82.301E-9  0.010477   10.       
+ 3.14E-9    81.711E-9  0.0098109  10.       
+ 3.15E-9    81.263E-9 -0.040643   10.       
+ 3.16E-9    81.768E-9 -0.098642   10.       
+ 3.17E-9    81.757E-9 -0.11393    10.       
+ 3.18E-9    81.593E-9  0.21373    10.       
+ 3.19E-9    81.515E-9  0.87553    10.       
+ 3.2E-9     81.597E-9  1.1684     10.       
+ 3.21E-9    81.469E-9  1.1889     10.       
+ 3.22E-9    81.492E-9  1.1962     10.       
+ 3.23E-9    81.506E-9  1.1986     9.        
+ 3.24E-9   -81.503E-9  1.1993     5.        
+ 3.25E-9    81.507E-9  1.1996     5.        
+ 3.26E-9   -81.505E-9  1.1997     5.        
+ 3.27E-9    81.506E-9  1.1997     4.        
+ 3.28E-9   -81.506E-9  1.1997     4.        
+ 3.29E-9    81.506E-9  1.1997     6.        
+ 3.3E-9    -81.506E-9  1.1997     5.        
+ 3.31E-9    81.506E-9  1.1997     5.        
+ 3.32E-9   -81.506E-9  1.1997     4.        
+ 3.33E-9    81.506E-9  1.1997     4.        
+ 3.34E-9   -81.506E-9  1.1997     4.        
+ 3.35E-9    81.506E-9  1.1997     5.        
+ 3.36E-9   -81.506E-9  1.1997     4.        
+ 3.37E-9    81.505E-9  1.1997     7.        
+ 3.38E-9   -81.505E-9  1.1997     5.        
+ 3.39E-9    81.505E-9  1.1997     7.        
+ 3.4E-9     81.505E-9  1.1997     34.       
+ 3.41E-9   -81.505E-9  1.1997     7.        
+ 3.42E-9    81.505E-9  1.1997     8.        
+ 3.43E-9   -81.505E-9  1.1997     5.        
+ 3.44E-9    81.505E-9  1.1997     17.       
+ 3.45E-9   -81.505E-9  1.1997     5.        
+ 3.46E-9    81.505E-9  1.1997     5.        
+ 3.47E-9    81.504E-9  1.1997     30.       
+ 3.48E-9   -81.504E-9  1.1997     6.        
+ 3.49E-9   -81.504E-9  1.1997     37.       
+ 3.5E-9     81.504E-9  1.1997     6.        
+ 3.51E-9   -81.504E-9  1.1997     5.        
+ 3.52E-9    81.504E-9  1.1997     5.        
+ 3.53E-9   -81.504E-9  1.1997     4.        
+ 3.54E-9    81.504E-9  1.1997     6.        
+ 3.55E-9   -81.504E-9  1.1997     5.        
+ 3.56E-9    81.504E-9  1.1997     17.       
+ 3.57E-9   -81.504E-9  1.1997     4.        
+ 3.58E-9    81.503E-9  1.1997     13.       
+ 3.59E-9   -81.503E-9  1.1997     12.       
+ 3.6E-9     81.503E-9  1.1997     8.        
+ 3.61E-9   -81.503E-9  1.1997     7.        
+ 3.62E-9    81.503E-9  1.1997     9.        
+ 3.63E-9   -81.503E-9  1.1997     5.        
+ 3.64E-9    81.503E-9  1.1997     16.       
+ 3.65E-9   -81.503E-9  1.1997     5.        
+ 3.66E-9    81.503E-9  1.1997     15.       
+ 3.67E-9   -81.503E-9  1.1997     12.       
+ 3.68E-9   -81.503E-9  1.1997     33.       
+ 3.69E-9    81.503E-9  1.1997     16.       
+ 3.7E-9    -81.502E-9  1.1997     6.        
+ 3.71E-9   -81.502E-9  1.1997     33.       
+ 3.72E-9    81.502E-9  1.1997     6.        
+ 3.73E-9   -81.502E-9  1.1997     6.        
+ 3.74E-9    81.502E-9  1.1997     10.       
+ 3.75E-9   -81.502E-9  1.1997     5.        
+ 3.76E-9    81.502E-9  1.1997     14.       
+ 3.77E-9   -81.502E-9  1.1997     4.        
+ 3.78E-9   -81.502E-9  1.1997     31.       
+ 3.79E-9    81.501E-9  1.1997     11.       
+ 3.8E-9    -81.501E-9  1.1997     4.        
+ 3.81E-9    0.12       1.1997     27.       
+ 3.82E-9    0.24       1.1997     8.        
+ 3.83E-9    0.36       1.1997     5.        
+ 3.84E-9    0.48       1.1997     5.        
+ 3.85E-9    0.6        1.1997     5.        
+ 3.86E-9    0.72       1.1997     5.        
+ 3.87E-9    0.84       1.1997     5.        
+ 3.88E-9    0.96       1.1997     5.        
+ 3.89E-9    1.08       1.1997     5.        
+ 3.9E-9     1.2        1.2001     5.        
+ 3.91E-9    1.2        1.2004     20.       
+ 3.92E-9    1.2        1.1998     10.       
+ 3.93E-9    1.2        1.1942     10.       
+ 3.94E-9    1.2        1.1939     10.       
+ 3.95E-9    1.2        1.1974     10.       
+ 3.96E-9    1.2        1.2254     10.       
+ 3.97E-9    1.2        1.2761     10.       
+ 3.98E-9    1.2        1.3113     10.       
+ 3.99E-9    1.2        0.93822    10.       
+ 4.E-9      1.2        0.30878    10.       
+Gnucap   System status
+iterations: op=0, dc=0, tran=9605, fourier=0, total=10148
+transient timesteps: accepted=538, rejected=44, total=582
+nodes: user=3, subckt=4, model=152, total=159
+dctran density=9.5%, ac density=9.5%

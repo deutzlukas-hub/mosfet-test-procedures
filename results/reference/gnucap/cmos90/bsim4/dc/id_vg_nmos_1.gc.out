@@ -1,0 +1,298 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS bsim4va;
+  parameter real l=0.09u;
+   parameter real w=10.0u;
+ .l=l; .w=w; .type=1; .level=14; .version=4.80; .binunit=1; .paramchk=1; .mobmod=0; .capmod=1; .igcmod=1; .igbmod=1; .geomod=1; .diomod=1; .rdsmod=0; .rbodymod=0; .rgatemod=1; .permod=1; .acnqsmod=0; .trnqsmod=0; .tempmod=0; .mtrlmod=1; .cvchargemod=0; .mtrlcompatmod=1; .gidlmod=0; .wpemod=0; .eot=1.8e-009; .vddeot=1.5; .ados=1.1; .bdos=1.0; .tnom=25; .toxe=1.8e-009; .toxp=10e-010; .toxm=1.8e-009; .dtox=8e-10; .epsrox=3.9; .wint=5e-009; .lint=1e-009; .ll=0; .wl=0; .lln=1; .wln=1; .lw=0; .ww=0; .lwn=1; .wwn=1; .lwl=0; .wwl=0; .xpart=1; .toxref=1.4e-009; .phig=4.05; .epsrgate=11.7; .saref=5e-6; .sbref=5e-6; .wlod=2e-6; .ku0=(- 4e-6); .kvsat=0.2; .kvth0=(- 2e-8); .tku0=0.0; .llodku0=1.1; .wlodku0=1.1; .llodvth=1.0; .wlodvth=1.0; .lku0=1e-6; .wku0=1e-6; .pku0=0.0; .lkvth0=1.1e-6; .wkvth0=1.1e-6; .pkvth0=0.0; .stk2=0.0; .lodk2=1.0; .steta0=0.0; .lodeta0=1.0; .lambda=4e-10; .vsat=1.1e+005; .vtl=2.0e5; .xn=6.0; .lc=5e-9; .rnoia=0.577; .rnoib=0.37; .tvoff=0.0; .tvfbsdoff=0.0; .vth0=0.25; .k1=0.35; .k2=0.05; .k3=0; .k3b=0; .w0=2.5e-006; .dvt0=1.8; .dvt1=0.52; .dvt2=(- 0.032); .dvt0w=0; .dvt1w=0; .dvt2w=0; .dsub=2; .minv=0.05; .voffl=0; .dvtp0=1e-007; .minvcv=2; .voffcvl=0; .dvtp1=0.05; .lpe0=5.75e-008; .lpeb=2.3e-010; .xj=2e-008; .ngate=5e+020; .ndep=2.8e+018; .nsd=1e+020; .phin=0; .cdsc=0.0002; .cdscb=0; .cdscd=0; .cit=0; .voff=(- 0.15); .nfactor=1.2; .eta0=0.05; .etab=0; .vfb=(- 0.55); .u0=0.032; .ua=5.0e-011; .ub=3.5e-018; .uc=(- 3e-011); .a0=2; .ags=1e-020; .a1=0; .a2=1; .b0=(- 1e-020); .b1=0; .keta=0.04; .dwg=0; .dwb=0; .pclm=0.08; .pdiblc1=0.028; .pdiblc2=0.022; .pdiblcb=(- 0.005); .drout=0.45; .pvag=1e-020; .delta=0.01; .pscbe1=8.14e+008; .pscbe2=5e-008; .fprout=0.2; .pdits=0.2; .pditsd=0.23; .pditsl=2.3e+006; .rsh=0; .rdsw=50; .rsw=50; .rdw=50; .rdswmin=0; .rdwmin=0; .rswmin=0; .prwg=0; .prwb=6.8e-011; .wr=1; .alpha0=0.074; .alpha1=0.005; .beta0=30; .agidl=0.0001; .bgidl=2.1e+009; .cgidl=0.0001; .egidl=0.8; .agisl=0.0002; .bgisl=2.1e+009; .cgisl=0.0002; .egisl=(- 0.28); .aigbacc=0.012; .bigbacc=0.0028; .cigbacc=0.002; .nigbacc=1; .aigbinv=0.014; .bigbinv=0.004; .cigbinv=0.004; .eigbinv=1.1; .nigbinv=3; .aigc=0.012; .bigc=0.0028; .cigc=0.002; .aigs=0.012; .bigs=0.0028; .cigs=0.002; .nigc=1; .poxedge=1; .pigcd=1; .ntox=1; .aigd=0.01; .bigd=0.003; .cigd=0.0015; .xrcrg1=12; .xrcrg2=5; .cgso=6.238e-010; .cgdo=6.238e-010; .cgbo=2.56e-011; .cgdl=2.495e-10; .cgsl=2.495e-10; .ckappas=0.03; .ckappad=0.03; .acde=1; .moin=15; .noff=0.9; .voffcv=(- 0.02); .kt1=(- 0.37); .kt1l=0.0; .kt2=(- 0.042); .ute=(- 1.5); .ua1=1e-009; .ub1=(- 3.5e-019); .uc1=0; .prt=0; .at=53000; .fnoimod=1; .tnoimod=0; .jss=0.0001; .jsws=1e-011; .jswgs=1e-010; .njs=1; .ijthsfwd=0.01; .ijthsrev=0.001; .bvs=10; .xjbvs=1; .jsd=0.0001; .jswd=1e-011; .jswgd=1e-010; .njd=1; .ijthdfwd=0.01; .ijthdrev=0.001; .bvd=10; .xjbvd=1; .pbs=1; .cjs=0.0005; .mjs=0.5; .pbsws=1; .cjsws=5e-010; .mjsws=0.33; .pbswgs=1; .cjswgs=3e-010; .mjswgs=0.33; .pbd=1; .cjd=0.0005; .mjd=0.5; .pbswd=1; .cjswd=5e-010; .mjswd=0.33; .pbswgd=1; .cjswgd=5e-010; .mjswgd=0.33; .tpb=0.005; .tcj=0.001; .tpbsw=0.005; .tcjsw=0.001; .tpbswg=0.005; .tcjswg=0.001; .xtis=3; .xtid=3; .dmcg=8e-006; .dmci=3e-006; .dmdg=2e-006; .dmcgt=1e-007; .dwj=0.0e-008; .xgw=0e-007; .xgl=0e-008; .rshg=0.4; .gbmin=1e-010; .rbpb=5; .rbpd=15; .rbps=15; .rbdb=15; .rbsb=15; .ngcon=1; .jtss=1e-4; .jtsd=1e-4; .jtssws=1e-10; .jtsswd=1e-10; .jtsswgs=1e-7; .jtsswgd=1e-7; .njts=20.0; .njtssw=15; .njtsswg=6; .vtss=10; .vtsd=10; .vtssws=10; .vtsswd=10; .njtsd=15.0; .njtsswd=20; .njtsswgd=6; .tnjts=0.1; .tnjtsd=0.05; .vtsswgs=2; .vtsswgd=2; .xtss=0.02; .xtsd=0.02; .xtssws=0.02; .xtsswd=0.02; .xtsswgs=0.02; .xtsswgd=0.02;
+endparamset
+
+paramset PMOS bsim4va;
+  parameter real l=0.09u;
+   parameter real w=10.0u;
+ .l=l; .w=w; .type=(- 1); .level=14; .version=4.80; .binunit=1; .paramchk=1; .mobmod=0; .capmod=1; .igcmod=1; .igbmod=1; .geomod=1; .diomod=1; .rdsmod=0; .rbodymod=0; .rgatemod=1; .permod=1; .acnqsmod=0; .trnqsmod=0; .tempmod=0; .mtrlmod=1; .cvchargemod=0; .mtrlcompatmod=1; .gidlmod=0; .wpemod=0; .eot=1.8e-009; .vddeot=(- 1.5); .ados=1.1; .bdos=1.0; .tnom=27; .toxe=1.8e-009; .toxp=10e-010; .toxm=1.8e-009; .dtox=8e-10; .epsrox=3.9; .wint=5e-009; .lint=1e-009; .ll=0; .wl=0; .lln=1; .wln=1; .lw=0; .ww=0; .lwn=1; .wwn=1; .lwl=0; .wwl=0; .xpart=0; .toxref=1.8e-9; .phig=4.05; .epsrgate=11.7; .saref=5e-6; .sbref=5e-6; .wlod=2e-6; .ku0=4e-6; .kvsat=0.2; .kvth0=(- 2e-8); .tku0=0.0; .llodku0=1.1; .wlodku0=1.1; .llodvth=1.0; .wlodvth=1.0; .lku0=1e-6; .wku0=1e-6; .pku0=0.0; .lkvth0=1.1e-6; .wkvth0=1.1e-6; .pkvth0=0.0; .stk2=0.0; .lodk2=1.0; .steta0=0.0; .lodeta0=1.0; .lambda=4e-10; .vsat=1.1e+005; .vtl=2.0e5; .xn=6.0; .lc=5e-9; .rnoia=0.577; .rnoib=0.37; .tvoff=0.0; .tvfbsdoff=0.0; .vth0=(- 0.25); .k1=0.35; .k2=0.05; .k3=0; .k3b=0; .w0=2.5e-006; .dvt0=1.8; .dvt1=0.52; .dvt2=(- 0.032); .dvt0w=0; .dvt1w=0; .dvt2w=0; .dsub=2; .minv=0.05; .voffl=0; .dvtp0=1e-007; .minvcv=2; .voffcvl=0; .dvtp1=0.05; .lpe0=5.75e-008; .lpeb=2.3e-010; .xj=2e-008; .ngate=5e+020; .ndep=2.8e+018; .nsd=1e+020; .phin=0; .cdsc=0.0002; .cdscb=0; .cdscd=0; .cit=0; .voff=(- 0.15); .nfactor=1.2; .eta0=0.05; .etab=0; .vfb=0.55; .u0=0.0095; .ua=5.0e-011; .ub=3.5e-018; .uc=(- 3e-011); .a0=2; .ags=1e-020; .a1=0; .a2=1; .b0=(- 1e-020); .b1=0; .keta=0.04; .dwg=0; .dwb=0; .pclm=0.08; .pdiblc1=0.028; .pdiblc2=0.022; .pdiblcb=(- 0.005); .drout=0.45; .pvag=1e-020; .delta=0.01; .pscbe1=8.14e+008; .pscbe2=5e-008; .fprout=0.2; .pdits=0.2; .pditsd=0.23; .pditsl=2.3e+006; .rsh=0; .rdsw=50; .rsw=50; .rdw=50; .rdswmin=0; .rdwmin=0; .rswmin=0; .prwg=0; .prwb=6.8e-011; .wr=1; .alpha0=0.074; .alpha1=0.005; .beta0=30; .agidl=0.0002; .bgidl=2.1e+009; .cgidl=0.0002; .egidl=0.8; .agisl=0.0003; .bgisl=2.5e+009; .cgisl=0.0003; .egisl=(- 0.28); .aigbacc=0.012; .bigbacc=0.0028; .cigbacc=0.002; .nigbacc=1; .aigbinv=0.014; .bigbinv=0.004; .cigbinv=0.004; .eigbinv=1.1; .nigbinv=3; .aigc=0.012; .bigc=0.0028; .cigc=0.002; .aigs=0.012; .bigs=0.0028; .cigs=0.002; .nigc=1; .poxedge=1; .pigcd=1; .ntox=1; .aigd=0.01; .bigd=0.003; .cigd=0.0015; .xrcrg1=12; .xrcrg2=5; .cgso=6.238e-010; .cgdo=6.238e-010; .cgbo=2.56e-011; .cgdl=2.495e-10; .cgsl=2.495e-10; .ckappas=0.03; .ckappad=0.03; .acde=1; .moin=15; .noff=0.9; .voffcv=0.02; .kt1=(- 0.37); .kt1l=0.0; .kt2=(- 0.042); .ute=(- 1.5); .ua1=1e-009; .ub1=(- 3.5e-019); .uc1=0; .prt=0; .at=53000; .fnoimod=1; .tnoimod=0; .jss=0.0001; .jsws=1e-011; .jswgs=1e-010; .njs=1; .ijthsfwd=0.01; .ijthsrev=0.001; .bvs=10; .xjbvs=1; .jsd=0.0001; .jswd=1e-011; .jswgd=1e-010; .njd=1; .ijthdfwd=0.01; .ijthdrev=0.001; .bvd=10; .xjbvd=1; .pbs=1; .cjs=0.0005; .mjs=0.5; .pbsws=1; .cjsws=5e-010; .mjsws=0.33; .pbswgs=1; .cjswgs=3e-010; .mjswgs=0.33; .pbd=1; .cjd=0.0005; .mjd=0.5; .pbswd=1; .cjswd=5e-010; .mjswd=0.33; .pbswgd=1; .cjswgd=5e-010; .mjswgd=0.33; .tpb=0.005; .tcj=0.001; .tpbsw=0.005; .tcjsw=0.001; .tpbswg=0.005; .tcjswg=0.001; .xtis=3; .xtid=3; .dmcg=8e-006; .dmci=3e-006; .dmdg=2e-006; .dmcgt=1e-007; .dwj=0.0e-008; .xgw=0e-007; .xgl=0e-008; .rshg=0.4; .gbmin=1e-010; .rbpb=5; .rbpd=15; .rbps=15; .rbdb=15; .rbsb=15; .ngcon=1; .jtss=1e-4; .jtsd=1e-4; .jtssws=1e-10; .jtsswd=1e-10; .jtsswgs=1e-7; .jtsswgd=1e-7; .njts=20.0; .njtssw=15; .njtsswg=4; .vtss=10; .vtsd=10; .vtssws=10; .vtsswd=10; .njtsd=15.0; .njtsswd=20; .njtsswgd=6; .tnjts=0.1; .tnjtsd=0.05; .vtsswgs=2; .vtsswgd=2; .xtss=0.02; .xtsd=0.02; .xtssws=0.02; .xtsswd=0.02; .xtsswgs=0.02; .xtsswgd=0.02;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+ground gnd;
+parameter real vd = 0.0;
+parameter real vg = 0.0;
+vsource #(.dc(vd)) sd (.p(d),.n(gnd));
+vsource #(.dc(vg)) sg (.p(g),.n(gnd));
+NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
+#           v(d)       i(sd)      iter(0)   
+ 0.         0.05      -6.5238E-9  4.        
+ 0.02       0.05      -11.565E-9  4.        
+ 0.04       0.05      -20.435E-9  4.        
+ 0.06       0.05      -35.933E-9  4.        
+ 0.08       0.05      -62.79E-9   4.        
+ 0.1        0.05      -108.87E-9  4.        
+ 0.12       0.05      -186.98E-9  4.        
+ 0.14       0.05      -317.54E-9  4.        
+ 0.16       0.05      -532.24E-9  4.        
+ 0.18       0.05      -879.08E-9  4.        
+ 0.2        0.05      -1.429E-6   4.        
+ 0.22       0.05      -2.2849E-6  4.        
+ 0.24       0.05      -3.5931E-6  4.        
+ 0.26       0.05      -5.5595E-6  4.        
+ 0.28       0.05      -8.4681E-6  4.        
+ 0.3        0.05      -12.699E-6  4.        
+ 0.32       0.05      -18.738E-6  4.        
+ 0.34       0.05      -27.155E-6  4.        
+ 0.36       0.05      -38.539E-6  4.        
+ 0.38       0.05      -53.388E-6  4.        
+ 0.4        0.05      -72.001E-6  4.        
+ 0.42       0.05      -94.385E-6  4.        
+ 0.44       0.05      -120.25E-6  4.        
+ 0.46       0.05      -149.08E-6  4.        
+ 0.48       0.05      -180.22E-6  4.        
+ 0.5        0.05      -212.98E-6  4.        
+ 0.52       0.05      -246.74E-6  4.        
+ 0.54       0.05      -280.94E-6  4.        
+ 0.56       0.05      -315.14E-6  4.        
+ 0.58       0.05      -348.98E-6  4.        
+ 0.6        0.05      -382.2E-6   4.        
+ 0.62       0.05      -414.62E-6  4.        
+ 0.64       0.05      -446.11E-6  4.        
+ 0.66       0.05      -476.58E-6  4.        
+ 0.68       0.05      -505.99E-6  4.        
+ 0.7        0.05      -534.31E-6  4.        
+ 0.72       0.05      -561.53E-6  4.        
+ 0.74       0.05      -587.66E-6  4.        
+ 0.76       0.05      -612.71E-6  4.        
+ 0.78       0.05      -636.71E-6  4.        
+ 0.8        0.05      -659.68E-6  4.        
+ 0.82       0.05      -681.66E-6  4.        
+ 0.84       0.05      -702.66E-6  4.        
+ 0.86       0.05      -722.72E-6  4.        
+ 0.88       0.05      -741.88E-6  4.        
+ 0.9        0.05      -760.17E-6  4.        
+ 0.92       0.05      -777.61E-6  4.        
+ 0.94       0.05      -794.25E-6  4.        
+ 0.96       0.05      -810.11E-6  4.        
+ 0.98       0.05      -825.21E-6  4.        
+ 1.         0.05      -839.6E-6   4.        
+ 1.02       0.05      -853.29E-6  4.        
+ 1.04       0.05      -866.32E-6  4.        
+ 1.06       0.05      -878.71E-6  4.        
+ 1.08       0.05      -890.49E-6  4.        
+ 1.1        0.05      -901.68E-6  4.        
+ 1.12       0.05      -912.3E-6   4.        
+ 1.14       0.05      -922.38E-6  4.        
+ 1.16       0.05      -931.94E-6  4.        
+ 1.18       0.05      -941.E-6    4.        
+ 1.2        0.05      -949.58E-6  4.        
+ 0.         0.55      -15.84E-9   5.        
+ 0.02       0.55      -23.661E-9  4.        
+ 0.04       0.55      -37.98E-9   4.        
+ 0.06       0.55      -63.548E-9  4.        
+ 0.08       0.55      -108.3E-9   4.        
+ 0.1        0.55      -185.42E-9  4.        
+ 0.12       0.55      -316.42E-9  4.        
+ 0.14       0.55      -535.39E-9  4.        
+ 0.16       0.55      -895.16E-9  4.        
+ 0.18       0.55      -1.4751E-6  4.        
+ 0.2        0.55      -2.3918E-6  4.        
+ 0.22       0.55      -3.8119E-6  4.        
+ 0.24       0.55      -5.9698E-6  4.        
+ 0.26       0.55      -9.1909E-6  4.        
+ 0.28       0.55      -13.922E-6  4.        
+ 0.3        0.55      -20.768E-6  4.        
+ 0.32       0.55      -30.528E-6  4.        
+ 0.34       0.55      -44.218E-6  4.        
+ 0.36       0.55      -63.051E-6  4.        
+ 0.38       0.55      -88.374E-6  4.        
+ 0.4        0.55      -121.56E-6  4.        
+ 0.42       0.55      -163.84E-6  4.        
+ 0.44       0.55      -216.17E-6  4.        
+ 0.46       0.55      -279.13E-6  4.        
+ 0.48       0.55      -352.85E-6  4.        
+ 0.5        0.55      -437.1E-6   4.        
+ 0.52       0.55      -531.37E-6  4.        
+ 0.54       0.55      -634.91E-6  4.        
+ 0.56       0.55      -746.9E-6   4.        
+ 0.58       0.55      -866.47E-6  4.        
+ 0.6        0.55      -992.78E-6  4.        
+ 0.62       0.55      -0.001125   4.        
+ 0.64       0.55      -0.0012625  4.        
+ 0.66       0.55      -0.0014044  4.        
+ 0.68       0.55      -0.0015503  4.        
+ 0.7        0.55      -0.0016995  4.        
+ 0.72       0.55      -0.0018516  4.        
+ 0.74       0.55      -0.0020061  4.        
+ 0.76       0.55      -0.0021626  4.        
+ 0.78       0.55      -0.0023207  4.        
+ 0.8        0.55      -0.0024801  4.        
+ 0.82       0.55      -0.0026405  4.        
+ 0.84       0.55      -0.0028016  4.        
+ 0.86       0.55      -0.002963   4.        
+ 0.88       0.55      -0.0031245  4.        
+ 0.9        0.55      -0.0032859  4.        
+ 0.92       0.55      -0.003447   4.        
+ 0.94       0.55      -0.0036074  4.        
+ 0.96       0.55      -0.003767   4.        
+ 0.98       0.55      -0.0039256  4.        
+ 1.         0.55      -0.0040829  4.        
+ 1.02       0.55      -0.0042388  4.        
+ 1.04       0.55      -0.0043931  4.        
+ 1.06       0.55      -0.0045455  4.        
+ 1.08       0.55      -0.0046959  4.        
+ 1.1        0.55      -0.0048442  4.        
+ 1.12       0.55      -0.00499    4.        
+ 1.14       0.55      -0.0051334  4.        
+ 1.16       0.55      -0.0052741  4.        
+ 1.18       0.55      -0.0054121  4.        
+ 1.2        0.55      -0.0055471  4.        
+ 0.         1.05      -146.76E-9  5.        
+ 0.02       1.05      -143.6E-9   4.        
+ 0.04       1.05      -150.77E-9  4.        
+ 0.06       1.05      -174.62E-9  4.        
+ 0.08       1.05      -225.82E-9  4.        
+ 0.1        1.05      -322.15E-9  4.        
+ 0.12       1.05      -492.74E-9  4.        
+ 0.14       1.05      -783.78E-9  4.        
+ 0.16       1.05      -1.2664E-6  4.        
+ 0.18       1.05      -2.0472E-6  4.        
+ 0.2        1.05      -3.2808E-6  4.        
+ 0.22       1.05      -5.1858E-6  4.        
+ 0.24       1.05      -8.0636E-6  4.        
+ 0.26       1.05      -12.323E-6  4.        
+ 0.28       1.05      -18.508E-6  4.        
+ 0.3        1.05      -27.335E-6  4.        
+ 0.32       1.05      -39.719E-6  4.        
+ 0.34       1.05      -56.789E-6  4.        
+ 0.36       1.05      -79.854E-6  4.        
+ 0.38       1.05      -110.32E-6  4.        
+ 0.4        1.05      -149.59E-6  4.        
+ 0.42       1.05      -198.88E-6  4.        
+ 0.44       1.05      -259.08E-6  4.        
+ 0.46       1.05      -330.68E-6  4.        
+ 0.48       1.05      -413.71E-6  4.        
+ 0.5        1.05      -507.85E-6  4.        
+ 0.52       1.05      -612.48E-6  4.        
+ 0.54       1.05      -726.79E-6  4.        
+ 0.56       1.05      -849.88E-6  4.        
+ 0.58       1.05      -980.85E-6  4.        
+ 0.6        1.05      -0.0011188  4.        
+ 0.62       1.05      -0.001263   4.        
+ 0.64       1.05      -0.0014126  4.        
+ 0.66       1.05      -0.0015669  4.        
+ 0.68       1.05      -0.0017255  4.        
+ 0.7        1.05      -0.0018876  4.        
+ 0.72       1.05      -0.0020529  4.        
+ 0.74       1.05      -0.002221   4.        
+ 0.76       1.05      -0.0023914  4.        
+ 0.78       1.05      -0.0025639  4.        
+ 0.8        1.05      -0.002738   4.        
+ 0.82       1.05      -0.0029136  4.        
+ 0.84       1.05      -0.0030904  4.        
+ 0.86       1.05      -0.0032681  4.        
+ 0.88       1.05      -0.0034465  4.        
+ 0.9        1.05      -0.0036255  4.        
+ 0.92       1.05      -0.0038049  4.        
+ 0.94       1.05      -0.0039845  4.        
+ 0.96       1.05      -0.0041641  4.        
+ 0.98       1.05      -0.0043436  4.        
+ 1.         1.05      -0.0045228  4.        
+ 1.02       1.05      -0.0047018  4.        
+ 1.04       1.05      -0.0048802  4.        
+ 1.06       1.05      -0.0050581  4.        
+ 1.08       1.05      -0.0052353  4.        
+ 1.1        1.05      -0.0054117  4.        
+ 1.12       1.05      -0.0055872  4.        
+ 1.14       1.05      -0.0057619  4.        
+ 1.16       1.05      -0.0059354  4.        
+ 1.18       1.05      -0.0061079  4.        
+ 1.2        1.05      -0.0062793  4.        
+Gnucap   System status
+iterations: op=0, dc=734, tran=0, fourier=0, total=734
+transient timesteps: accepted=0, rejected=0, total=0
+nodes: user=2, subckt=0, model=18, total=20
+dctran density=34.2%, ac density=34.2%

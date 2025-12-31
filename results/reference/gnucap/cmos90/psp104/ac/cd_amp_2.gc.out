@@ -1,0 +1,217 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+paramset PMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+// Common drain amplifier
+module cd_stage (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real W=10u;
+      parameter real L=0.09u;
+      parameter real RIN=100k;
+      parameter real RLOAD=1k;
+      input in, vdd, gnd;
+      output out;
+      electrical in, out, vdd, gnd;
+  NMOS #(.w(W),.l(L)) N1 (.d(vdd),.g(g),.s(out),.b(gnd));
+  resistor #(.r(RIN)) Rin (in, g);
+  resistor #(.r(RLOAD)) Rload (out, gnd);
+endmodule // cd_stage
+
+//* Enable verilog mode
+ground gnd;
+cd_stage #(.W(WN),.L(L)) amp (in, out, vdd, gnd);
+vsource #(.dc(VNOM)) Vdd (.p(vdd),.n(gnd));
+vsine #(.dc(0.5*VNOM),.mag(0.05*VNOM)) Vin (.p(in),.n(gnd));
+#            
+ 0.          
+#Freq         vdb(in)      vdb(out)     iter(0)     
+ 100.        -24.43697    -28.88414     0.          
+ 125.8925    -24.43697    -28.88414     0.          
+ 158.4893    -24.43697    -28.88414     0.          
+ 199.5262    -24.43697    -28.88414     0.          
+ 251.1886    -24.43697    -28.88414     0.          
+ 316.2278    -24.43697    -28.88414     0.          
+ 398.1072    -24.43697    -28.88414     0.          
+ 501.1872    -24.43697    -28.88414     0.          
+ 630.9573    -24.43697    -28.88414     0.          
+ 794.3282    -24.43697    -28.88414     0.          
+ 1.E+3       -24.43697    -28.88414     0.          
+ 1.258925E+3 -24.43697    -28.88414     0.          
+ 1.584893E+3 -24.43697    -28.88414     0.          
+ 1.995262E+3 -24.43697    -28.88414     0.          
+ 2.511886E+3 -24.43697    -28.88414     0.          
+ 3.162278E+3 -24.43697    -28.88414     0.          
+ 3.981072E+3 -24.43697    -28.88414     0.          
+ 5.011872E+3 -24.43697    -28.88414     0.          
+ 6.309573E+3 -24.43697    -28.88414     0.          
+ 7.943282E+3 -24.43697    -28.88414     0.          
+ 10.E+3      -24.43697    -28.88414     0.          
+ 12.58925E+3 -24.43697    -28.88414     0.          
+ 15.84893E+3 -24.43697    -28.88414     0.          
+ 19.95262E+3 -24.43697    -28.88414     0.          
+ 25.11886E+3 -24.43697    -28.88414     0.          
+ 31.62278E+3 -24.43697    -28.88414     0.          
+ 39.81072E+3 -24.43697    -28.88414     0.          
+ 50.11872E+3 -24.43697    -28.88414     0.          
+ 63.09573E+3 -24.43697    -28.88414     0.          
+ 79.43282E+3 -24.43697    -28.88414     0.          
+ 100.E+3     -24.43697    -28.88415     0.          
+ 125.8925E+3 -24.43697    -28.88415     0.          
+ 158.4893E+3 -24.43697    -28.88416     0.          
+ 199.5262E+3 -24.43697    -28.88418     0.          
+ 251.1886E+3 -24.43697    -28.8842      0.          
+ 316.2278E+3 -24.43697    -28.88424     0.          
+ 398.1072E+3 -24.43697    -28.88429     0.          
+ 501.1872E+3 -24.43697    -28.88438     0.          
+ 630.9573E+3 -24.43697    -28.88453     0.          
+ 794.3282E+3 -24.43697    -28.88476     0.          
+ 1.E+6       -24.43697    -28.88512     0.          
+ 1.258925E+6 -24.43697    -28.88569     0.          
+ 1.584893E+6 -24.43697    -28.8866      0.          
+ 1.995262E+6 -24.43697    -28.88803     0.          
+ 2.511886E+6 -24.43697    -28.89031     0.          
+ 3.162278E+6 -24.43697    -28.89391     0.          
+ 3.981072E+6 -24.43697    -28.89962     0.          
+ 5.011872E+6 -24.43697    -28.90865     0.          
+ 6.309573E+6 -24.43697    -28.92292     0.          
+ 7.943282E+6 -24.43697    -28.94545     0.          
+ 10.E+6      -24.43697    -28.98091     0.          
+ 12.58925E+6 -24.43697    -29.03653     0.          
+ 15.84893E+6 -24.43697    -29.12324     0.          
+ 19.95262E+6 -24.43697    -29.25722     0.          
+ 25.11886E+6 -24.43697    -29.46145     0.          
+ 31.62278E+6 -24.43697    -29.76666     0.          
+ 39.81072E+6 -24.43697    -30.21032     0.          
+ 50.11872E+6 -24.43697    -30.83204     0.          
+ 63.09573E+6 -24.43697    -31.66489     0.          
+ 79.43282E+6 -24.43697    -32.72534     0.          
+ 100.E+6     -24.43697    -34.00728     0.          
+ 125.8925E+6 -24.43697    -35.48432     0.          
+ 158.4893E+6 -24.43697    -37.11866     0.          
+ 199.5262E+6 -24.43697    -38.87096     0.          
+ 251.1886E+6 -24.43697    -40.70695     0.          
+ 316.2278E+6 -24.43697    -42.59999     0.          
+ 398.1072E+6 -24.43697    -44.53081     0.          
+ 501.1872E+6 -24.43697    -46.4861      0.          
+ 630.9573E+6 -24.43697    -48.45685     0.          
+ 794.3282E+6 -24.43697    -50.43703     0.          
+ 1.E+9       -24.43697    -52.42248     0.          
+Gnucap   System status
+iterations: op=0, dc=8, tran=0, fourier=0, total=79
+transient timesteps: accepted=0, rejected=0, total=0
+nodes: user=3, subckt=1, model=16, total=20
+dctran density=40.0%, ac density=40.0%

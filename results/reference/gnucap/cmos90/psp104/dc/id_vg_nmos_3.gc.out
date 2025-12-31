@@ -1,0 +1,288 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+paramset PMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+ground gnd;
+vsource #(.dc(vd)) sd (.p(d),.n(gnd));
+vsource #(.dc(vg)) sg (.p(g),.n(gnd));
+vsource #(.dc(vb)) sb (.p(b),.n(gnd));
+parameter vd = 0.1;
+parameter vg = 0.0;
+parameter vb = 0.0;
+NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(b));
+#           v(b)       i(sd)      iter(0)   
+ 0.6        0.        -377.09E-6  4.        
+ 0.62       0.        -450.72E-6  4.        
+ 0.64       0.        -526.33E-6  4.        
+ 0.66       0.        -603.03E-6  4.        
+ 0.68       0.        -680.1E-6   4.        
+ 0.7        0.        -756.98E-6  4.        
+ 0.72       0.        -833.24E-6  4.        
+ 0.74       0.        -908.57E-6  4.        
+ 0.76       0.        -982.72E-6  4.        
+ 0.78       0.        -0.0010555  4.        
+ 0.8        0.        -0.0011268  4.        
+ 0.82       0.        -0.0011965  4.        
+ 0.84       0.        -0.0012646  4.        
+ 0.86       0.        -0.001331   4.        
+ 0.88       0.        -0.0013957  4.        
+ 0.9        0.        -0.0014587  4.        
+ 0.92       0.        -0.00152    4.        
+ 0.94       0.        -0.0015796  4.        
+ 0.96       0.        -0.0016376  4.        
+ 0.98       0.        -0.0016939  4.        
+ 1.         0.        -0.0017487  4.        
+ 1.02       0.        -0.0018018  4.        
+ 1.04       0.        -0.0018535  4.        
+ 1.06       0.        -0.0019036  4.        
+ 1.08       0.        -0.0019523  4.        
+ 1.1        0.        -0.0019995  4.        
+ 1.12       0.        -0.0020454  4.        
+ 1.14       0.        -0.0020899  4.        
+ 1.16       0.        -0.0021331  4.        
+ 1.18       0.        -0.0021751  4.        
+ 1.2        0.        -0.0022158  4.        
+ 0.6       -0.3       -210.52E-6  4.        
+ 0.62      -0.3       -273.49E-6  4.        
+ 0.64      -0.3       -341.44E-6  4.        
+ 0.66      -0.3       -412.92E-6  4.        
+ 0.68      -0.3       -486.71E-6  4.        
+ 0.7       -0.3       -561.83E-6  4.        
+ 0.72      -0.3       -637.51E-6  4.        
+ 0.74      -0.3       -713.15E-6  4.        
+ 0.76      -0.3       -788.28E-6  4.        
+ 0.78      -0.3       -862.54E-6  4.        
+ 0.8       -0.3       -935.69E-6  4.        
+ 0.82      -0.3       -0.0010075  4.        
+ 0.84      -0.3       -0.0010779  4.        
+ 0.86      -0.3       -0.0011467  4.        
+ 0.88      -0.3       -0.0012139  4.        
+ 0.9       -0.3       -0.0012795  4.        
+ 0.92      -0.3       -0.0013433  4.        
+ 0.94      -0.3       -0.0014055  4.        
+ 0.96      -0.3       -0.001466   4.        
+ 0.98      -0.3       -0.0015248  4.        
+ 1.        -0.3       -0.001582   4.        
+ 1.02      -0.3       -0.0016376  4.        
+ 1.04      -0.3       -0.0016916  4.        
+ 1.06      -0.3       -0.001744   4.        
+ 1.08      -0.3       -0.0017949  4.        
+ 1.1       -0.3       -0.0018443  4.        
+ 1.12      -0.3       -0.0018923  4.        
+ 1.14      -0.3       -0.0019389  4.        
+ 1.16      -0.3       -0.0019841  4.        
+ 1.18      -0.3       -0.0020279  4.        
+ 1.2       -0.3       -0.0020705  4.        
+ 0.6       -0.6       -96.471E-6  4.        
+ 0.62      -0.6       -142.33E-6  4.        
+ 0.64      -0.6       -196.63E-6  4.        
+ 0.66      -0.6       -257.73E-6  4.        
+ 0.68      -0.6       -323.96E-6  4.        
+ 0.7       -0.6       -393.83E-6  4.        
+ 0.72      -0.6       -466.11E-6  4.        
+ 0.74      -0.6       -539.78E-6  4.        
+ 0.76      -0.6       -614.07E-6  4.        
+ 0.78      -0.6       -688.35E-6  4.        
+ 0.8       -0.6       -762.15E-6  4.        
+ 0.82      -0.6       -835.11E-6  4.        
+ 0.84      -0.6       -906.98E-6  4.        
+ 0.86      -0.6       -977.55E-6  4.        
+ 0.88      -0.6       -0.0010467  4.        
+ 0.9       -0.6       -0.0011143  4.        
+ 0.92      -0.6       -0.0011803  4.        
+ 0.94      -0.6       -0.0012446  4.        
+ 0.96      -0.6       -0.0013073  4.        
+ 0.98      -0.6       -0.0013684  4.        
+ 1.        -0.6       -0.0014278  4.        
+ 1.02      -0.6       -0.0014855  4.        
+ 1.04      -0.6       -0.0015416  4.        
+ 1.06      -0.6       -0.0015961  4.        
+ 1.08      -0.6       -0.0016491  4.        
+ 1.1       -0.6       -0.0017005  4.        
+ 1.12      -0.6       -0.0017504  4.        
+ 1.14      -0.6       -0.0017989  4.        
+ 1.16      -0.6       -0.0018459  4.        
+ 1.18      -0.6       -0.0018916  4.        
+ 1.2       -0.6       -0.0019359  4.        
+ 0.6       -0.9       -33.587E-6  4.        
+ 0.62      -0.9       -59.252E-6  4.        
+ 0.64      -0.9       -94.941E-6  4.        
+ 0.66      -0.9       -140.23E-6  4.        
+ 0.68      -0.9       -193.83E-6  4.        
+ 0.7       -0.9       -254.08E-6  4.        
+ 0.72      -0.9       -319.32E-6  4.        
+ 0.74      -0.9       -388.09E-6  4.        
+ 0.76      -0.9       -459.16E-6  4.        
+ 0.78      -0.9       -531.54E-6  4.        
+ 0.8       -0.9       -604.47E-6  4.        
+ 0.82      -0.9       -677.34E-6  4.        
+ 0.84      -0.9       -749.71E-6  4.        
+ 0.86      -0.9       -821.22E-6  4.        
+ 0.88      -0.9       -891.61E-6  4.        
+ 0.9       -0.9       -960.72E-6  4.        
+ 0.92      -0.9       -0.0010284  4.        
+ 0.94      -0.9       -0.0010945  4.        
+ 0.96      -0.9       -0.0011591  4.        
+ 0.98      -0.9       -0.0012221  4.        
+ 1.        -0.9       -0.0012834  4.        
+ 1.02      -0.9       -0.001343   4.        
+ 1.04      -0.9       -0.0014011  4.        
+ 1.06      -0.9       -0.0014575  4.        
+ 1.08      -0.9       -0.0015123  4.        
+ 1.1       -0.9       -0.0015656  4.        
+ 1.12      -0.9       -0.0016173  4.        
+ 1.14      -0.9       -0.0016676  4.        
+ 1.16      -0.9       -0.0017163  4.        
+ 1.18      -0.9       -0.0017637  4.        
+ 1.2       -0.9       -0.0018096  4.        
+ 0.6       -1.2       -8.6448E-6  4.        
+ 0.62      -1.2       -18.6E-6    4.        
+ 0.64      -1.2       -36.046E-6  4.        
+ 0.66      -1.2       -62.801E-6  4.        
+ 0.68      -1.2       -99.467E-6  4.        
+ 0.7       -1.2       -145.45E-6  4.        
+ 0.72      -1.2       -199.36E-6  4.        
+ 0.74      -1.2       -259.53E-6  4.        
+ 0.76      -1.2       -324.33E-6  4.        
+ 0.78      -1.2       -392.35E-6  4.        
+ 0.8       -1.2       -462.42E-6  4.        
+ 0.82      -1.2       -533.62E-6  4.        
+ 0.84      -1.2       -605.22E-6  4.        
+ 0.86      -1.2       -676.66E-6  4.        
+ 0.88      -1.2       -747.5E-6   4.        
+ 0.9       -1.2       -817.44E-6  4.        
+ 0.92      -1.2       -886.24E-6  4.        
+ 0.94      -1.2       -953.72E-6  4.        
+ 0.96      -1.2       -0.0010198  4.        
+ 0.98      -1.2       -0.0010843  4.        
+ 1.        -1.2       -0.0011473  4.        
+ 1.02      -1.2       -0.0012087  4.        
+ 1.04      -1.2       -0.0012684  4.        
+ 1.06      -1.2       -0.0013266  4.        
+ 1.08      -1.2       -0.0013831  4.        
+ 1.1       -1.2       -0.0014381  4.        
+ 1.12      -1.2       -0.0014915  4.        
+ 1.14      -1.2       -0.0015434  4.        
+ 1.16      -1.2       -0.0015938  4.        
+ 1.18      -1.2       -0.0016427  4.        
+ 1.2       -1.2       -0.0016902  4.        
+Gnucap   System status
+iterations: op=0, dc=620, tran=0, fourier=0, total=620
+transient timesteps: accepted=0, rejected=0, total=0
+nodes: user=3, subckt=0, model=15, total=18
+dctran density=44.4%, ac density=44.4%

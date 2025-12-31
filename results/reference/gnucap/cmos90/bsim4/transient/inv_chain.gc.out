@@ -1,0 +1,553 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS bsim4va;
+  parameter real l=0.09u;
+   parameter real w=10.0u;
+ .l=l; .w=w; .type=1; .level=14; .version=4.80; .binunit=1; .paramchk=1; .mobmod=0; .capmod=1; .igcmod=1; .igbmod=1; .geomod=1; .diomod=1; .rdsmod=0; .rbodymod=0; .rgatemod=1; .permod=1; .acnqsmod=0; .trnqsmod=0; .tempmod=0; .mtrlmod=1; .cvchargemod=0; .mtrlcompatmod=1; .gidlmod=0; .wpemod=0; .eot=1.8e-009; .vddeot=1.5; .ados=1.1; .bdos=1.0; .tnom=25; .toxe=1.8e-009; .toxp=10e-010; .toxm=1.8e-009; .dtox=8e-10; .epsrox=3.9; .wint=5e-009; .lint=1e-009; .ll=0; .wl=0; .lln=1; .wln=1; .lw=0; .ww=0; .lwn=1; .wwn=1; .lwl=0; .wwl=0; .xpart=1; .toxref=1.4e-009; .phig=4.05; .epsrgate=11.7; .saref=5e-6; .sbref=5e-6; .wlod=2e-6; .ku0=(- 4e-6); .kvsat=0.2; .kvth0=(- 2e-8); .tku0=0.0; .llodku0=1.1; .wlodku0=1.1; .llodvth=1.0; .wlodvth=1.0; .lku0=1e-6; .wku0=1e-6; .pku0=0.0; .lkvth0=1.1e-6; .wkvth0=1.1e-6; .pkvth0=0.0; .stk2=0.0; .lodk2=1.0; .steta0=0.0; .lodeta0=1.0; .lambda=4e-10; .vsat=1.1e+005; .vtl=2.0e5; .xn=6.0; .lc=5e-9; .rnoia=0.577; .rnoib=0.37; .tvoff=0.0; .tvfbsdoff=0.0; .vth0=0.25; .k1=0.35; .k2=0.05; .k3=0; .k3b=0; .w0=2.5e-006; .dvt0=1.8; .dvt1=0.52; .dvt2=(- 0.032); .dvt0w=0; .dvt1w=0; .dvt2w=0; .dsub=2; .minv=0.05; .voffl=0; .dvtp0=1e-007; .minvcv=2; .voffcvl=0; .dvtp1=0.05; .lpe0=5.75e-008; .lpeb=2.3e-010; .xj=2e-008; .ngate=5e+020; .ndep=2.8e+018; .nsd=1e+020; .phin=0; .cdsc=0.0002; .cdscb=0; .cdscd=0; .cit=0; .voff=(- 0.15); .nfactor=1.2; .eta0=0.05; .etab=0; .vfb=(- 0.55); .u0=0.032; .ua=5.0e-011; .ub=3.5e-018; .uc=(- 3e-011); .a0=2; .ags=1e-020; .a1=0; .a2=1; .b0=(- 1e-020); .b1=0; .keta=0.04; .dwg=0; .dwb=0; .pclm=0.08; .pdiblc1=0.028; .pdiblc2=0.022; .pdiblcb=(- 0.005); .drout=0.45; .pvag=1e-020; .delta=0.01; .pscbe1=8.14e+008; .pscbe2=5e-008; .fprout=0.2; .pdits=0.2; .pditsd=0.23; .pditsl=2.3e+006; .rsh=0; .rdsw=50; .rsw=50; .rdw=50; .rdswmin=0; .rdwmin=0; .rswmin=0; .prwg=0; .prwb=6.8e-011; .wr=1; .alpha0=0.074; .alpha1=0.005; .beta0=30; .agidl=0.0001; .bgidl=2.1e+009; .cgidl=0.0001; .egidl=0.8; .agisl=0.0002; .bgisl=2.1e+009; .cgisl=0.0002; .egisl=(- 0.28); .aigbacc=0.012; .bigbacc=0.0028; .cigbacc=0.002; .nigbacc=1; .aigbinv=0.014; .bigbinv=0.004; .cigbinv=0.004; .eigbinv=1.1; .nigbinv=3; .aigc=0.012; .bigc=0.0028; .cigc=0.002; .aigs=0.012; .bigs=0.0028; .cigs=0.002; .nigc=1; .poxedge=1; .pigcd=1; .ntox=1; .aigd=0.01; .bigd=0.003; .cigd=0.0015; .xrcrg1=12; .xrcrg2=5; .cgso=6.238e-010; .cgdo=6.238e-010; .cgbo=2.56e-011; .cgdl=2.495e-10; .cgsl=2.495e-10; .ckappas=0.03; .ckappad=0.03; .acde=1; .moin=15; .noff=0.9; .voffcv=(- 0.02); .kt1=(- 0.37); .kt1l=0.0; .kt2=(- 0.042); .ute=(- 1.5); .ua1=1e-009; .ub1=(- 3.5e-019); .uc1=0; .prt=0; .at=53000; .fnoimod=1; .tnoimod=0; .jss=0.0001; .jsws=1e-011; .jswgs=1e-010; .njs=1; .ijthsfwd=0.01; .ijthsrev=0.001; .bvs=10; .xjbvs=1; .jsd=0.0001; .jswd=1e-011; .jswgd=1e-010; .njd=1; .ijthdfwd=0.01; .ijthdrev=0.001; .bvd=10; .xjbvd=1; .pbs=1; .cjs=0.0005; .mjs=0.5; .pbsws=1; .cjsws=5e-010; .mjsws=0.33; .pbswgs=1; .cjswgs=3e-010; .mjswgs=0.33; .pbd=1; .cjd=0.0005; .mjd=0.5; .pbswd=1; .cjswd=5e-010; .mjswd=0.33; .pbswgd=1; .cjswgd=5e-010; .mjswgd=0.33; .tpb=0.005; .tcj=0.001; .tpbsw=0.005; .tcjsw=0.001; .tpbswg=0.005; .tcjswg=0.001; .xtis=3; .xtid=3; .dmcg=8e-006; .dmci=3e-006; .dmdg=2e-006; .dmcgt=1e-007; .dwj=0.0e-008; .xgw=0e-007; .xgl=0e-008; .rshg=0.4; .gbmin=1e-010; .rbpb=5; .rbpd=15; .rbps=15; .rbdb=15; .rbsb=15; .ngcon=1; .jtss=1e-4; .jtsd=1e-4; .jtssws=1e-10; .jtsswd=1e-10; .jtsswgs=1e-7; .jtsswgd=1e-7; .njts=20.0; .njtssw=15; .njtsswg=6; .vtss=10; .vtsd=10; .vtssws=10; .vtsswd=10; .njtsd=15.0; .njtsswd=20; .njtsswgd=6; .tnjts=0.1; .tnjtsd=0.05; .vtsswgs=2; .vtsswgd=2; .xtss=0.02; .xtsd=0.02; .xtssws=0.02; .xtsswd=0.02; .xtsswgs=0.02; .xtsswgd=0.02;
+endparamset
+
+paramset PMOS bsim4va;
+  parameter real l=0.09u;
+   parameter real w=10.0u;
+ .l=l; .w=w; .type=(- 1); .level=14; .version=4.80; .binunit=1; .paramchk=1; .mobmod=0; .capmod=1; .igcmod=1; .igbmod=1; .geomod=1; .diomod=1; .rdsmod=0; .rbodymod=0; .rgatemod=1; .permod=1; .acnqsmod=0; .trnqsmod=0; .tempmod=0; .mtrlmod=1; .cvchargemod=0; .mtrlcompatmod=1; .gidlmod=0; .wpemod=0; .eot=1.8e-009; .vddeot=(- 1.5); .ados=1.1; .bdos=1.0; .tnom=27; .toxe=1.8e-009; .toxp=10e-010; .toxm=1.8e-009; .dtox=8e-10; .epsrox=3.9; .wint=5e-009; .lint=1e-009; .ll=0; .wl=0; .lln=1; .wln=1; .lw=0; .ww=0; .lwn=1; .wwn=1; .lwl=0; .wwl=0; .xpart=0; .toxref=1.8e-9; .phig=4.05; .epsrgate=11.7; .saref=5e-6; .sbref=5e-6; .wlod=2e-6; .ku0=4e-6; .kvsat=0.2; .kvth0=(- 2e-8); .tku0=0.0; .llodku0=1.1; .wlodku0=1.1; .llodvth=1.0; .wlodvth=1.0; .lku0=1e-6; .wku0=1e-6; .pku0=0.0; .lkvth0=1.1e-6; .wkvth0=1.1e-6; .pkvth0=0.0; .stk2=0.0; .lodk2=1.0; .steta0=0.0; .lodeta0=1.0; .lambda=4e-10; .vsat=1.1e+005; .vtl=2.0e5; .xn=6.0; .lc=5e-9; .rnoia=0.577; .rnoib=0.37; .tvoff=0.0; .tvfbsdoff=0.0; .vth0=(- 0.25); .k1=0.35; .k2=0.05; .k3=0; .k3b=0; .w0=2.5e-006; .dvt0=1.8; .dvt1=0.52; .dvt2=(- 0.032); .dvt0w=0; .dvt1w=0; .dvt2w=0; .dsub=2; .minv=0.05; .voffl=0; .dvtp0=1e-007; .minvcv=2; .voffcvl=0; .dvtp1=0.05; .lpe0=5.75e-008; .lpeb=2.3e-010; .xj=2e-008; .ngate=5e+020; .ndep=2.8e+018; .nsd=1e+020; .phin=0; .cdsc=0.0002; .cdscb=0; .cdscd=0; .cit=0; .voff=(- 0.15); .nfactor=1.2; .eta0=0.05; .etab=0; .vfb=0.55; .u0=0.0095; .ua=5.0e-011; .ub=3.5e-018; .uc=(- 3e-011); .a0=2; .ags=1e-020; .a1=0; .a2=1; .b0=(- 1e-020); .b1=0; .keta=0.04; .dwg=0; .dwb=0; .pclm=0.08; .pdiblc1=0.028; .pdiblc2=0.022; .pdiblcb=(- 0.005); .drout=0.45; .pvag=1e-020; .delta=0.01; .pscbe1=8.14e+008; .pscbe2=5e-008; .fprout=0.2; .pdits=0.2; .pditsd=0.23; .pditsl=2.3e+006; .rsh=0; .rdsw=50; .rsw=50; .rdw=50; .rdswmin=0; .rdwmin=0; .rswmin=0; .prwg=0; .prwb=6.8e-011; .wr=1; .alpha0=0.074; .alpha1=0.005; .beta0=30; .agidl=0.0002; .bgidl=2.1e+009; .cgidl=0.0002; .egidl=0.8; .agisl=0.0003; .bgisl=2.5e+009; .cgisl=0.0003; .egisl=(- 0.28); .aigbacc=0.012; .bigbacc=0.0028; .cigbacc=0.002; .nigbacc=1; .aigbinv=0.014; .bigbinv=0.004; .cigbinv=0.004; .eigbinv=1.1; .nigbinv=3; .aigc=0.012; .bigc=0.0028; .cigc=0.002; .aigs=0.012; .bigs=0.0028; .cigs=0.002; .nigc=1; .poxedge=1; .pigcd=1; .ntox=1; .aigd=0.01; .bigd=0.003; .cigd=0.0015; .xrcrg1=12; .xrcrg2=5; .cgso=6.238e-010; .cgdo=6.238e-010; .cgbo=2.56e-011; .cgdl=2.495e-10; .cgsl=2.495e-10; .ckappas=0.03; .ckappad=0.03; .acde=1; .moin=15; .noff=0.9; .voffcv=0.02; .kt1=(- 0.37); .kt1l=0.0; .kt2=(- 0.042); .ute=(- 1.5); .ua1=1e-009; .ub1=(- 3.5e-019); .uc1=0; .prt=0; .at=53000; .fnoimod=1; .tnoimod=0; .jss=0.0001; .jsws=1e-011; .jswgs=1e-010; .njs=1; .ijthsfwd=0.01; .ijthsrev=0.001; .bvs=10; .xjbvs=1; .jsd=0.0001; .jswd=1e-011; .jswgd=1e-010; .njd=1; .ijthdfwd=0.01; .ijthdrev=0.001; .bvd=10; .xjbvd=1; .pbs=1; .cjs=0.0005; .mjs=0.5; .pbsws=1; .cjsws=5e-010; .mjsws=0.33; .pbswgs=1; .cjswgs=3e-010; .mjswgs=0.33; .pbd=1; .cjd=0.0005; .mjd=0.5; .pbswd=1; .cjswd=5e-010; .mjswd=0.33; .pbswgd=1; .cjswgd=5e-010; .mjswgd=0.33; .tpb=0.005; .tcj=0.001; .tpbsw=0.005; .tcjsw=0.001; .tpbswg=0.005; .tcjswg=0.001; .xtis=3; .xtid=3; .dmcg=8e-006; .dmci=3e-006; .dmdg=2e-006; .dmcgt=1e-007; .dwj=0.0e-008; .xgw=0e-007; .xgl=0e-008; .rshg=0.4; .gbmin=1e-010; .rbpb=5; .rbpd=15; .rbps=15; .rbdb=15; .rbsb=15; .ngcon=1; .jtss=1e-4; .jtsd=1e-4; .jtssws=1e-10; .jtsswd=1e-10; .jtsswgs=1e-7; .jtsswgd=1e-7; .njts=20.0; .njtssw=15; .njtsswg=4; .vtss=10; .vtsd=10; .vtssws=10; .vtsswd=10; .njtsd=15.0; .njtsswd=20; .njtsswgd=6; .tnjts=0.1; .tnjtsd=0.05; .vtsswgs=2; .vtsswgd=2; .xtss=0.02; .xtsd=0.02; .xtssws=0.02; .xtsswd=0.02; .xtsswgs=0.02; .xtsswgd=0.02;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+// Inverter chain
+// Not-gate
+module NOT (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      input in;
+      output out;
+      electrical in,out,vdd,gnd;
+  PMOS #(.w(WP),.l(L)) M1 (.d(out),.g(in),.s(vdd),.b(vdd));
+  NMOS #(.w(WN),.l(L)) M2 (.d(out),.g(in),.s(gnd),.b(gnd));
+endmodule // NOT
+
+module inv_chain (.in(in),.out(out),.vdd(vdd),.gnd(gnd));
+      parameter real WN=10u;
+      parameter real WP=20u;
+      parameter real L=0.09u;
+      parameter real RSH=1G;
+      input in, vdd, gnd;
+      output out;
+      electrical in, out, vdd, gnd;
+  //    // TODO: Generalize to N inverters
+  NOT #(.L(L),.WN(WN),.WP(WP)) U1 (in, n1, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U2 (n1, n2, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U3 (n2, n3, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U4 (n3, n4, vdd, gnd);
+  NOT #(.L(L),.WN(WN),.WP(WP)) U5 (n4, out, vdd, gnd);
+  //    // Weak shunt resistors (numerical stabilization)
+  resistor #(.r(RSH)) Rsh1 (n1, gnd);
+  resistor #(.r(RSH)) Rsh2 (n2, gnd);
+  resistor #(.r(RSH)) Rsh3 (n3, gnd);
+  resistor #(.r(RSH)) Rsh4 (n4, gnd);
+  resistor #(.r(RSH)) Rsh5 (out, gnd);
+endmodule // inv_chain
+
+//TODO: workaround for op convergencen issues
+//vmin/vmax are clamped to stabilize initial DC solution
+ground gnd;
+inv_chain #(.WN(WN),.WP(WP),.L(L)) UCHAIN (in, out, vdd, gnd);
+capacitor #(.c(10f)) Cload (.p(out),.n(gnd));
+resistor #(.r(100k)) R_load (.p(out),.n(gnd));
+vsource #(.dc(VNOM)) Vdd (.p(vdd),.n(gnd));
+vpulse #(.val0(0.0),.val1(VNOM),.td(1.0n),.rise(0.1n),.fall(0.1n),.width(0.5n),.period(1.4n)) Vin (.p(in),.n(gnd));
+#Time       v(in)      v(out)     iter(0)   
+ 0.         97.01E-12  1.1983     10.       
+ 10.E-12    97.1E-12   1.1983     6.        
+ 20.E-12    96.9E-12   1.1983     3.        
+ 30.E-12    97.09E-12  1.1983     3.        
+ 40.E-12    96.92E-12  1.1983     3.        
+ 50.E-12    97.08E-12  1.1983     3.        
+ 60.E-12    96.94E-12  1.1983     3.        
+ 70.E-12    97.07E-12  1.1983     3.        
+ 80.E-12    96.95E-12  1.1983     3.        
+ 90.E-12    97.05E-12  1.1983     3.        
+ 100.E-12   96.97E-12  1.1983     3.        
+ 110.E-12   97.04E-12  1.1983     3.        
+ 120.E-12   96.97E-12  1.1983     3.        
+ 130.E-12   97.04E-12  1.1983     3.        
+ 140.E-12   96.98E-12  1.1983     3.        
+ 150.E-12   97.03E-12  1.1983     3.        
+ 160.E-12   96.99E-12  1.1983     3.        
+ 170.E-12   97.02E-12  1.1983     3.        
+ 180.E-12   96.99E-12  1.1983     3.        
+ 190.E-12   97.02E-12  1.1983     3.        
+ 200.E-12   96.99E-12  1.1983     3.        
+ 210.E-12   97.02E-12  1.1983     3.        
+ 220.E-12   97.E-12    1.1983     3.        
+ 230.E-12   97.01E-12  1.1983     3.        
+ 240.E-12   97.E-12    1.1983     3.        
+ 250.E-12   97.01E-12  1.1983     3.        
+ 260.E-12   97.E-12    1.1983     3.        
+ 270.E-12   97.01E-12  1.1983     3.        
+ 280.E-12   97.E-12    1.1983     3.        
+ 290.E-12   97.01E-12  1.1983     3.        
+ 300.E-12   97.E-12    1.1983     3.        
+ 310.E-12   97.01E-12  1.1983     3.        
+ 320.E-12   97.E-12    1.1983     3.        
+ 330.E-12   97.01E-12  1.1983     3.        
+ 340.E-12   97.E-12    1.1983     3.        
+ 350.E-12   97.01E-12  1.1983     3.        
+ 360.E-12   97.E-12    1.1983     3.        
+ 370.E-12   97.01E-12  1.1983     3.        
+ 380.E-12   97.E-12    1.1983     3.        
+ 390.E-12   97.01E-12  1.1983     3.        
+ 400.E-12   97.E-12    1.1983     3.        
+ 410.E-12   97.01E-12  1.1983     3.        
+ 420.E-12   97.01E-12  1.1983     3.        
+ 430.E-12   97.01E-12  1.1983     3.        
+ 440.E-12   97.01E-12  1.1983     3.        
+ 450.E-12   97.01E-12  1.1983     3.        
+ 460.E-12   97.01E-12  1.1983     3.        
+ 470.E-12   97.01E-12  1.1983     3.        
+ 480.E-12   97.01E-12  1.1983     3.        
+ 490.E-12   97.01E-12  1.1983     3.        
+ 500.E-12   97.01E-12  1.1983     3.        
+ 510.E-12   97.01E-12  1.1983     3.        
+ 520.E-12   97.01E-12  1.1983     3.        
+ 530.E-12   97.01E-12  1.1983     3.        
+ 540.E-12   97.01E-12  1.1983     3.        
+ 550.E-12   97.01E-12  1.1983     3.        
+ 560.E-12   97.01E-12  1.1983     3.        
+ 570.E-12   97.01E-12  1.1983     3.        
+ 580.E-12   97.01E-12  1.1983     3.        
+ 590.E-12   97.01E-12  1.1983     3.        
+ 600.E-12   97.01E-12  1.1983     3.        
+ 610.E-12   97.01E-12  1.1983     3.        
+ 620.E-12   97.01E-12  1.1983     3.        
+ 630.E-12   97.01E-12  1.1983     3.        
+ 640.E-12   97.01E-12  1.1983     3.        
+ 650.E-12   97.01E-12  1.1983     3.        
+ 660.E-12   97.01E-12  1.1983     3.        
+ 670.E-12   97.01E-12  1.1983     3.        
+ 680.E-12   97.01E-12  1.1983     3.        
+ 690.E-12   97.01E-12  1.1983     3.        
+ 700.E-12   97.01E-12  1.1983     3.        
+ 710.E-12   97.01E-12  1.1983     3.        
+ 720.E-12   97.01E-12  1.1983     3.        
+ 730.E-12   97.01E-12  1.1983     3.        
+ 740.E-12   97.01E-12  1.1983     3.        
+ 750.E-12   97.01E-12  1.1983     3.        
+ 760.E-12   97.01E-12  1.1983     3.        
+ 770.E-12   97.01E-12  1.1983     3.        
+ 780.E-12   97.01E-12  1.1983     3.        
+ 790.E-12   97.01E-12  1.1983     3.        
+ 800.E-12   97.01E-12  1.1983     3.        
+ 810.E-12   97.01E-12  1.1983     3.        
+ 820.E-12   97.01E-12  1.1983     3.        
+ 830.E-12   97.01E-12  1.1983     3.        
+ 840.E-12   97.01E-12  1.1983     3.        
+ 850.E-12   97.01E-12  1.1983     3.        
+ 860.E-12   97.01E-12  1.1983     3.        
+ 870.E-12   97.01E-12  1.1983     3.        
+ 880.E-12   97.01E-12  1.1983     3.        
+ 890.E-12   97.01E-12  1.1983     3.        
+ 900.E-12   97.01E-12  1.1983     3.        
+ 910.E-12   97.01E-12  1.1983     3.        
+ 920.E-12   97.01E-12  1.1983     3.        
+ 930.E-12   97.01E-12  1.1983     3.        
+ 940.E-12   97.01E-12  1.1983     3.        
+ 950.E-12   97.01E-12  1.1983     3.        
+ 960.E-12   97.01E-12  1.1983     3.        
+ 970.E-12   97.01E-12  1.1983     3.        
+ 980.E-12   97.01E-12  1.1983     3.        
+ 990.E-12   97.01E-12  1.1983     3.        
+ 1.E-9      97.01E-12  1.1983     3.        
+ 1.01E-9    0.12       1.1983     30.       
+ 1.02E-9    0.24       1.1983     8.        
+ 1.03E-9    0.36       1.1983     4.        
+ 1.04E-9    0.48       1.1983     5.        
+ 1.05E-9    0.6        1.1983     5.        
+ 1.06E-9    0.72       1.1983     5.        
+ 1.07E-9    0.84       1.1983     5.        
+ 1.08E-9    0.96       1.1983     5.        
+ 1.09E-9    1.08       1.1983     5.        
+ 1.1E-9     1.2        1.1984     5.        
+ 1.11E-9    1.2        1.1984     17.       
+ 1.12E-9    1.2        1.1985     13.       
+ 1.13E-9    1.2        1.1985     9.        
+ 1.14E-9    1.2        1.1985     9.        
+ 1.15E-9    1.2        1.1983     8.        
+ 1.16E-9    1.2        1.1979     10.       
+ 1.17E-9    1.2        1.1974     5.        
+ 1.18E-9    1.2        1.1967     5.        
+ 1.19E-9    1.2        1.1961     5.        
+ 1.2E-9     1.2        1.1961     5.        
+ 1.21E-9    1.2        1.198      5.        
+ 1.22E-9    1.2        1.2047     5.        
+ 1.23E-9    1.2        1.2172     5.        
+ 1.24E-9    1.2        1.231      5.        
+ 1.25E-9    1.2        1.2403     5.        
+ 1.26E-9    1.2        1.2326     5.        
+ 1.27E-9    1.2        1.1913     5.        
+ 1.28E-9    1.2        1.0937     5.        
+ 1.29E-9    1.2        0.92275    5.        
+ 1.3E-9     1.2        0.69422    5.        
+ 1.31E-9    1.2        0.4378     5.        
+ 1.32E-9    1.2        0.21168    9.        
+ 1.33E-9    1.2        0.088694   10.       
+ 1.34E-9    1.2        0.035849   10.       
+ 1.35E-9    1.2        0.014963   9.        
+ 1.36E-9    1.2        0.0067646  8.        
+ 1.37E-9    1.2        0.0032622  5.        
+ 1.38E-9    1.2        0.0017618  5.        
+ 1.39E-9    1.2        0.001026   4.        
+ 1.4E-9     1.2        631.25E-6  4.        
+ 1.41E-9    1.2        399.69E-6  4.        
+ 1.42E-9    1.2        263.21E-6  4.        
+ 1.43E-9    1.2        177.E-6    4.        
+ 1.44E-9    1.2        125.67E-6  4.        
+ 1.45E-9    1.2        91.743E-6  4.        
+ 1.46E-9    1.2        72.173E-6  4.        
+ 1.47E-9    1.2        58.427E-6  4.        
+ 1.48E-9    1.2        51.087E-6  4.        
+ 1.49E-9    1.2        45.33E-6   4.        
+ 1.5E-9     1.2        42.716E-6  4.        
+ 1.51E-9    1.2        40.181E-6  4.        
+ 1.52E-9    1.2        39.37E-6   4.        
+ 1.53E-9    1.2        38.164E-6  4.        
+ 1.54E-9    1.2        38.019E-6  4.        
+ 1.55E-9    1.2        37.383E-6  4.        
+ 1.56E-9    1.2        37.465E-6  4.        
+ 1.57E-9    1.2        37.088E-6  4.        
+ 1.58E-9    1.2        37.232E-6  4.        
+ 1.59E-9    1.2        36.983E-6  4.        
+ 1.6E-9     1.2        37.127E-6  4.        
+ 1.61E-9    1.08       35.469E-6  19.       
+ 1.62E-9    0.96       37.313E-6  12.       
+ 1.63E-9    0.84       38.094E-6  8.        
+ 1.64E-9    0.72       37.887E-6  4.        
+ 1.65E-9    0.6        37.949E-6  5.        
+ 1.66E-9    0.48       39.015E-6  5.        
+ 1.67E-9    0.36       40.913E-6  5.        
+ 1.68E-9    0.24       41.95E-6   4.        
+ 1.69E-9    0.12       40.181E-6  5.        
+ 1.7E-9     14.559E-9  35.034E-6  5.        
+ 1.71E-9    4.4494E-9  20.569E-6  28.       
+ 1.72E-9    3.9108E-9 -12.85E-6   10.       
+ 1.73E-9    3.4906E-9 -44.659E-6  9.        
+ 1.74E-9    2.9594E-9 -65.864E-6  8.        
+ 1.75E-9    2.2797E-9 -48.563E-6  8.        
+ 1.76E-9    1.6945E-9  35.265E-6  8.        
+ 1.77E-9    1.2086E-9  337.68E-6  5.        
+ 1.78E-9    892.E-12   0.0010198  9.        
+ 1.79E-9    763.3E-12  0.0016765  10.       
+ 1.8E-9     662.9E-12  0.001879   10.       
+ 1.81E-9    545.8E-12  0.0012268  5.        
+ 1.82E-9    429.5E-12 -0.0011096  5.        
+ 1.83E-9    329.E-12  -0.0055549  5.        
+ 1.84E-9    253.2E-12 -0.012874   5.        
+ 1.85E-9    199.1E-12 -0.022089   5.        
+ 1.86E-9    160.2E-12 -0.030383   5.        
+ 1.87E-9    137.E-12  -0.029107   5.        
+ 1.88E-9    123.3E-12  0.0058336  5.        
+ 1.89E-9    115.6E-12  0.11227    5.        
+ 1.9E-9     111.5E-12  0.28165    5.        
+ 1.91E-9    108.1E-12  0.48721    5.        
+ 1.92E-9    104.1E-12  0.70158    5.        
+ 1.93E-9    101.9E-12  0.89117    5.        
+ 1.94E-9    100.E-12   1.0236     5.        
+ 1.95E-9    99.33E-12  1.101      9.        
+ 1.96E-9    98.92E-12  1.1446     8.        
+ 1.97E-9    98.6E-12   1.1688     8.        
+ 1.98E-9    98.5E-12   1.1823     5.        
+ 1.99E-9    97.96E-12  1.1896     5.        
+ 2.E-9      97.89E-12  1.1935     4.        
+ 2.01E-9    97.48E-12  1.1957     4.        
+ 2.02E-9    97.51E-12  1.1969     4.        
+ 2.03E-9    97.22E-12  1.1975     4.        
+ 2.04E-9    97.3E-12   1.1979     4.        
+ 2.05E-9    97.09E-12  1.1981     4.        
+ 2.06E-9    97.19E-12  1.1982     4.        
+ 2.07E-9    97.02E-12  1.1983     4.        
+ 2.08E-9    97.13E-12  1.1983     4.        
+ 2.09E-9    96.99E-12  1.1983     4.        
+ 2.1E-9     97.09E-12  1.1983     4.        
+ 2.11E-9    96.98E-12  1.1983     4.        
+ 2.12E-9    97.07E-12  1.1983     4.        
+ 2.13E-9    96.97E-12  1.1983     4.        
+ 2.14E-9    97.06E-12  1.1983     4.        
+ 2.15E-9    96.97E-12  1.1983     4.        
+ 2.16E-9    97.05E-12  1.1983     4.        
+ 2.17E-9    96.98E-12  1.1983     4.        
+ 2.18E-9    97.04E-12  1.1983     4.        
+ 2.19E-9    96.98E-12  1.1983     4.        
+ 2.2E-9     97.03E-12  1.1983     4.        
+ 2.21E-9    96.98E-12  1.1983     4.        
+ 2.22E-9    97.03E-12  1.1983     4.        
+ 2.23E-9    96.99E-12  1.1983     4.        
+ 2.24E-9    97.03E-12  1.1983     4.        
+ 2.25E-9    96.99E-12  1.1983     4.        
+ 2.26E-9    97.02E-12  1.1983     4.        
+ 2.27E-9    96.99E-12  1.1983     4.        
+ 2.28E-9    97.02E-12  1.1983     4.        
+ 2.29E-9    96.99E-12  1.1983     4.        
+ 2.3E-9     97.02E-12  1.1983     4.        
+ 2.31E-9    97.E-12    1.1983     4.        
+ 2.32E-9    97.01E-12  1.1983     4.        
+ 2.33E-9    97.E-12    1.1983     4.        
+ 2.34E-9    97.01E-12  1.1983     4.        
+ 2.35E-9    97.E-12    1.1983     4.        
+ 2.36E-9    97.01E-12  1.1983     4.        
+ 2.37E-9    97.E-12    1.1983     4.        
+ 2.38E-9    97.01E-12  1.1983     4.        
+ 2.39E-9    97.E-12    1.1983     4.        
+ 2.4E-9     97.01E-12  1.1983     4.        
+ 2.41E-9    0.12       1.1983     30.       
+ 2.42E-9    0.24       1.1983     8.        
+ 2.43E-9    0.36       1.1983     4.        
+ 2.44E-9    0.48       1.1983     5.        
+ 2.45E-9    0.6        1.1983     5.        
+ 2.46E-9    0.72       1.1983     5.        
+ 2.47E-9    0.84       1.1983     5.        
+ 2.48E-9    0.96       1.1983     5.        
+ 2.49E-9    1.08       1.1983     5.        
+ 2.5E-9     1.2        1.1984     5.        
+ 2.51E-9    1.2        1.1984     17.       
+ 2.52E-9    1.2        1.1985     13.       
+ 2.53E-9    1.2        1.1985     9.        
+ 2.54E-9    1.2        1.1985     9.        
+ 2.55E-9    1.2        1.1983     8.        
+ 2.56E-9    1.2        1.1979     10.       
+ 2.57E-9    1.2        1.1974     5.        
+ 2.58E-9    1.2        1.1967     5.        
+ 2.59E-9    1.2        1.1961     5.        
+ 2.6E-9     1.2        1.1961     5.        
+ 2.61E-9    1.2        1.198      5.        
+ 2.62E-9    1.2        1.2047     5.        
+ 2.63E-9    1.2        1.2172     5.        
+ 2.64E-9    1.2        1.231      5.        
+ 2.65E-9    1.2        1.2403     5.        
+ 2.66E-9    1.2        1.2326     5.        
+ 2.67E-9    1.2        1.1913     5.        
+ 2.68E-9    1.2        1.0937     5.        
+ 2.69E-9    1.2        0.92275    5.        
+ 2.7E-9     1.2        0.69422    5.        
+ 2.71E-9    1.2        0.4378     5.        
+ 2.72E-9    1.2        0.21168    9.        
+ 2.73E-9    1.2        0.088694   10.       
+ 2.74E-9    1.2        0.035849   10.       
+ 2.75E-9    1.2        0.014963   9.        
+ 2.76E-9    1.2        0.0067646  8.        
+ 2.77E-9    1.2        0.0032622  5.        
+ 2.78E-9    1.2        0.0017618  5.        
+ 2.79E-9    1.2        0.001026   4.        
+ 2.8E-9     1.2        631.25E-6  4.        
+ 2.81E-9    1.2        399.69E-6  4.        
+ 2.82E-9    1.2        263.21E-6  4.        
+ 2.83E-9    1.2        177.E-6    4.        
+ 2.84E-9    1.2        125.67E-6  4.        
+ 2.85E-9    1.2        91.743E-6  4.        
+ 2.86E-9    1.2        72.173E-6  4.        
+ 2.87E-9    1.2        58.427E-6  4.        
+ 2.88E-9    1.2        51.086E-6  4.        
+ 2.89E-9    1.2        45.331E-6  4.        
+ 2.9E-9     1.2        42.715E-6  4.        
+ 2.91E-9    1.2        40.181E-6  4.        
+ 2.92E-9    1.2        39.369E-6  4.        
+ 2.93E-9    1.2        38.164E-6  4.        
+ 2.94E-9    1.2        38.019E-6  4.        
+ 2.95E-9    1.2        37.383E-6  4.        
+ 2.96E-9    1.2        37.465E-6  4.        
+ 2.97E-9    1.2        37.088E-6  4.        
+ 2.98E-9    1.2        37.231E-6  4.        
+ 2.99E-9    1.2        36.983E-6  4.        
+ 3.E-9      1.2        37.127E-6  4.        
+ 3.01E-9    1.08       35.47E-6   19.       
+ 3.02E-9    0.96       37.314E-6  12.       
+ 3.03E-9    0.84       38.095E-6  8.        
+ 3.04E-9    0.72       37.888E-6  4.        
+ 3.05E-9    0.6        37.949E-6  5.        
+ 3.06E-9    0.48       39.015E-6  5.        
+ 3.07E-9    0.36       40.913E-6  5.        
+ 3.08E-9    0.24       41.95E-6   4.        
+ 3.09E-9    0.12       40.181E-6  5.        
+ 3.1E-9     14.559E-9  35.034E-6  5.        
+ 3.11E-9    4.447E-9   20.63E-6   24.       
+ 3.12E-9    3.9125E-9 -13.268E-6  15.       
+ 3.13E-9    3.4884E-9 -44.624E-6  9.        
+ 3.14E-9    2.9579E-9 -65.81E-6   8.        
+ 3.15E-9    2.2785E-9 -48.515E-6  8.        
+ 3.16E-9    1.6936E-9  35.317E-6  8.        
+ 3.17E-9    1.2088E-9  337.77E-6  5.        
+ 3.18E-9    892.1E-12  0.0010199  9.        
+ 3.19E-9    763.5E-12  0.0016766  10.       
+ 3.2E-9     663.E-12   0.001879   10.       
+ 3.21E-9    545.7E-12  0.0012266  5.        
+ 3.22E-9    429.5E-12 -0.0011102  5.        
+ 3.23E-9    328.9E-12 -0.005556   5.        
+ 3.24E-9    253.2E-12 -0.012876   5.        
+ 3.25E-9    199.E-12  -0.022091   5.        
+ 3.26E-9    160.3E-12 -0.030384   5.        
+ 3.27E-9    136.9E-12 -0.029104   5.        
+ 3.28E-9    123.4E-12  0.0058451  5.        
+ 3.29E-9    115.6E-12  0.1123     5.        
+ 3.3E-9     111.6E-12  0.28168    5.        
+ 3.31E-9    108.1E-12  0.48725    5.        
+ 3.32E-9    104.1E-12  0.70161    5.        
+ 3.33E-9    101.9E-12  0.8912     5.        
+ 3.34E-9    100.1E-12  1.0236     5.        
+ 3.35E-9    99.35E-12  1.101      9.        
+ 3.36E-9    98.93E-12  1.1447     8.        
+ 3.37E-9    98.61E-12  1.1688     8.        
+ 3.38E-9    98.49E-12  1.1823     5.        
+ 3.39E-9    97.96E-12  1.1896     5.        
+ 3.4E-9     97.89E-12  1.1935     4.        
+ 3.41E-9    97.48E-12  1.1957     4.        
+ 3.42E-9    97.5E-12   1.1969     4.        
+ 3.43E-9    97.22E-12  1.1975     4.        
+ 3.44E-9    97.3E-12   1.1979     4.        
+ 3.45E-9    97.09E-12  1.1981     4.        
+ 3.46E-9    97.19E-12  1.1982     4.        
+ 3.47E-9    97.03E-12  1.1983     4.        
+ 3.48E-9    97.13E-12  1.1983     4.        
+ 3.49E-9    96.99E-12  1.1983     4.        
+ 3.5E-9     97.09E-12  1.1983     4.        
+ 3.51E-9    96.98E-12  1.1983     4.        
+ 3.52E-9    97.07E-12  1.1983     4.        
+ 3.53E-9    96.98E-12  1.1983     4.        
+ 3.54E-9    97.05E-12  1.1983     4.        
+ 3.55E-9    96.98E-12  1.1983     4.        
+ 3.56E-9    97.04E-12  1.1983     4.        
+ 3.57E-9    96.98E-12  1.1983     4.        
+ 3.58E-9    97.04E-12  1.1983     4.        
+ 3.59E-9    96.98E-12  1.1983     4.        
+ 3.6E-9     97.03E-12  1.1983     4.        
+ 3.61E-9    96.98E-12  1.1983     4.        
+ 3.62E-9    97.03E-12  1.1983     4.        
+ 3.63E-9    96.99E-12  1.1983     4.        
+ 3.64E-9    97.02E-12  1.1983     4.        
+ 3.65E-9    96.99E-12  1.1983     4.        
+ 3.66E-9    97.02E-12  1.1983     4.        
+ 3.67E-9    96.99E-12  1.1983     4.        
+ 3.68E-9    97.02E-12  1.1983     4.        
+ 3.69E-9    97.E-12    1.1983     4.        
+ 3.7E-9     97.02E-12  1.1983     4.        
+ 3.71E-9    97.E-12    1.1983     4.        
+ 3.72E-9    97.01E-12  1.1983     4.        
+ 3.73E-9    97.E-12    1.1983     4.        
+ 3.74E-9    97.01E-12  1.1983     4.        
+ 3.75E-9    97.E-12    1.1983     4.        
+ 3.76E-9    97.01E-12  1.1983     4.        
+ 3.77E-9    97.E-12    1.1983     4.        
+ 3.78E-9    97.01E-12  1.1983     4.        
+ 3.79E-9    97.E-12    1.1983     4.        
+ 3.8E-9     97.01E-12  1.1983     4.        
+ 3.81E-9    0.12       1.1983     30.       
+ 3.82E-9    0.24       1.1983     8.        
+ 3.83E-9    0.36       1.1983     4.        
+ 3.84E-9    0.48       1.1983     5.        
+ 3.85E-9    0.6        1.1983     5.        
+ 3.86E-9    0.72       1.1983     5.        
+ 3.87E-9    0.84       1.1983     5.        
+ 3.88E-9    0.96       1.1983     5.        
+ 3.89E-9    1.08       1.1983     5.        
+ 3.9E-9     1.2        1.1984     5.        
+ 3.91E-9    1.2        1.1984     17.       
+ 3.92E-9    1.2        1.1985     13.       
+ 3.93E-9    1.2        1.1985     9.        
+ 3.94E-9    1.2        1.1985     9.        
+ 3.95E-9    1.2        1.1983     8.        
+ 3.96E-9    1.2        1.1979     10.       
+ 3.97E-9    1.2        1.1974     5.        
+ 3.98E-9    1.2        1.1967     5.        
+ 3.99E-9    1.2        1.1961     5.        
+ 4.E-9      1.2        1.1961     5.        
+Gnucap   System status
+iterations: op=0, dc=0, tran=2093, fourier=0, total=2599
+transient timesteps: accepted=501, rejected=5, total=506
+nodes: user=3, subckt=4, model=182, total=189
+dctran density=8.2%, ac density=8.2%

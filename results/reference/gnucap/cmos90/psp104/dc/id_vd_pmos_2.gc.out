@@ -1,0 +1,436 @@
+Gnucap : The Gnu Circuit Analysis Package
+Never trust any version less than 1.0
+Copyright 1982-2013, Albert Davis
+Gnucap comes with ABSOLUTELY NO WARRANTY
+This is free software, and you are welcome
+to redistribute it under the terms of 
+the GNU General Public License, version 3 or later.
+See the file "COPYING" for details.
+main version: noinsensitive 2025.10.15
+core-lib version: noinsensitive 2025.10.15
+default plugins: noinsensitive 2025.10.15
+param: already installed, replacing
+stashing as param:0
+parameters: already installed, replacing
+stashing as parameters:0
+parameter: already installed, replacing
+stashing as parameter:0
+logic: already installed, replacing
+stashing as logic:0
+spice: already installed, replacing
+stashing as spice:0
+acs: already installed, replacing
+stashing as acs:0
+;: already installed, replacing
+stashing as ;:0
+#: already installed, replacing
+stashing as #:0
+*: already installed, replacing
+stashing as *:0
+': already installed, replacing
+stashing as ':0
+": already installed, replacing
+stashing as ":0
+dev_comment: already installed, replacing
+stashing as dev_comment:0
+.model: already installed, replacing
+stashing as .model:0
+.subckt: already installed, replacing
+stashing as .subckt:0
+.macro: already installed, replacing
+stashing as .macro:0
+.lib: already installed, replacing
+stashing as .lib:0
+lib: already installed, replacing
+stashing as lib:0
+.include: already installed, replacing
+stashing as .include:0
+.merge: already installed, replacing
+stashing as .merge:0
+merge: already installed, replacing
+stashing as merge:0
+<: already installed, replacing
+stashing as <:0
+.get: already installed, replacing
+stashing as .get:0
+get: already installed, replacing
+stashing as get:0
+.build: already installed, replacing
+stashing as .build:0
+build: already installed, replacing
+stashing as build:0
+spice: already installed, replacing
+stashing as spice:0
+`spice: already installed, replacing
+stashing as `spice:0
+acs: already installed, replacing
+stashing as acs:0
+.endc: already installed, replacing
+stashing as .endc:0
+.control: already installed, replacing
+stashing as .control:0
+verilog: already installed, replacing
+stashing as verilog:0
+paramset: already installed, replacing
+stashing as paramset:0
+module: already installed, replacing
+stashing as module:0
+macromodule: already installed, replacing
+stashing as macromodule:0
+verilog: already installed, replacing
+stashing as verilog:0
+quit: already installed, replacing
+stashing as quit:0
+exit: already installed, replacing
+stashing as exit:0
+detach_all: already installed, replacing
+stashing as detach_all:0
+paramset NMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+paramset PMOS PSP104VA;
+  parameter real l=1.0u;
+   parameter real w=1.0u;
+   parameter integer nf=1;
+   parameter real ad=1.0e-12;
+   parameter real pd=1.0e-6;
+   parameter real as=1.0e-12;
+   parameter real ps=1.0e-6;
+   parameter real sa=0.0;
+   parameter real sb=0.0;
+   parameter real sd=0.0;
+ .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
+endparamset
+
+parameter real L=0.09u; // MOSFET length 
+parameter real WN=10.0u; // NMOS width 
+parameter real WP=20.0u; // PMOS width 
+parameter real VNOM=1.2; // Nominal supply (V) 
+ground gnd;
+vsource #(.dc(vd)) sd (.p(d),.n(gnd));
+vsource #(.dc(vg)) sg (.p(g),.n(gnd));
+parameter vd = 0.0;
+parameter vg = 0.0;
+PMOS #(.l(L),.w(WP)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
+#           v(g)       i(sd)      iter(0)   
+ 0.         0.         0.         3.        
+-0.02       0.         0.         4.        
+-0.04       0.         0.         4.        
+-0.06       0.         0.         4.        
+-0.08       0.         0.         4.        
+-0.1        0.         0.         4.        
+-0.12       0.         0.         4.        
+-0.14       0.         0.         4.        
+-0.16       0.         0.         4.        
+-0.18       0.         0.         4.        
+-0.2        0.         0.         4.        
+-0.22       0.         0.         3.        
+-0.24       0.         0.         3.        
+-0.26       0.         0.         3.        
+-0.28       0.         0.         3.        
+-0.3        0.         0.         3.        
+-0.32       0.         0.         3.        
+-0.34       0.         0.         3.        
+-0.36       0.         0.         3.        
+-0.38       0.         0.         3.        
+-0.4        0.         0.         3.        
+-0.42       0.         0.         3.        
+-0.44       0.         0.         3.        
+-0.46       0.         0.         3.        
+-0.48       0.         0.         3.        
+-0.5        0.         0.         3.        
+-0.52       0.         0.         3.        
+-0.54       0.         0.         3.        
+-0.56       0.         0.         3.        
+-0.58       0.         0.         3.        
+-0.6        0.         0.         3.        
+-0.62       0.         0.         3.        
+-0.64       0.         0.         3.        
+-0.66       0.         0.         3.        
+-0.68       0.         0.         3.        
+-0.7        0.         0.         3.        
+-0.72       0.         0.         3.        
+-0.74       0.         0.         3.        
+-0.76       0.         0.         3.        
+-0.78       0.         0.         3.        
+-0.8        0.         0.         3.        
+-0.82       0.         0.         3.        
+-0.84       0.         0.         3.        
+-0.86       0.         0.         3.        
+-0.88       0.         0.         3.        
+-0.9        0.         0.         3.        
+-0.92       0.         0.         3.        
+-0.94       0.         0.         3.        
+-0.96       0.         0.         3.        
+-0.98       0.         0.         3.        
+-1.         0.         0.         3.        
+-1.02       0.         0.         3.        
+-1.04       0.         0.         3.        
+-1.06       0.         0.         3.        
+-1.08       0.         0.         3.        
+-1.1        0.         0.         3.        
+-1.12       0.         0.         3.        
+-1.14       0.         0.         3.        
+-1.16       0.         0.         3.        
+-1.18       0.         0.         3.        
+-1.2        0.         0.         3.        
+ 0.        -0.3        0.         4.        
+-0.02      -0.3        11.472E-9  4.        
+-0.04      -0.3        15.204E-9  4.        
+-0.06      -0.3        16.492E-9  4.        
+-0.08      -0.3        17.004E-9  4.        
+-0.1       -0.3        17.237E-9  4.        
+-0.12      -0.3        17.362E-9  4.        
+-0.14      -0.3        17.433E-9  4.        
+-0.16      -0.3        17.477E-9  4.        
+-0.18      -0.3        17.506E-9  4.        
+-0.2       -0.3        17.528E-9  4.        
+-0.22      -0.3        17.542E-9  4.        
+-0.24      -0.3        17.553E-9  4.        
+-0.26      -0.3        17.561E-9  4.        
+-0.28      -0.3        17.564E-9  4.        
+-0.3       -0.3        17.568E-9  4.        
+-0.32      -0.3        17.579E-9  4.        
+-0.34      -0.3        17.586E-9  4.        
+-0.36      -0.3        17.586E-9  4.        
+-0.38      -0.3        17.593E-9  4.        
+-0.4       -0.3        17.586E-9  4.        
+-0.42      -0.3        17.593E-9  4.        
+-0.44      -0.3        17.586E-9  4.        
+-0.46      -0.3        17.593E-9  4.        
+-0.48      -0.3        17.586E-9  4.        
+-0.5       -0.3        17.593E-9  4.        
+-0.52      -0.3        17.601E-9  4.        
+-0.54      -0.3        17.601E-9  4.        
+-0.56      -0.3        17.601E-9  4.        
+-0.58      -0.3        17.608E-9  4.        
+-0.6       -0.3        17.608E-9  4.        
+-0.62      -0.3        17.615E-9  4.        
+-0.64      -0.3        17.615E-9  4.        
+-0.66      -0.3        17.622E-9  4.        
+-0.68      -0.3        17.608E-9  4.        
+-0.7       -0.3        17.622E-9  4.        
+-0.72      -0.3        17.622E-9  4.        
+-0.74      -0.3        17.622E-9  4.        
+-0.76      -0.3        17.622E-9  4.        
+-0.78      -0.3        17.637E-9  4.        
+-0.8       -0.3        17.637E-9  3.        
+-0.82      -0.3        17.622E-9  3.        
+-0.84      -0.3        17.637E-9  3.        
+-0.86      -0.3        17.622E-9  3.        
+-0.88      -0.3        17.637E-9  3.        
+-0.9       -0.3        17.637E-9  3.        
+-0.92      -0.3        17.637E-9  3.        
+-0.94      -0.3        17.651E-9  3.        
+-0.96      -0.3        17.651E-9  3.        
+-0.98      -0.3        17.651E-9  3.        
+-1.        -0.3        17.651E-9  3.        
+-1.02      -0.3        17.637E-9  3.        
+-1.04      -0.3        17.637E-9  3.        
+-1.06      -0.3        17.637E-9  3.        
+-1.08      -0.3        17.651E-9  3.        
+-1.1       -0.3        17.666E-9  3.        
+-1.12      -0.3        17.651E-9  3.        
+-1.14      -0.3        17.651E-9  3.        
+-1.16      -0.3        17.651E-9  3.        
+-1.18      -0.3        17.651E-9  3.        
+-1.2       -0.3        17.651E-9  3.        
+ 0.        -0.6        4.E-21     4.        
+-0.02      -0.6        189.07E-6  4.        
+-0.04      -0.6        329.15E-6  4.        
+-0.06      -0.6        425.06E-6  4.        
+-0.08      -0.6        487.99E-6  4.        
+-0.1       -0.6        528.97E-6  4.        
+-0.12      -0.6        556.24E-6  4.        
+-0.14      -0.6        575.13E-6  4.        
+-0.16      -0.6        588.86E-6  4.        
+-0.18      -0.6        599.35E-6  4.        
+-0.2       -0.6        607.71E-6  4.        
+-0.22      -0.6        614.64E-6  4.        
+-0.24      -0.6        620.54E-6  4.        
+-0.26      -0.6        625.7E-6   4.        
+-0.28      -0.6        630.3E-6   4.        
+-0.3       -0.6        634.45E-6  4.        
+-0.32      -0.6        638.25E-6  4.        
+-0.34      -0.6        641.75E-6  4.        
+-0.36      -0.6        645.02E-6  4.        
+-0.38      -0.6        648.07E-6  4.        
+-0.4       -0.6        650.95E-6  4.        
+-0.42      -0.6        653.67E-6  4.        
+-0.44      -0.6        656.25E-6  4.        
+-0.46      -0.6        658.71E-6  4.        
+-0.48      -0.6        661.06E-6  4.        
+-0.5       -0.6        663.31E-6  4.        
+-0.52      -0.6        665.47E-6  4.        
+-0.54      -0.6        667.54E-6  4.        
+-0.56      -0.6        669.54E-6  4.        
+-0.58      -0.6        671.47E-6  4.        
+-0.6       -0.6        673.34E-6  4.        
+-0.62      -0.6        675.15E-6  4.        
+-0.64      -0.6        676.9E-6   4.        
+-0.66      -0.6        678.59E-6  4.        
+-0.68      -0.6        680.24E-6  4.        
+-0.7       -0.6        681.84E-6  4.        
+-0.72      -0.6        683.4E-6   4.        
+-0.74      -0.6        684.92E-6  4.        
+-0.76      -0.6        686.4E-6   4.        
+-0.78      -0.6        687.84E-6  4.        
+-0.8       -0.6        689.25E-6  4.        
+-0.82      -0.6        690.63E-6  4.        
+-0.84      -0.6        691.97E-6  4.        
+-0.86      -0.6        693.28E-6  4.        
+-0.88      -0.6        694.57E-6  4.        
+-0.9       -0.6        695.83E-6  4.        
+-0.92      -0.6        697.06E-6  4.        
+-0.94      -0.6        698.27E-6  4.        
+-0.96      -0.6        699.45E-6  4.        
+-0.98      -0.6        700.61E-6  4.        
+-1.        -0.6        701.75E-6  4.        
+-1.02      -0.6        702.86E-6  4.        
+-1.04      -0.6        703.96E-6  4.        
+-1.06      -0.6        705.04E-6  4.        
+-1.08      -0.6        706.1E-6   4.        
+-1.1       -0.6        707.14E-6  4.        
+-1.12      -0.6        708.16E-6  4.        
+-1.14      -0.6        709.17E-6  4.        
+-1.16      -0.6        710.16E-6  4.        
+-1.18      -0.6        711.13E-6  4.        
+-1.2       -0.6        712.09E-6  4.        
+ 0.        -0.9       -520.E-21   5.        
+-0.02      -0.9        653.08E-6  4.        
+-0.04      -0.9        0.001262   4.        
+-0.06      -0.9        0.0018184  4.        
+-0.08      -0.9        0.0023188  4.        
+-0.1       -0.9        0.0027638  4.        
+-0.12      -0.9        0.0031561  4.        
+-0.14      -0.9        0.0035     4.        
+-0.16      -0.9        0.0038006  4.        
+-0.18      -0.9        0.0040626  4.        
+-0.2       -0.9        0.0042911  4.        
+-0.22      -0.9        0.0044903  4.        
+-0.24      -0.9        0.0046644  4.        
+-0.26      -0.9        0.0048169  4.        
+-0.28      -0.9        0.004951   4.        
+-0.3       -0.9        0.0050694  4.        
+-0.32      -0.9        0.0051745  4.        
+-0.34      -0.9        0.0052681  4.        
+-0.36      -0.9        0.0053519  4.        
+-0.38      -0.9        0.0054274  4.        
+-0.4       -0.9        0.0054958  4.        
+-0.42      -0.9        0.0055579  4.        
+-0.44      -0.9        0.0056148  4.        
+-0.46      -0.9        0.005667   4.        
+-0.48      -0.9        0.0057151  4.        
+-0.5       -0.9        0.0057598  4.        
+-0.52      -0.9        0.0058013  4.        
+-0.54      -0.9        0.0058401  4.        
+-0.56      -0.9        0.0058764  4.        
+-0.58      -0.9        0.0059106  4.        
+-0.6       -0.9        0.0059428  4.        
+-0.62      -0.9        0.0059733  4.        
+-0.64      -0.9        0.0060022  4.        
+-0.66      -0.9        0.0060297  4.        
+-0.68      -0.9        0.0060559  4.        
+-0.7       -0.9        0.0060809  4.        
+-0.72      -0.9        0.0061049  4.        
+-0.74      -0.9        0.0061279  4.        
+-0.76      -0.9        0.0061499  4.        
+-0.78      -0.9        0.0061711  4.        
+-0.8       -0.9        0.0061916  4.        
+-0.82      -0.9        0.0062113  4.        
+-0.84      -0.9        0.0062304  4.        
+-0.86      -0.9        0.0062488  4.        
+-0.88      -0.9        0.0062667  4.        
+-0.9       -0.9        0.006284   4.        
+-0.92      -0.9        0.0063008  4.        
+-0.94      -0.9        0.0063171  4.        
+-0.96      -0.9        0.0063329  4.        
+-0.98      -0.9        0.0063484  4.        
+-1.        -0.9        0.0063634  4.        
+-1.02      -0.9        0.0063781  4.        
+-1.04      -0.9        0.0063923  4.        
+-1.06      -0.9        0.0064063  4.        
+-1.08      -0.9        0.0064199  4.        
+-1.1       -0.9        0.0064332  4.        
+-1.12      -0.9        0.0064462  4.        
+-1.14      -0.9        0.006459   4.        
+-1.16      -0.9        0.0064714  4.        
+-1.18      -0.9        0.0064836  4.        
+-1.2       -0.9        0.0064956  4.        
+ 0.        -1.2        8.327E-18  5.        
+-0.02      -1.2        967.71E-6  4.        
+-0.04      -1.2        0.0019032  4.        
+-0.06      -1.2        0.0027982  4.        
+-0.08      -1.2        0.0036471  4.        
+-0.1       -1.2        0.004447   4.        
+-0.12      -1.2        0.0051967  4.        
+-0.14      -1.2        0.0058967  4.        
+-0.16      -1.2        0.0065482  4.        
+-0.18      -1.2        0.0071534  4.        
+-0.2       -1.2        0.0077144  4.        
+-0.22      -1.2        0.0082337  4.        
+-0.24      -1.2        0.008714   4.        
+-0.26      -1.2        0.0091578  4.        
+-0.28      -1.2        0.0095675  4.        
+-0.3       -1.2        0.0099456  4.        
+-0.32      -1.2        0.010295   4.        
+-0.34      -1.2        0.010617   4.        
+-0.36      -1.2        0.010914   4.        
+-0.38      -1.2        0.011188   4.        
+-0.4       -1.2        0.011442   4.        
+-0.42      -1.2        0.011677   4.        
+-0.44      -1.2        0.011894   4.        
+-0.46      -1.2        0.012096   4.        
+-0.48      -1.2        0.012284   4.        
+-0.5       -1.2        0.012458   4.        
+-0.52      -1.2        0.012621   4.        
+-0.54      -1.2        0.012772   4.        
+-0.56      -1.2        0.012914   4.        
+-0.58      -1.2        0.013047   4.        
+-0.6       -1.2        0.013172   4.        
+-0.62      -1.2        0.013289   4.        
+-0.64      -1.2        0.0134     4.        
+-0.66      -1.2        0.013504   4.        
+-0.68      -1.2        0.013602   4.        
+-0.7       -1.2        0.013696   4.        
+-0.72      -1.2        0.013784   4.        
+-0.74      -1.2        0.013868   4.        
+-0.76      -1.2        0.013948   4.        
+-0.78      -1.2        0.014024   4.        
+-0.8       -1.2        0.014097   4.        
+-0.82      -1.2        0.014166   4.        
+-0.84      -1.2        0.014233   4.        
+-0.86      -1.2        0.014297   4.        
+-0.88      -1.2        0.014358   4.        
+-0.9       -1.2        0.014416   4.        
+-0.92      -1.2        0.014473   4.        
+-0.94      -1.2        0.014527   4.        
+-0.96      -1.2        0.01458    4.        
+-0.98      -1.2        0.01463    4.        
+-1.        -1.2        0.014679   4.        
+-1.02      -1.2        0.014727   4.        
+-1.04      -1.2        0.014772   4.        
+-1.06      -1.2        0.014817   4.        
+-1.08      -1.2        0.01486    4.        
+-1.1       -1.2        0.014901   4.        
+-1.12      -1.2        0.014942   4.        
+-1.14      -1.2        0.014981   4.        
+-1.16      -1.2        0.01502    4.        
+-1.18      -1.2        0.015057   4.        
+-1.2       -1.2        0.015093   4.        
+Gnucap   System status
+iterations: op=0, dc=1150, tran=0, fourier=0, total=1150
+transient timesteps: accepted=0, rejected=0, total=0
+nodes: user=2, subckt=0, model=15, total=17
+dctran density=40.8%, ac density=40.8%
