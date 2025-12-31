@@ -1,0 +1,8 @@
+* 2-input NOR gate subcircuit (parameterized)
+
+.subckt NOR2 in1 in2 out vdd gnd params: L=0.09u WN=10u WP=20u
+    NP1 t1  in1 out vdd pmos w={WP} l={L}
+    NP2 vdd in2 t1  vdd pmos w={WP} l={L}
+    NN1 gnd in1 out gnd nmos w={WN} l={L}
+    NN2 gnd in2 out gnd nmos w={WN} l={L}
+.ends

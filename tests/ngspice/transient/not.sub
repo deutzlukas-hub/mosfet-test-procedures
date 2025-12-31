@@ -1,0 +1,13 @@
+* Not-gate subcircuit
+.subckt NOT in out vdd gnd params: L=0.09u WN=10u WP=20u
+    N1 out in vdd vdd pmos w={WP} l={L}
+    N2 out in gnd gnd nmos w={WN} l={L}
+.ends
+
+
+
+
+
+
+
+

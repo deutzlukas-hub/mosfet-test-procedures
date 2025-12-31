@@ -1,0 +1,17 @@
+* 5-stage inverter ring oscillator subcircuit (parameterized)
+* Ports: n1 vdd gnd
+.subckt INV_RING n1 vdd gnd params: L=0.09u WN=10u WP=20u RSH=1Meg
+  * Ring of 5 inverters
+  X1 n1 n5 vdd gnd NOT L={L} WN={WN} WP={WP}
+  X2 n2 n1 vdd gnd NOT L={L} WN={WN} WP={WP}
+  X3 n3 n2 vdd gnd NOT L={L} WN={WN} WP={WP}
+  X4 n4 n3 vdd gnd NOT L={L} WN={WN} WP={WP}
+  X5 n5 n4 vdd gnd NOT L={L} WN={WN} WP={WP}
+
+  * Weak shunt resistors for DC operating point stabilization
+  Rsh1 n1 gnd {RSH}
+  Rsh2 n2 gnd {RSH}
+  Rsh3 n3 gnd {RSH}
+  Rsh4 n4 gnd {RSH}
+  Rsh5 n5 gnd {RSH}
+.ends

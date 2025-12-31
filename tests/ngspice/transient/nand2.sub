@@ -1,0 +1,8 @@
+* 2-input NAND gate subcircuit (parameterized)
+
+.subckt NAND2 in1 in2 out vdd gnd params: L=0.09u WN=10u WP=20u
+    NP1 vdd in1 out vdd pmos w={WP} l={L}
+    NP2 vdd in2 out vdd pmos w={WP} l={L}
+    NN1 t1 in1 out gnd nmos w={WN} l={L}
+    NN2 gnd in2 t1 gnd nmos w={WN} l={L}
+.ends

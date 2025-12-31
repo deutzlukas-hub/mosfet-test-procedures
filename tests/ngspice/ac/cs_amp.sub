@@ -1,0 +1,9 @@
+* Common-source gate amplifier subcircuit (ngspice)
+* Ports: in out vdd gnd
+* Parameters: W, L (MOS geometry), RIN, RLOAD (resistors)
+
+.subckt cs_stage in out vdd gnd params: W=4u L=0.09u RIN=100k RLOAD=1k
+  Rin in g {RIN}
+  Rload vdd out {RLOAD}
+  N1 out g gnd gnd NMOS W={W} L={L}
+.ends

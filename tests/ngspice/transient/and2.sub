@@ -1,0 +1,12 @@
+
+.include not.sub
+.include nand2.sub
+
+* =============================================================================
+
+.subckt AND2 in1 in2 out vdd gnd params: L=0.09u WN=10u WP=20u
+  XNAND in1 in2 out1 vdd gnd NAND2
+  XNOT out1 out vdd gnc NOT
+.ends
+
+

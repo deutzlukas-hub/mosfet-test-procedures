@@ -1,0 +1,10 @@
+* Common-gate amplifier subcircuit (ngspice)
+* Ports: in out vdd gnd
+* Parameters: W, L (MOS geometry), RLOAD (drain load)
+*
+* Note: Gate is tied to ground in this simple bias example. DC operating point is set by the input source.
+
+.subckt cg_stage in out vdd gnd params: W=4u L=0.09u RLOAD=1k
+  N1 out gnd in gnd NMOS W={W} L={L}
+  Rload vdd out {RLOAD}
+.ends

@@ -1,0 +1,8 @@
+* Common-drain (source follower) amplifier subcircuit (ngspice)
+
+.subckt cd_stage in out vdd gnd params: W=4u L=0.09u RIN=100k RLOAD=1k
+
+  N1 vdd g out gnd NMOS W={W} L={L}
+  Rin in g {RIN}
+  Rload out gnd {RLOAD}
+.ends

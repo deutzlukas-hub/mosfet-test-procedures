@@ -1,0 +1,17 @@
+* 5-stage inverter chain subcircuit (parameterized)
+* Ports: in out vdd gnd
+.subckt INV_CHAIN in out vdd gnd params: L=0.09u WN=10u WP=20u RSH=1G
+  * Inverter chain
+  X1 in  n1  vdd gnd NOT L={L} WN={WN} WP={WP}
+  X2 n1  n2  vdd gnd NOT L={L} WN={WN} WP={WP}
+  X3 n2  n3  vdd gnd NOT L={L} WN={WN} WP={WP}
+  X4 n3  n4  vdd gnd NOT L={L} WN={WN} WP={WP}
+  X5 n4  out vdd gnd NOT L={L} WN={WN} WP={WP}
+
+  * Optional weak shunts for numerical stabilization
+  Rsh1 n1  gnd {RSH}
+  Rsh2 n2  gnd {RSH}
+  Rsh3 n3  gnd {RSH}
+  Rsh4 n4  gnd {RSH}
+  Rsh5 out gnd {RSH}
+.ends

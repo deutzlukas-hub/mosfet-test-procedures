@@ -1,0 +1,24 @@
+* 1-bit digital comparator subcircuit (A > B, A < B, A = B)
+* Ports: A B A_GT_B A_LT_B A_EQ_B vdd gnd
+.subckt COMPRT A B A_GT_B A_LT_B A_EQ_B vdd gnd params: L=0.09u WN=10u WP=20u
+  * Inverters
+  XNA  A Anot vdd gnd NOT L={L} WN={WN} WP={WP}
+  XNB  B Bnot vdd gnd NOT L={L} WN={WN} WP={WP}
+
+  * A > B  =>  AND(A, Bnot) = NOT( NAND(A, Bnot) )
+  XNAND1 A Bnot t_gt vdd gnd NAND2 L={L} WN={WN} WP={WP}
+  XN1    t_gt A_GT_B vdd gnd NOT   L={L} WN={WN} WP={WP}
+
+  * A < B  =>  AND(Anot, B) = NOT( NAND(Anot, B) )
+  XNAND2 Anot B t_lt vdd gnd NAND2 L={L} WN={WN} WP={WP}
+  XN2    t_lt A_LT_B vdd gnd NOT   L={L} WN={WN} WP={WP}
+
+  * A = B  =>  OR( AND(A,B), AND(Anot,Bnot) )
+  XNAND3 A B t_ab_n vdd gnd NAND2 L={L} WN={WN} WP={WP}
+  XANDAB t_ab_n t_ab vdd gnd NOT   L={L} WN={WN} WP={WP}
+
+  XNAND4 Anot Bnot t_anbn_n vdd gnd NAND2 L={L} WN={WN} WP={WP}
+  XANDANBN t_anbn_n t_anbn vdd gnd NOT L={L} WN={WN} WP={WP}
+
+  XOR t_ab t_anbn A_EQ_B vdd gnd OR2 L={L} WN={WN} WP={WP}
+.ends
