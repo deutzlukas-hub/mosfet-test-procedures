@@ -2,7 +2,7 @@
 
 This project provides a modular and automatized framework for validating the implementation of industry-standard MOSFET 
 models [1] across two open-source toolchains:
-1. **Gnucap** + `modelgen-verilog`
+1. **Gnucap** + `modelgen-verilog`  
 2. **ngspice** + `OpenVAF` (OSDI)
 
 The goal of the project is to demonstrate quantitative agreement between the Gnucap and ngspice simulators for different 
@@ -30,8 +30,10 @@ repo/
 │  ├─ data/                # Raw simulation data (mirrors tests/)
 │  │  ├─ gnucap/              # Gnucap outputs (.gc.out)
 │  │  └─ ngspice/             # ngspice outputs (.sp.out)
-│  └─ figures/             # Plots generated from raw test data
-│
+│  ├─ figures/             # Plots generated from raw test data  
+│  ├─ reference/           # Reference outputs generated with stable version 
+│     ├─ data                 # Reference simulation outputs (.gc.out, .sp.out)
+│     └─ figures              # Figures generated from reference outputs
 ├─ python/                 # Scripts for parsing data and generating plots
 │
 ├─ run_tests.sh            # Run full test suite

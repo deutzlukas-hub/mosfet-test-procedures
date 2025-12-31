@@ -44,8 +44,8 @@ denominator, preventing division by zero when the reference approaches zero.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/bsim4/dc/id_vd_nmos_1.png}
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/psp104/dc/id_vd_nmos_1.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/bsim4/dc/id_vd_nmos_1.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/psp104/dc/id_vd_nmos_1.png}
   \caption{NMOS Id-Vd characteristics for BSIM4 and PSP104 MOSFET models.
   (A) Drain current I(d) versus drain voltage V(d) for different gate voltages
   V(g) illustrating the impact of gate bias on NMOS behavior. Colored lines
@@ -86,8 +86,8 @@ across device models and test cases within numerical tolerances.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/bsim4/ac/cs_amp.png}
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/psp104/ac/cs_amp.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/bsim4/ac/cs_amp.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/psp104/ac/cs_amp.png}
   \caption{AC analysis of a single-stage common-source MOSFET amplifier with a
   passive resistor load for BSIM4 and PSP104 MOSFET models. (A) Small-signal
   voltage gain $A_v$ as a function of the AC input frequency for different gate
@@ -121,8 +121,8 @@ time-step control and numerical integration between the two simulators.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/bsim4/transient/nand2.png}
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/psp104/transient/nand2.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/bsim4/transient/nand2.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/psp104/transient/nand2.png}
 
   \caption{NAND gate transient analysis for BSIM4 and PSP104 MOSFET models. (A)
   Input voltages in Gnucap, overlaid with black dashed lines for ngspice. (B)
@@ -133,8 +133,8 @@ time-step control and numerical integration between the two simulators.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/bsim4/transient/inv_ring.png}
-  \includegraphics[width=0.495\textwidth]{./results/figures/cmos90/psp104/transient/inv_ring.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/bsim4/transient/inv_ring.png}
+  \includegraphics[width=0.495\textwidth]{./results/reference/figures/cmos90/psp104/transient/inv_ring.png}
     \caption{5-stage ring oscillator transient analysis for BSIM4 and PSP104
     MOSFET models. (A) Voltage input trigger in Gnucap, overlaid with black
     dashed lines for ngspice. (B) Output voltage demonstrating sustained
@@ -158,7 +158,7 @@ across the entire frequency range for different temperatures.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{./results/figures/cmos90/psp104/noise/nmos.png}
+  \includegraphics[width=0.7\textwidth]{./results/reference/figures/cmos90/psp104/noise/nmos.png}
   \caption{Noise characteristics for PSP104. (A) Power spectral density (PSD) as
   a function of frequency for different temperatures illustrating thermal and
   flicker noise contributions. Colored lines represent Gnucap results, overlaid
