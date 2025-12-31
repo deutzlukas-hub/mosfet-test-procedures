@@ -1,6 +1,7 @@
 * MOSFET thermal noise test (common-source + resistor load)
 
 .include ../tmp/modelcard.nmos
+.include ../tmp/technology.params
 
 .option temp=27.0
 .option plotwinsize=0

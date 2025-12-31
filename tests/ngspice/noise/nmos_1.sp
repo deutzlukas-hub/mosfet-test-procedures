@@ -1,16 +1,17 @@
 * MOSFET thermal noise test (common-source + resistor load)
 
 .include ../tmp/modelcard.nmos
+.include ../tmp/technology.params
 
 .option temp=-40.0
 .option plotwinsize=0
 
 
-Vdd dd 0 1.2
+Vdd dd 0 {VNOM}
 
 * Gate DC bias; AC=1 is only used for .noise input reference
-Vg g 0 0.7 AC 1
-N1 out g 0 0 NMOS W=10.0u L=0.09u
+Vg g 0 {0.5*VNOM} AC 1
+N1 out g 0 0 NMOS W={WN} L={L}
 RL dd out 10k
 
 .control
