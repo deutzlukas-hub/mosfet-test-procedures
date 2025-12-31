@@ -1,0 +1,5 @@
+* PSP104 NMOS modelcard
+
+.MODEL NMOS PSP104VA
++TYPE=+1
+
