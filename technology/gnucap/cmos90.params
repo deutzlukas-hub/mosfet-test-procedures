@@ -1,0 +1,7 @@
+parameter real L=0.09u; // MOSFET length
+parameter real WN=10.0u; // NMOS width
+parameter real WP=20.0u; // PMOS width
+parameter real VNOM=1.2; // Nominal supply (V)
+
+
+
