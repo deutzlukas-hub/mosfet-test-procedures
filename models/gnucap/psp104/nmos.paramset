@@ -1,0 +1,26 @@
+// ******** psp104 nmos paramset ********
+// lukas deutz 2025
+
+paramset NMOS PSP104VA
+ parameter real l=1.0u;
+ parameter real w=1.0u;
+ parameter integer nf=1;
+ parameter real ad=1.0e-12;
+ parameter real pd=1.0e-6;
+ parameter real as=1.0e-12;
+ parameter real ps=1.0e-6;
+ parameter real sa=0.0;
+ parameter real sb=0.0;
+ parameter real sd=0.0;
+.TYPE=1;
+.L=l;
+.W=w;
+.NF=nf;
+.AD=ad;
+.PD=pd;
+.AS=as;
+.PS=ps;
+.SA=sa;
+.SB=sb;
+.SD=sd;
+endparamset
