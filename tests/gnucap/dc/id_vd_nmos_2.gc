@@ -1,0 +1,20 @@
+* NMOS Id-Vd @ -55C
+
+* Enable Verilog mode
+verilog
+
+option temp=-55.0
+ground gnd;
+
+vsource #(.dc(vd)) sd(d , gnd);
+vsource #(.dc(vg)) sg(g , gnd);
+
+parameter vd = 0.0;
+parameter vg = 0.0;
+
+NMOS #(.l(L), .w(WN)) M1(.d(d), .g(g), .s(gnd), .b(gnd));
+
+list
+print dc v(g) i(sd) iter(0)
+dc vd 0.0 1.2 0.02 vg 0.0 1.2 0.2 basic
+status notime

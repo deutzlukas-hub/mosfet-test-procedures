@@ -1,0 +1,35 @@
+* And Test gate
+* Adapted by Lukas Deutz
+
+load vams/vpulse.so
+include and2.module
+
+verilog
+
+option trtol=0.01;
+//TODO: workaround for op convergencen issues
+//vmin/vmax are clamped to stabilize initial DC solution
+options vmin=0.0 vmax=0.0;
+
+
+ground gnd;
+
+vsource #(.dc(VNOM)) Vdd(vdd, gnd)
+
+vpulse #(.val0(0.0), .val1(VNOM), .td(0.1n), .rise(0.1n), .fall(0.1n), .width(2.0n), .period(4.0n)) Vin1(in1, gnd);
+vpulse #(.val0(0.0), .val1(VNOM), .td(1.1n), .rise(0.1n), .fall(0.1n), .width(2.0n), .period(4.0n)) Vin2(in2, gnd);
+
+AND2 #(.WN(WN), .WP(WP), .L(L)) XAND2(in1, in2, out, vdd, gnd);
+capacitor #(.c(10f)) Cload(out, gnd)
+
+list
+print tran v(in1) v(in2) v(out) iter(0)
+tran 0.01n 4n basic
+status notime
+
+
+
+
+
+
+

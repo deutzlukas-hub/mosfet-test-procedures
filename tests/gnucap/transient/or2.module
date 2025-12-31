@@ -1,0 +1,23 @@
+// CMOS OR2 Gate
+
+`include nor2.module
+`include not.module
+
+module OR2(in1, in2, out, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=0.09u;
+
+    input  in1, in2, vdd, gnd;
+    output out;
+
+    electrical in1, in2, out, vdd, gnd;
+
+    NOR2 #(.WN(WN), .WP(WP), .L(L))  U1(in1, in2, nor_out, vdd, gnd);
+    NOT  #(.WN(WN), .WP(WP), .L(L))  U2(nor_out, out, vdd, gnd);
+endmodule
+
+
+
+
+

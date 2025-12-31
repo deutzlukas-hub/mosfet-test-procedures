@@ -1,0 +1,20 @@
+// Not-gate
+module NOT(in, out, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=0.09u;
+    input in;
+    output out;
+    electrical in,out,vdd,gnd;
+    PMOS #(.w(WP), .l(L)) M1(.d(out), .g(in), .s(vdd), .b(vdd));
+    NMOS #(.w(WN), .l(L)) M2(.d(out), .g(in), .s(gnd), .b(gnd));
+endmodule
+
+
+
+
+
+
+
+
+

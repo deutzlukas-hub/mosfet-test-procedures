@@ -1,0 +1,28 @@
+// Inverter ring
+
+`include not.module
+
+module inv_ring(n1, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=10u;
+    parameter real RSH=1Meg;
+
+    input vdd, gnd;
+    output n1;
+
+    electrical n1,vdd,gnd;
+
+    // TODO: Generalize to N (odd) inverters
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT1(n1, n5, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT2(n2, n1, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT3(n3, n2, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT4(n4, n3, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT5(n5, n4, vdd, gnd);
+
+    resistor #(.r(RSH)) Rsh1(n1, gnd)
+    resistor #(.r(RSH)) Rsh2(n2, gnd)
+    resistor #(.r(RSH)) Rsh3(n3, gnd)
+    resistor #(.r(RSH)) Rsh4(n4, gnd)
+    resistor #(.r(RSH)) Rsh5(n5, gnd)
+endmodule

@@ -1,0 +1,37 @@
+* Inverter ring (tran)
+load vams/vpulse.so
+
+verilog
+
+`include inv_ring.module
+
+option trtol=0.001;
+//TODO: workaround for op convergencen issues
+//vmin/vmax are clamped to stabilize initial DC solution
+options vmin=0.0 vmax=0.0;
+
+ground gnd;
+
+inv_ring #(.WN(WN), .WP(WP), .L(L)) ring(n1, vdd, gnd);
+
+NMOS #(.w(WN), .l(L)) Mtrig(.d(n1), .g(g_pulse), .s(gnd), .b(gnd));
+vsource #(.dc(VNOM)) Vdd(vdd, gnd);
+vpulse #(.val0(0.0), .val1(VNOM), .td(0.1n), .rise(0.01n), .fall(0.01n), .width(0.2n)) Vin(g_pulse, gnd);
+
+list
+print tran v(g_pulse) v(n1) iter(0)
+tran 0.01n 4n basic
+status notime
+
+
+
+
+
+
+
+
+
+
+
+
+

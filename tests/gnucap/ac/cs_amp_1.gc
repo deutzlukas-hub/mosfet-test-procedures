@@ -1,0 +1,25 @@
+* Single stage gate amplifier with passive load (ac)
+
+load vams/vsine.so
+include ./cs_amp.module
+
+* Enable verilog mode
+verilog
+
+options numdgt=7
+
+ground gnd;
+
+cs_stage #(.W(WN), .L(L)) amp(in, out, vdd, gnd);
+
+vsource #(.dc(VNOM)) Vdd(vdd, gnd);
+vsine #(.mag(0.05*VNOM), .dc(0.4*VNOM)) Vin(in, gnd);
+
+list
+dc
+print ac vdb(in) vdb(out) iter(0)
+ac dec 10 100 1000Meg basic
+status notime
+
+
+

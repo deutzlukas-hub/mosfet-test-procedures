@@ -1,0 +1,38 @@
+* MOSFET noise test
+
+load ./resistor.so
+
+* Enable Verilog mode
+verilog
+
+ground gnd;
+option temp=125.0;
+option numdgt=9;
+
+parameter real VDD=1.2;
+parameter real VGS=0.7;
+
+NMOS #(.l(0.09u), .w(10.0u)) M1(.d(out), .g(g), .s(gnd), .b(gnd));
+
+vsource #(.dc(VDD)) Vdd(vdd, gnd);
+vsource #(.dc(VGS)) Vg(g, gnd);
+
+resistor #(.r(10k), .noisy(1.0)) RD(vdd, out);
+
+// Total noise power at the drain node
+noise_probe n_out(out);
+
+list
+print ac npwr(n_out)
+dc
+ac dec 50 1 1e6 basic
+end
+
+
+
+
+
+
+
+
+

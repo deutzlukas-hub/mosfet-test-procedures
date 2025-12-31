@@ -1,0 +1,18 @@
+// CMOS NAND2 Gate
+module NAND2(in1, in2, out, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=0.09u;
+    input in1, in2;
+    output out;
+    electrical in1, in2, out, vdd, gnd;
+    electrical t1;
+    PMOS #(.w(WP), .l(L)) MP1(.d(vdd), .g(in1), .s(out), .b(vdd));
+    PMOS #(.w(WP), .l(L)) MP2(.d(vdd), .g(in2), .s(out), .b(vdd));
+    NMOS #(.w(WN), .l(L)) MN1(.d(t1), .g(in1), .s(out), .b(gnd));
+    NMOS #(.w(WN), .l(L)) MN2(.d(gnd), .g(in2), .s(t1), .b(gnd));
+endmodule
+
+
+
+

@@ -1,0 +1,40 @@
+* Inverter chain dut (tran)
+
+load vams/vpulse.so
+
+verilog
+
+`include inv_chain.module
+
+option trtol=0.01;
+//TODO: workaround for op convergencen issues
+//vmin/vmax are clamped to stabilize initial DC solution
+options vmin=0.0 vmax=0.0;
+
+ground gnd;
+
+inv_chain #(.WN(WN), .WP(WP), .L(L)) UCHAIN(in, out, vdd, gnd);
+capacitor #(.c(10f)) Cload(out, gnd);
+resistor #(.r(100k)) R_load(out, gnd);
+
+vsource #(.dc(VNOM)) Vdd(vdd, gnd);
+vpulse #(.val0(0.0), .val1(VNOM), .td(1.0n), .rise(0.1n), .fall(0.1n), .width(0.5n), .period(1.4n)) Vin(in, gnd);
+
+list
+print tran v(in) v(out) iter(0)
+tran 0.01n 4n basic
+status notime
+
+
+
+
+
+
+
+
+
+
+
+
+
+

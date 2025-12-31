@@ -1,0 +1,39 @@
+// 1-bit Digital Comparator module
+
+`include not.module
+`include and2.module
+`include or2.module
+
+module comparator(A, B, A_GT_B, A_LT_B, A_EQ_B, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=0.09u;
+    parameter real RSH=1G;
+
+    input A, B, vdd, gnd;
+    output A_GT_B, A_LT_B, A_EQ_B;
+    electrical A, B, A_GT_B, A_LT_B, A_EQ_B, vdd, gnd;
+
+    // Inverters
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT1(A, Anot, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) NOT2(B, Bnot, vdd, gnd);
+
+    // A > B
+    AND2 #(.L(L), .WN(WN), .WP(WP)) X1AND2(A, Bnot, A_GT_B, vdd, gnd);
+    // A < B
+    AND2 #(.L(L), .WN(WN), .WP(WP)) X2AND2(Anot, B, A_LT_B, vdd, gnd);
+    // A = B
+    AND2 #(.L(L), .WN(WN), .WP(WP)) X3AND2(A, B, t1, vdd, gnd);
+    AND2 #(.L(L), .WN(WN), .WP(WP)) X4AND2(Anot, Bnot, t2, vdd, gnd);
+    OR2  #(.L(L), .WN(WN), .WP(WP)) XOR2(t1, t2, A_EQ_B, vdd, gnd);
+
+    resistor #(.r(RSH)) Rsh_Anot(Anot, gnd);
+    resistor #(.r(RSH)) Rsh_Bnot(Bnot, gnd);
+    resistor #(.r(RSH)) Rsh_t1(t1, gnd);
+    resistor #(.r(RSH)) Rsh_t2(t2, gnd);
+    resistor #(.r(RSH)) RshA(A, gnd);
+    resistor #(.r(RSH)) RshB(B, gnd);
+    resistor #(.r(RSH)) RshGT(A_GT_B, gnd);
+    resistor #(.r(RSH)) RshLT(A_LT_B, gnd);
+    resistor #(.r(RSH)) RshEQ(A_EQ_B, gnd);
+endmodule

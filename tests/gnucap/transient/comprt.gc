@@ -1,0 +1,25 @@
+* 1-bit Digital Comparator Test Circuit A > B, A = B, A < B
+
+load vams/vpulse.so
+
+verilog
+
+`include comprt.module
+
+option trtol=0.01;
+//TODO: workaround for op convergence issues
+//vmin/vmax are clamped to stabilize initial DC solution
+options vmin=0.0 vmax=0.0;
+ground gnd;
+
+comparator #(.WN(WN), .WP(WP), .L(L)) UCOMP(A, B, A_GT_B, A_LT_B, A_EQ_B, vdd, gnd);
+
+vsource #(.dc(VNOM)) Vdd(vdd, gnd);
+vpulse #(.val0(0.0), .val1(VNOM), .td(0.1n), .rise(0.1n), .fall(0.1n), .width(2.0n), .period(4.0n)) Vin1(A, gnd);
+vpulse #(.val0(0.0), .val1(VNOM), .td(1.1n), .rise(0.1n), .fall(0.1n), .width(2.0n), .period(4.0n)) Vin2(B, gnd);
+
+list
+print tran v(A) v(B) v(A_GT_B) v(A_LT_B) v(A_EQ_B)
+tran 0.01n 4n basic
+status notime
+

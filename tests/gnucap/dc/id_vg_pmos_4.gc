@@ -1,0 +1,23 @@
+* PMOS Id-Vg with Vb @ 100C
+
+* Enable Verilog mode
+verilog
+
+option temp = 100.0
+
+ground gnd;
+
+vsource #(.dc(vd)) sd(d , gnd);
+vsource #(.dc(vg)) sg(g , gnd);
+vsource #(.dc(vb)) sb(b , gnd);
+
+parameter vd = -0.1;
+parameter vg = 0.0;
+parameter vb = 0.0;
+
+PMOS #(.l(L), .w(WP)) M1(.d(d), .g(g), .s(gnd), .b(b));
+
+list
+print dc v(b) i(sd) iter(0)
+dc vg 0.6 -1.2 -0.02 vb 0 1.2 0.3 basic
+status notime

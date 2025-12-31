@@ -1,0 +1,16 @@
+* Single NMOS common gate amplifier
+
+verilog
+
+module cg_stage(in, out, vdd, gnd);
+    parameter real W=10u;
+    parameter real L=0.09u;
+    parameter real RLOAD=1k;
+    input in, vdd, g, gnd;
+    output out;
+    electrical in, vdd, gnd;
+
+    NMOS #(.w(W), .l(L)) N1(.d(out), .g(gnd), .s(in), .b(gnd));
+    resistor #(.r(RLOAD)) Rload(vdd, out);
+endmodule
+

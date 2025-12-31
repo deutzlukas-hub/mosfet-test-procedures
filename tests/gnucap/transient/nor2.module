@@ -1,0 +1,17 @@
+// CMOS NOR2 Gate
+module NOR2(in1, in2, out, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=0.09u;
+    input in1, in2;
+    output out;
+    electrical in1, in2, out, vdd, gnd;
+    PMOS #(.w(WP), .l(L)) MP1(.d(t1), .g(in1), .s(out), .b(vdd));
+    PMOS #(.w(WP), .l(L)) MP2(.d(vdd), .g(in2), .s(t1), .b(vdd));
+    NMOS #(.w(WN), .l(L)) MN1(.d(gnd), .g(in1), .s(out), .b(gnd));
+    NMOS #(.w(WN), .l(L)) MN2(.d(gnd), .g(in2), .s(out), .b(gnd));
+endmodule
+
+
+
+

@@ -1,0 +1,18 @@
+load ./resistor.so
+
+// Simple Resistor Noise Test
+verilog
+
+// Set temperature to exactly 27C for predictable math
+option temp=125.0;
+option numdgt=7;
+
+ground gnd;
+
+resistor #(.r(1k), .noisy(1.)) R1(n1, gnd);
+noise_probe #(.name("thermal")) n_probe(n1);
+
+
+print ac npwr(n_probe)
+dc
+ac dec 20 1 1e6 basic

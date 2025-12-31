@@ -1,0 +1,18 @@
+* Common source gate amplifier module
+
+verilog
+
+// Common source amplifier
+module cs_stage(in, out, vdd, gnd);
+    parameter real W=10u;
+    parameter real L=0.09u;
+    parameter real RIN=100k;
+    parameter real RLOAD=1k;
+    input in, vdd, gnd;
+    output out;
+    electrical in, out, vdd, gnd;
+
+    NMOS #(.w(W), .l(L)) N1(.d(out), .g(g), .s(gnd), .b(gnd));
+    resistor #(.r(RIN)) Rin(in, g);
+    resistor #(.r(RLOAD)) Rload(vdd, out);
+endmodule

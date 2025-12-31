@@ -1,0 +1,28 @@
+// Inverter chain
+
+`include not.module
+
+module inv_chain(in, out, vdd, gnd);
+    parameter real WN=10u;
+    parameter real WP=20u;
+    parameter real L=0.09u;
+    parameter real RSH=1G;
+
+    input in, vdd, gnd;
+    output out;
+    electrical in, out, vdd, gnd;
+
+    // TODO: Generalize to N inverters
+    NOT #(.L(L), .WN(WN), .WP(WP)) U1(in, n1, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) U2(n1, n2, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) U3(n2, n3, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) U4(n3, n4, vdd, gnd);
+    NOT #(.L(L), .WN(WN), .WP(WP)) U5(n4, out, vdd, gnd);
+
+    // Weak shunt resistors (numerical stabilization)
+    resistor #(.r(RSH)) Rsh1(n1,  gnd);
+    resistor #(.r(RSH)) Rsh2(n2,  gnd);
+    resistor #(.r(RSH)) Rsh3(n3,  gnd);
+    resistor #(.r(RSH)) Rsh4(n4,  gnd);
+    resistor #(.r(RSH)) Rsh5(out, gnd);
+endmodule

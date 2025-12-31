@@ -1,0 +1,19 @@
+* NMOS Id-Vg
+
+* Enable Verilog mode
+verilog
+
+ground gnd;
+
+parameter real vd = 0.0;
+parameter real vg = 0.0;
+
+vsource #(.dc(vd)) sd(d, gnd);
+vsource #(.dc(vg)) sg(g, gnd);
+
+NMOS #(.l(L), .w(WN)) M1(.d(d), .g(g), .s(gnd), .b(gnd));
+
+list
+print dc v(d) i(sd) iter(0)
+dc vg 0 1.2 0.02 vd 0.05 1.2 0.5 basic
+status notime
