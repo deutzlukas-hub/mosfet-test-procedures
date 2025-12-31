@@ -9,12 +9,11 @@ ground gnd;
 option temp=-40.0;
 option numdgt=9;
 
-NMOS #(.l(0.09u), .w(10.0u)) M1(.d(out), .g(g), .s(gnd), .b(gnd));
+NMOS #(.l(L), .w(WN)) M1(.d(out), .g(g), .s(gnd), .b(gnd));
+resistor #(.r(10k), .noisy(1.0)) RD(vdd, out);
 
 vsource #(.dc(VNOM)) Vdd(vdd, gnd);
 vsource #(.dc(0.5*VNOM)) Vg(g, gnd);
-
-resistor #(.r(10k), .noisy(1.0)) RD(vdd, out);
 
 // Total noise power at the drain node
 noise_probe n_out(out);
@@ -24,12 +23,3 @@ print ac npwr(n_out)
 dc
 ac dec 50 1 1e6 basic
 end
-
-
-
-
-
-
-
-
-

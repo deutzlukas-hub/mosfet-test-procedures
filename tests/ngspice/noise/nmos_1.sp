@@ -6,7 +6,6 @@
 .option temp=-40.0
 .option plotwinsize=0
 
-
 Vdd dd 0 {VNOM}
 
 * Gate DC bias; AC=1 is only used for .noise input reference
@@ -25,9 +24,3 @@ setplot noise1
 wrdata `echo "$FILEPATH"` frequency onoise_spectrum inoise_spectrum
 .endc
 .end
-
-
-
-
-
-
