@@ -98,6 +98,13 @@ To regenerate the figures from exisisting raw data, run:
 cd python
 python plot_all_tests.py`.
 ```
+To plot figures for a specific model or test category use
+```
+cd python
+python plot_all_tests.py --model <model> --category <category>` 
+```
+with category being one of `dc`, `ac`, `transient`, or `noise`.
+
 ## MOSFET device models
 
 The Verilog-A source code for analog MOSFET transistor models is obtained from
