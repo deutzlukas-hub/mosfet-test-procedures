@@ -1,14 +1,13 @@
-Gnucap : The Gnu Circuit Analysis Package
-Never trust any version less than 1.0
-Copyright 1982-2013, Albert Davis
-Gnucap comes with ABSOLUTELY NO WARRANTY
-This is free software, and you are welcome
-to redistribute it under the terms of 
-the GNU General Public License, version 3 or later.
-See the file "COPYING" for details.
-main version: noinsensitive 2025.10.15
-core-lib version: noinsensitive 2025.10.15
-default plugins: noinsensitive 2025.10.15
+Gnucap : The Gnu Circuit Analysis Package.
+Copyright 1982-2025, Albert Davis
+          2020-2025, Felix Salfelder
+The development of Gnucap is funded by NLnet with support from the EC.
+Gnucap comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under the terms of the GNU
+General Public License version 3 or later. See "COPYING" for details.
+main version: modelgen 2025.12.18
+core-lib version: modelgen 2025.12.18
+default plugins: modelgen 2025.12.18
 param: already installed, replacing
 stashing as param:0
 parameters: already installed, replacing
@@ -87,29 +86,29 @@ detach_all: already installed, replacing
 stashing as detach_all:0
 paramset NMOS PSP104VA;
   parameter real l=1.0u;
-   parameter real w=1.0u;
-   parameter integer nf=1;
-   parameter real ad=1.0e-12;
-   parameter real pd=1.0e-6;
-   parameter real as=1.0e-12;
-   parameter real ps=1.0e-6;
-   parameter real sa=0.0;
-   parameter real sb=0.0;
-   parameter real sd=0.0;
+  parameter real w=1.0u;
+  parameter integer nf=1;
+  parameter real ad=1.0e-12;
+  parameter real pd=1.0e-6;
+  parameter real as=1.0e-12;
+  parameter real ps=1.0e-6;
+  parameter real sa=0.0;
+  parameter real sb=0.0;
+  parameter real sd=0.0;
  .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
 endparamset
 
 paramset PMOS PSP104VA;
   parameter real l=1.0u;
-   parameter real w=1.0u;
-   parameter integer nf=1;
-   parameter real ad=1.0e-12;
-   parameter real pd=1.0e-6;
-   parameter real as=1.0e-12;
-   parameter real ps=1.0e-6;
-   parameter real sa=0.0;
-   parameter real sb=0.0;
-   parameter real sd=0.0;
+  parameter real w=1.0u;
+  parameter integer nf=1;
+  parameter real ad=1.0e-12;
+  parameter real pd=1.0e-6;
+  parameter real as=1.0e-12;
+  parameter real ps=1.0e-6;
+  parameter real sa=0.0;
+  parameter real sb=0.0;
+  parameter real sd=0.0;
  .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
 endparamset
 
@@ -125,47 +124,47 @@ parameter vg = 0.0;
 NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
 #           v(g)       i(sd)      iter(0)   
  0.         0.         0.         3.        
- 0.02       0.        -3.8915E-9  4.        
- 0.04       0.        -5.914E-9   4.        
+ 0.02       0.        -3.8913E-9  4.        
+ 0.04       0.        -5.9135E-9  4.        
  0.06       0.        -6.9585E-9  4.        
- 0.08       0.        -7.5115E-9  4.        
+ 0.08       0.        -7.5124E-9  4.        
  0.1        0.        -7.8162E-9  4.        
  0.12       0.        -7.9945E-9  4.        
  0.14       0.        -8.1018E-9  4.        
- 0.16       0.        -8.1727E-9  4.        
+ 0.16       0.        -8.1709E-9  4.        
  0.18       0.        -8.2182E-9  4.        
  0.2        0.        -8.2509E-9  4.        
- 0.22       0.        -8.2728E-9  4.        
+ 0.22       0.        -8.2764E-9  4.        
  0.24       0.        -8.2946E-9  4.        
  0.26       0.        -8.3055E-9  4.        
  0.28       0.        -8.3164E-9  4.        
- 0.3        0.        -8.3201E-9  4.        
- 0.32       0.        -8.331E-9   4.        
+ 0.3        0.        -8.3237E-9  4.        
+ 0.32       0.        -8.3273E-9  4.        
  0.34       0.        -8.331E-9   4.        
- 0.36       0.        -8.3382E-9  4.        
- 0.38       0.        -8.3455E-9  4.        
+ 0.36       0.        -8.331E-9   4.        
+ 0.38       0.        -8.3382E-9  4.        
  0.4        0.        -8.3382E-9  4.        
  0.42       0.        -8.3455E-9  4.        
  0.44       0.        -8.3455E-9  4.        
- 0.46       0.        -8.3455E-9  4.        
+ 0.46       0.        -8.3528E-9  4.        
  0.48       0.        -8.3528E-9  4.        
  0.5        0.        -8.3528E-9  4.        
- 0.52       0.        -8.3528E-9  4.        
- 0.54       0.        -8.3528E-9  4.        
+ 0.52       0.        -8.3455E-9  4.        
+ 0.54       0.        -8.3601E-9  4.        
  0.56       0.        -8.3528E-9  4.        
- 0.58       0.        -8.3601E-9  4.        
- 0.6        0.        -8.3601E-9  4.        
- 0.62       0.        -8.3674E-9  4.        
- 0.64       0.        -8.3674E-9  4.        
+ 0.58       0.        -8.3674E-9  4.        
+ 0.6        0.        -8.3674E-9  4.        
+ 0.62       0.        -8.3601E-9  4.        
+ 0.64       0.        -8.3746E-9  4.        
  0.66       0.        -8.3819E-9  4.        
  0.68       0.        -8.3819E-9  4.        
  0.7        0.        -8.3819E-9  4.        
  0.72       0.        -8.3819E-9  4.        
- 0.74       0.        -8.3819E-9  4.        
+ 0.74       0.        -8.3965E-9  4.        
  0.76       0.        -8.3819E-9  4.        
  0.78       0.        -8.3819E-9  4.        
- 0.8        0.        -8.3819E-9  4.        
- 0.82       0.        -8.3965E-9  4.        
+ 0.8        0.        -8.3965E-9  4.        
+ 0.82       0.        -8.3819E-9  4.        
  0.84       0.         0.         4.        
  0.86       0.         0.         4.        
  0.88       0.         0.         3.        
@@ -211,7 +210,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  0.46       0.2       -1.2466E-6  4.        
  0.48       0.2       -1.247E-6   4.        
  0.5        0.2       -1.2473E-6  4.        
- 0.52       0.2       -1.2476E-6  4.        
+ 0.52       0.2       -1.2475E-6  4.        
  0.54       0.2       -1.2478E-6  4.        
  0.56       0.2       -1.248E-6   4.        
  0.58       0.2       -1.2482E-6  4.        
@@ -228,7 +227,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  0.8        0.2       -1.2498E-6  4.        
  0.82       0.2       -1.2499E-6  4.        
  0.84       0.2       -1.25E-6    4.        
- 0.86       0.2       -1.2501E-6  4.        
+ 0.86       0.2       -1.25E-6    4.        
  0.88       0.2       -1.2501E-6  4.        
  0.9        0.2       -1.2502E-6  4.        
  0.92       0.2       -1.2503E-6  4.        
@@ -246,7 +245,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  1.16       0.2       -1.251E-6   4.        
  1.18       0.2       -1.2511E-6  4.        
  1.2        0.2       -1.2511E-6  4.        
- 0.         0.4        2.265E-18  5.        
+ 0.         0.4        2.415E-18  5.        
  0.02       0.4       -28.39E-6   4.        
  0.04       0.4       -48.824E-6  4.        
  0.06       0.4       -62.64E-6   4.        
@@ -307,7 +306,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  1.16       0.4       -96.492E-6  4.        
  1.18       0.4       -96.571E-6  4.        
  1.2        0.4       -96.649E-6  4.        
- 0.         0.6        440.7E-18  5.        
+ 0.         0.6        529.7E-18  5.        
  0.02       0.6       -107.45E-6  4.        
  0.04       0.6       -202.86E-6  4.        
  0.06       0.6       -285.51E-6  4.        
@@ -368,7 +367,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  1.16       0.6       -757.03E-6  4.        
  1.18       0.6       -758.18E-6  4.        
  1.2        0.6       -759.32E-6  4.        
- 0.         0.8        605.4E-18  5.        
+ 0.         0.8        719.6E-18  5.        
  0.02       0.8       -188.29E-6  4.        
  0.04       0.8       -365.07E-6  4.        
  0.06       0.8       -528.97E-6  4.        
@@ -429,7 +428,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  1.16       0.8       -0.0020232  4.        
  1.18       0.8       -0.0020267  4.        
  1.2        0.8       -0.00203    4.        
- 0.         1.         765.9E-18  5.        
+ 0.         1.         914.2E-18  5.        
  0.02       1.        -259.92E-6  4.        
  0.04       1.        -509.5E-6   4.        
  0.06       1.        -747.23E-6  4.        
@@ -490,7 +489,7 @@ NMOS #(.l(L),.w(WN)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
  1.16       1.        -0.0036329  4.        
  1.18       1.        -0.0036393  4.        
  1.2        1.        -0.0036456  4.        
- 0.         1.2        936.2E-18  5.        
+ 0.         1.2        1.122E-15  5.        
  0.02       1.2       -321.96E-6  4.        
  0.04       1.2       -634.72E-6  4.        
  0.06       1.2       -936.77E-6  4.        

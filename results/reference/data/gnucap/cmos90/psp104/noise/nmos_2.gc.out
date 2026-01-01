@@ -1,14 +1,13 @@
-Gnucap : The Gnu Circuit Analysis Package
-Never trust any version less than 1.0
-Copyright 1982-2013, Albert Davis
-Gnucap comes with ABSOLUTELY NO WARRANTY
-This is free software, and you are welcome
-to redistribute it under the terms of 
-the GNU General Public License, version 3 or later.
-See the file "COPYING" for details.
-main version: noinsensitive 2025.10.15
-core-lib version: noinsensitive 2025.10.15
-default plugins: noinsensitive 2025.10.15
+Gnucap : The Gnu Circuit Analysis Package.
+Copyright 1982-2025, Albert Davis
+          2020-2025, Felix Salfelder
+The development of Gnucap is funded by NLnet with support from the EC.
+Gnucap comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under the terms of the GNU
+General Public License version 3 or later. See "COPYING" for details.
+main version: modelgen 2025.12.18
+core-lib version: modelgen 2025.12.18
+default plugins: modelgen 2025.12.18
 param: already installed, replacing
 stashing as param:0
 parameters: already installed, replacing
@@ -91,29 +90,29 @@ resistor: already installed, replacing
 stashing as resistor:1
 paramset NMOS PSP104VA;
   parameter real l=1.0u;
-   parameter real w=1.0u;
-   parameter integer nf=1;
-   parameter real ad=1.0e-12;
-   parameter real pd=1.0e-6;
-   parameter real as=1.0e-12;
-   parameter real ps=1.0e-6;
-   parameter real sa=0.0;
-   parameter real sb=0.0;
-   parameter real sd=0.0;
+  parameter real w=1.0u;
+  parameter integer nf=1;
+  parameter real ad=1.0e-12;
+  parameter real pd=1.0e-6;
+  parameter real as=1.0e-12;
+  parameter real ps=1.0e-6;
+  parameter real sa=0.0;
+  parameter real sb=0.0;
+  parameter real sd=0.0;
  .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
 endparamset
 
 paramset PMOS PSP104VA;
   parameter real l=1.0u;
-   parameter real w=1.0u;
-   parameter integer nf=1;
-   parameter real ad=1.0e-12;
-   parameter real pd=1.0e-6;
-   parameter real as=1.0e-12;
-   parameter real ps=1.0e-6;
-   parameter real sa=0.0;
-   parameter real sb=0.0;
-   parameter real sd=0.0;
+  parameter real w=1.0u;
+  parameter integer nf=1;
+  parameter real ad=1.0e-12;
+  parameter real pd=1.0e-6;
+  parameter real as=1.0e-12;
+  parameter real ps=1.0e-6;
+  parameter real sa=0.0;
+  parameter real sb=0.0;
+  parameter real sd=0.0;
  .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
 endparamset
 

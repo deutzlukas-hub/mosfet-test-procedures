@@ -85,7 +85,7 @@ project's root directory:
 ```bash
 ./run_tests.sh <TECHNOLOGY=cmos90>
 ```
-To run tests for a specific technology, model, with gnucap or nggpice use:
+To run tests for a specific technology, model, with gnucap or ngspice use:
 ```bash
 ./run_tests_gnucap.sh <TECHNOLOGY> <model>
 ./run_tests_ngspice.sh <TECHNOLOGY> <model>
@@ -128,9 +128,9 @@ support status in Gnucap and ngspice.
 
 Gnucap allows MOSFET device models, parametersets, and technology files to be
 loaded dynamically via command-line flags, enabling the same test suite to be
-Easily rerun with different configurations. Loaging models dynamically is
+easily rerun with different configurations. Loaging models dynamically is
 currently not supported in ngspice; as a workaround, we use environment
-variables and placeholder technology and device modelcards that automatically
+variables and placeholder technology and device modelcards that are automatically
 updated during test execution. See`docs.md` for more details.
 
 ## Acknowledgements

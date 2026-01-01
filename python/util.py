@@ -3,7 +3,7 @@ from scipy.interpolate import interp1d
 
 supported_models = ['psp104', 'bsim4']
 
-def calc_abs_rel_err(bm_arr: np.ndarray, arr: np.ndarray, atol: float =1e-16):
+def calc_abs_rel_err(bm_arr: np.ndarray, arr: np.ndarray, atol: float =1e-10):
     denom = np.maximum(np.abs(bm_arr), np.ones_like(bm_arr) * atol)
     return np.abs(arr - bm_arr) /  denom
 

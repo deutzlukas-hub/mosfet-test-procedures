@@ -1,14 +1,13 @@
-Gnucap : The Gnu Circuit Analysis Package
-Never trust any version less than 1.0
-Copyright 1982-2013, Albert Davis
-Gnucap comes with ABSOLUTELY NO WARRANTY
-This is free software, and you are welcome
-to redistribute it under the terms of 
-the GNU General Public License, version 3 or later.
-See the file "COPYING" for details.
-main version: noinsensitive 2025.10.15
-core-lib version: noinsensitive 2025.10.15
-default plugins: noinsensitive 2025.10.15
+Gnucap : The Gnu Circuit Analysis Package.
+Copyright 1982-2025, Albert Davis
+          2020-2025, Felix Salfelder
+The development of Gnucap is funded by NLnet with support from the EC.
+Gnucap comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under the terms of the GNU
+General Public License version 3 or later. See "COPYING" for details.
+main version: modelgen 2025.12.18
+core-lib version: modelgen 2025.12.18
+default plugins: modelgen 2025.12.18
 param: already installed, replacing
 stashing as param:0
 parameters: already installed, replacing
@@ -87,29 +86,29 @@ detach_all: already installed, replacing
 stashing as detach_all:0
 paramset NMOS PSP104VA;
   parameter real l=1.0u;
-   parameter real w=1.0u;
-   parameter integer nf=1;
-   parameter real ad=1.0e-12;
-   parameter real pd=1.0e-6;
-   parameter real as=1.0e-12;
-   parameter real ps=1.0e-6;
-   parameter real sa=0.0;
-   parameter real sb=0.0;
-   parameter real sd=0.0;
+  parameter real w=1.0u;
+  parameter integer nf=1;
+  parameter real ad=1.0e-12;
+  parameter real pd=1.0e-6;
+  parameter real as=1.0e-12;
+  parameter real ps=1.0e-6;
+  parameter real sa=0.0;
+  parameter real sb=0.0;
+  parameter real sd=0.0;
  .TYPE=1; .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
 endparamset
 
 paramset PMOS PSP104VA;
   parameter real l=1.0u;
-   parameter real w=1.0u;
-   parameter integer nf=1;
-   parameter real ad=1.0e-12;
-   parameter real pd=1.0e-6;
-   parameter real as=1.0e-12;
-   parameter real ps=1.0e-6;
-   parameter real sa=0.0;
-   parameter real sb=0.0;
-   parameter real sd=0.0;
+  parameter real w=1.0u;
+  parameter integer nf=1;
+  parameter real ad=1.0e-12;
+  parameter real pd=1.0e-6;
+  parameter real as=1.0e-12;
+  parameter real ps=1.0e-6;
+  parameter real sa=0.0;
+  parameter real sb=0.0;
+  parameter real sd=0.0;
  .TYPE=(- 1); .L=l; .W=w; .NF=nf; .AD=ad; .PD=pd; .AS=as; .PS=ps; .SA=sa; .SB=sb; .SD=sd;
 endparamset
 
@@ -128,64 +127,64 @@ PMOS #(.l(L),.w(WP)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
 -0.02      -0.2        27.392E-9  4.        
 -0.04      -0.2        39.498E-9  4.        
 -0.06      -0.2        44.889E-9  4.        
--0.08      -0.2        47.421E-9  4.        
+-0.08      -0.2        47.422E-9  4.        
 -0.1       -0.2        48.705E-9  4.        
 -0.12      -0.2        49.411E-9  4.        
 -0.14      -0.2        49.828E-9  4.        
--0.16      -0.2        50.09E-9   4.        
--0.18      -0.2        50.262E-9  4.        
+-0.16      -0.2        50.091E-9  4.        
+-0.18      -0.2        50.266E-9  4.        
 -0.2       -0.2        50.39E-9   4.        
 -0.22      -0.2        50.477E-9  4.        
 -0.24      -0.2        50.542E-9  4.        
 -0.26      -0.2        50.593E-9  4.        
 -0.28      -0.2        50.633E-9  4.        
--0.3       -0.2        50.666E-9  4.        
--0.32      -0.2        50.684E-9  4.        
+-0.3       -0.2        50.662E-9  4.        
+-0.32      -0.2        50.688E-9  4.        
 -0.34      -0.2        50.706E-9  4.        
 -0.36      -0.2        50.728E-9  4.        
 -0.38      -0.2        50.735E-9  4.        
 -0.4       -0.2        50.75E-9   4.        
--0.42      -0.2        50.764E-9  4.        
--0.44      -0.2        50.779E-9  4.        
+-0.42      -0.2        50.757E-9  4.        
+-0.44      -0.2        50.772E-9  4.        
 -0.46      -0.2        50.779E-9  4.        
 -0.48      -0.2        50.793E-9  4.        
 -0.5       -0.2        50.793E-9  4.        
--0.52      -0.2        50.793E-9  4.        
+-0.52      -0.2        50.801E-9  4.        
 -0.54      -0.2        50.801E-9  4.        
 -0.56      -0.2        50.808E-9  4.        
--0.58      -0.2        50.808E-9  4.        
--0.6       -0.2        50.815E-9  4.        
--0.62      -0.2        50.823E-9  4.        
--0.64      -0.2        50.823E-9  4.        
+-0.58      -0.2        50.815E-9  4.        
+-0.6       -0.2        50.823E-9  4.        
+-0.62      -0.2        50.815E-9  4.        
+-0.64      -0.2        50.83E-9   4.        
 -0.66      -0.2        50.815E-9  4.        
 -0.68      -0.2        50.815E-9  4.        
 -0.7       -0.2        50.815E-9  4.        
--0.72      -0.2        50.815E-9  4.        
+-0.72      -0.2        50.83E-9   4.        
 -0.74      -0.2        50.815E-9  4.        
--0.76      -0.2        50.83E-9   4.        
+-0.76      -0.2        50.815E-9  4.        
 -0.78      -0.2        50.844E-9  4.        
 -0.8       -0.2        50.83E-9   4.        
 -0.82      -0.2        50.844E-9  4.        
 -0.84      -0.2        50.844E-9  4.        
 -0.86      -0.2        50.844E-9  4.        
--0.88      -0.2        50.859E-9  4.        
--0.9       -0.2        50.859E-9  4.        
+-0.88      -0.2        50.844E-9  4.        
+-0.9       -0.2        50.873E-9  4.        
 -0.92      -0.2        50.859E-9  4.        
 -0.94      -0.2        50.859E-9  4.        
 -0.96      -0.2        50.873E-9  4.        
 -0.98      -0.2        50.888E-9  4.        
 -1.        -0.2        50.888E-9  4.        
 -1.02      -0.2        50.873E-9  4.        
--1.04      -0.2        50.903E-9  4.        
+-1.04      -0.2        50.888E-9  4.        
 -1.06      -0.2        50.888E-9  4.        
 -1.08      -0.2        50.888E-9  4.        
 -1.1       -0.2        50.903E-9  4.        
 -1.12      -0.2        50.917E-9  4.        
--1.14      -0.2        50.903E-9  4.        
--1.16      -0.2        50.888E-9  4.        
--1.18      -0.2        50.888E-9  4.        
--1.2       -0.2        50.917E-9  4.        
- 0.        -0.4        3.E-21     4.        
+-1.14      -0.2        50.888E-9  4.        
+-1.16      -0.2        50.917E-9  4.        
+-1.18      -0.2        50.903E-9  4.        
+-1.2       -0.2        50.903E-9  4.        
+ 0.        -0.4        17.E-21    4.        
 -0.02      -0.4        12.497E-6  4.        
 -0.04      -0.4        18.726E-6  4.        
 -0.06      -0.4        21.693E-6  4.        
@@ -246,7 +245,7 @@ PMOS #(.l(L),.w(WP)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
 -1.16      -0.4        25.836E-6  4.        
 -1.18      -0.4        25.842E-6  4.        
 -1.2       -0.4        25.849E-6  4.        
- 0.        -0.6       -253.3E-18  5.        
+ 0.        -0.6       -205.4E-18  5.        
 -0.02      -0.6        187.46E-6  4.        
 -0.04      -0.6        342.28E-6  4.        
 -0.06      -0.6        464.57E-6  4.        
@@ -307,7 +306,7 @@ PMOS #(.l(L),.w(WP)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
 -1.16      -0.6        950.36E-6  4.        
 -1.18      -0.6        951.72E-6  4.        
 -1.2       -0.6        953.05E-6  4.        
- 0.        -0.8       -447.9E-18  5.        
+ 0.        -0.8       -396.6E-18  5.        
 -0.02      -0.8        412.58E-6  4.        
 -0.04      -0.8        792.36E-6  4.        
 -0.06      -0.8        0.0011355  4.        
@@ -368,7 +367,7 @@ PMOS #(.l(L),.w(WP)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
 -1.16      -0.8        0.0037789  4.        
 -1.18      -0.8        0.0037858  4.        
 -1.2       -0.8        0.0037926  4.        
- 0.        -1.        -629.7E-18  5.        
+ 0.        -1.        -560.3E-18  5.        
 -0.02      -1.         609.86E-6  4.        
 -0.04      -1.         0.0011906  4.        
 -0.06      -1.         0.0017377  4.        
@@ -429,7 +428,7 @@ PMOS #(.l(L),.w(WP)) M1 (.d(d),.g(g),.s(gnd),.b(gnd));
 -1.16      -1.         0.0079449  4.        
 -1.18      -1.         0.007962   4.        
 -1.2       -1.         0.0079787  4.        
- 0.        -1.2       -823.6E-18  5.        
+ 0.        -1.2       -752.9E-18  5.        
 -0.02      -1.2        776.07E-6  4.        
 -0.04      -1.2        0.0015267  4.        
 -0.06      -1.2        0.0022473  4.        
