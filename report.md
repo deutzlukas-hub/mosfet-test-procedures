@@ -167,12 +167,5 @@ across the entire frequency range for different temperatures.
 \label{fig:noise-nmos}
 \end{figure}
 
-# References
-
-1. gnucap - GNU Circuit Analysis Package
-   http://www.gnucap.org/dokuwiki/doku.php?id=gnucap:start
-2. ngspice – open source mixed-signal circuit simulator (Version X.Y). (Year).
-   Retrieved from http://ngspice.sourceforge.net/
-3.  
 
 
