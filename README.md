@@ -150,11 +150,11 @@ is made available by the Swiss State Secretariat for Education,
 Research and Innovation (SERI).
 
 ## References
-[1] Compact Model Coalition: https://si2.org/compact-model-coalition/
-[2] GNU Circuit Analysis Package (Gnucap): http://www.gnucap.org/dokuwiki/doku.php?id=gnucap:start
-[3] Gnucap modelgen-verilog: https://github.com/gnucap/modelgen-verilog
-[4] ngspice simulator https://ngspice.sourceforge.io/
-[5] OpenVAF compiler: https://openvaf.github.io/
-[6] Gnucap models repository: https://codeberg.org/gnucap/gnucap-models.git
-[7] Verilog-A Models respository: https://github.com/dwarning/VA-Models
+- [1] Compact Model Coalition: https://si2.org/compact-model-coalition/
+- [2] GNU Circuit Analysis Package (Gnucap): http://www.gnucap.org/dokuwiki/doku.php?id=gnucap:start
+- [3] Gnucap modelgen-verilog: https://github.com/gnucap/modelgen-verilog
+- [4] ngspice simulator https://ngspice.sourceforge.io/
+- [5] OpenVAF compiler: https://openvaf.github.io/
+- [6] Gnucap models repository: https://codeberg.org/gnucap/gnucap-models.git
+- [7] Verilog-A Models respository: https://github.com/dwarning/VA-Models
 
