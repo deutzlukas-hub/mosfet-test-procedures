@@ -74,7 +74,7 @@ simulation of MOSFET device models that can be built upon.
 ## Prerequisites
 
 - **Gnucap** (reference files and figures were produced with version
-  2025.10.15)
+  2025.12.18)
 - **Ngspice** (reference files and figures were produced with version 45.2).
 - **Python 3** (with `numpy` and `matplotlib`) for plotting.
 
