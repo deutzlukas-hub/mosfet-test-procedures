@@ -21,9 +21,9 @@ test cases including DC sweeps, AC analysis, transient analysis, and noise
 analysis for different MOSFET device models using the cmos90 technology defined
 in the cmos90.params file (L=0.9u W=10u and VNOM=1.2V).
 
-All figures in this report are generated from the raw data included in this
-repository. The data was produced using the simulator versions Gnucap
-2025.10.15 and ngspice 45.2.
+All figures in this report are generated from the raw data included in the 
+`results/reference` directory of this project. The data was produced using 
+the simulator versions Gnucap 2025.12.18 and ngspice 45.2.
 
 # Postprocessing
 
