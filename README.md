@@ -11,8 +11,8 @@ To achieve this, the project provides a modular and automated framework for
 validating the implementation of industry-standard MOSFET models [1] across 
 two open-source toolchains:
 
-1. **Gnucap** [2] + `modelgen-verilog` [3]
-2. **ngspice** [4] + `OpenVAF` (OSDI) [5]
+1. **Gnucap** [2] + modelgen-verilog [3]
+2. **ngspice** [4] + OpenVAF (OSDI) [5]
 
 Using this framework, the project demonstrates quantitative agreement between the
 Gnucap and ngspice simulators for different technology parameters and MOSFET
