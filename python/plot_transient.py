@@ -35,6 +35,10 @@ def plot_not(technology: str, model: str):
     ax1 = plt.subplot(gs[1], sharex=ax0)
     ax2 = plt.subplot(gs[2], sharex=ax0)
 
+    ax0.text(-0.2, 1.05, 'A', transform=ax0.transAxes, fontsize=style.FS['panel'])
+    ax1.text(-0.2, 1.05, 'B', transform=ax1.transAxes, fontsize=style.FS['panel'])
+    ax2.text(-0.2, 1.05, 'C', transform=ax2.transAxes, fontsize=style.FS['panel'])
+
     ax0.plot(gc_t_arr, gc_v_in_arr, c='r', lw=2.0, label='Input (gnucap)')
     ax0.plot(ngs_t_arr, ngs_v_in_arr, c='k', ls='--', lw=1.0, label='ngspice')
 
@@ -51,9 +55,6 @@ def plot_not(technology: str, model: str):
     ax2.set_ylabel(style.REL_ERR_LABEL)
     ax2.set_xlabel('Time [ns]')
 
-    ax0.grid(True)
-    ax1.grid(True)
-    ax2.grid(True)
     ax0.legend()
     ax1.legend()
 
@@ -83,11 +84,14 @@ def plot_logic_gate(technology: str, model: str, test_name: str):
     ngs_v_out_interp = f(gc_t_arr)
     rel_err_out = calc_abs_rel_err(gc_v_out_arr, ngs_v_out_interp)
 
-    plt.figure(figsize=style.FIGSIZE_2)
+    fig = plt.figure(figsize=style.FIGSIZE_2)
     gs = plt.GridSpec(3, 1, hspace=0.3)
     ax0 = plt.subplot(gs[0])
     ax1 = plt.subplot(gs[1], sharex=ax0)
     ax2 = plt.subplot(gs[2], sharex=ax0)
+    ax0.text(-0.05, 1.05, 'A', transform=ax0.transAxes, fontsize=style.FS['panel'])
+    ax1.text(-0.05, 1.05, 'B', transform=ax1.transAxes, fontsize=style.FS['panel'])
+    ax2.text(-0.05, 1.05, 'C', transform=ax2.transAxes, fontsize=style.FS['panel'])
 
     ax0.plot(gc_t_arr, gc_v_in1_arr, c='r', lw=2.0, label='Input 1 (gnucap)')
     ax0.plot(gc_t_arr, gc_v_in2_arr, c='b', lw=2.0, label='Input 2 (gnucap)')
@@ -109,10 +113,11 @@ def plot_logic_gate(technology: str, model: str, test_name: str):
 
     out_path = figures_trans_dir / (test_name + '.png')
     plt.savefig(out_path)
+    plt.close(fig)
     return
 
-
 def plot_inv_chain(technology: str, model: str):
+
     figures_trans_dir = figures_dir / technology / model / 'transient'
     figures_trans_dir.mkdir(parents=True, exist_ok=True)
     gc_data_arr, ngs_data_arr = load_data('inv_chain', technology, model)
@@ -125,11 +130,14 @@ def plot_inv_chain(technology: str, model: str):
     ngs_v_in_arr = ngs_data_arr[:, 1]
     ngs_v_out_arr = ngs_data_arr[:, 2]
 
-    plt.figure(figsize=style.FIGSIZE_2)
+    fig=plt.figure(figsize=style.FIGSIZE_2)
     gs = plt.GridSpec(3, 1, hspace=0.3)
     ax0 = plt.subplot(gs[0])
     ax1 = plt.subplot(gs[1], sharex=ax0)
     ax2 = plt.subplot(gs[2], sharex=ax0)
+    ax0.text(-0.05, 1.05, 'A', transform=ax0.transAxes, fontsize=style.FS['panel'])
+    ax1.text(-0.05, 1.05, 'B', transform=ax1.transAxes, fontsize=style.FS['panel'])
+    ax2.text(-0.05, 1.05, 'C', transform=ax2.transAxes, fontsize=style.FS['panel'])
 
     ax0.plot(gc_t_arr, gc_v_in_arr, c='r', lw=2.0, label='Input (gnucap)')
     ax0.plot(ngs_t_arr, ngs_v_in_arr, c='k', ls='--', lw=1.0, label='ngspice')
@@ -153,11 +161,12 @@ def plot_inv_chain(technology: str, model: str):
 
     out_path = figures_trans_dir / 'inv_chain.png'
     plt.savefig(out_path)
-
+    plt.close(fig)
     return out_path
 
 
 def plot_inv_ring(technology: str, model: str):
+
     figures_trans_dir = figures_dir / technology / model / 'transient'
     figures_trans_dir.mkdir(parents=True, exist_ok=True)
 
@@ -171,11 +180,14 @@ def plot_inv_ring(technology: str, model: str):
     ngs_v_in_arr = ngs_data_arr[:, 1]
     ngs_v_out_arr = ngs_data_arr[:, 2]
 
-    plt.figure(figsize=style.FIGSIZE_2)
+    fig=plt.figure(figsize=style.FIGSIZE_2)
     gs = plt.GridSpec(3, 1, hspace=0.3)
     ax0 = plt.subplot(gs[0])
     ax1 = plt.subplot(gs[1], sharex=ax0)
     ax2 = plt.subplot(gs[2], sharex=ax0)
+    ax0.text(-0.05, 1.05, 'A', transform=ax0.transAxes, fontsize=style.FS['panel'])
+    ax1.text(-0.05, 1.05, 'B', transform=ax1.transAxes, fontsize=style.FS['panel'])
+    ax2.text(-0.05, 1.05, 'C', transform=ax2.transAxes, fontsize=style.FS['panel'])
 
     ax0.plot(gc_t_arr, gc_v_in_arr, c='r', lw=2.0, label='Input (gnucap)')
     ax0.plot(ngs_t_arr, ngs_v_in_arr, c='k', ls='--', lw=1.0, label='ngspice')
@@ -198,10 +210,11 @@ def plot_inv_ring(technology: str, model: str):
 
     out_path = figures_trans_dir / 'inv_ring.png'
     plt.savefig(out_path)
+    plt.close(fig)
     return out_path
 
-
 def plot_comprt(technology: str, model: str):
+
     figures_trans_dir = figures_dir / technology / model / 'transient'
     figures_trans_dir.mkdir(parents=True, exist_ok=True)
 
@@ -221,7 +234,7 @@ def plot_comprt(technology: str, model: str):
     ngs_v_lt_arr = ngs_data_arr[:, 4]
     ngs_v_eq_arr = ngs_data_arr[:, 5]
 
-    plt.figure(figsize=style.FIGSIZE_2)
+    fig=plt.figure(figsize=style.FIGSIZE_2)
     gs = plt.GridSpec(4, 2, hspace=0.3, wspace=0.3)
     ax00 = plt.subplot(gs[0, 0])
     ax01 = plt.subplot(gs[0, 1], sharex=ax00)
@@ -282,10 +295,11 @@ def plot_comprt(technology: str, model: str):
 
     out_path = figures_trans_dir / 'comprt.png'
     plt.savefig(out_path)
+    plt.close(fig)
     return out_path
 
-
 def plot_input_switch(model: str):
+
     figures_trans_dir = figures_dir / model / 'transient'
     figures_trans_dir.mkdir(parents=True, exist_ok=True)
 
@@ -299,7 +313,7 @@ def plot_input_switch(model: str):
     ngs_vg_arr = ngs_data_arr[:, 1]
     ngs_vd_arr = ngs_data_arr[:, 2]
 
-    plt.figure(figsize=style.FIGSIZE_2)
+    fig=plt.figure(figsize=style.FIGSIZE_2)
     gs = plt.GridSpec(3, 1, hspace=0.3)
     ax0 = plt.subplot(gs[0])
     ax1 = plt.subplot(gs[1], sharex=ax0)
@@ -321,14 +335,12 @@ def plot_input_switch(model: str):
     ax2.set_ylabel(style.REL_ERR_LABEL)
     ax2.set_xlabel('Time [ns]')
 
-    ax0.grid(True)
-    ax1.grid(True)
-    ax2.grid(True)
     ax0.legend()
     ax1.legend()
 
     out_path = figures_trans_dir / 'input_switch.png'
     plt.savefig(out_path)
+    plt.close(fig)
     return out_path
 
 def plot_oneshot(model: str):
@@ -389,6 +401,7 @@ if __name__ == "__main__":
             plot_logic_gate(technology, model, 'and2')
             plot_logic_gate(technology, model, 'or2')
             plot_inv_ring(technology, model)
+            plot_inv_chain(technology, model)
             plot_comprt(technology, model)
 
 

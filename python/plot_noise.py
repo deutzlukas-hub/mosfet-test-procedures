@@ -17,9 +17,9 @@ def load_noise_analysis(technology: str, test_name: str, model: str):
 
     return gc_data, ng_data
 
-def plot_resistor_noise(model: str, test_name: str = 'resistor'):
+def plot_resistor_noise(technology: str, model: str, test_name: str = 'resistor'):
 
-    figures_out_dir = figures_dir / model / 'noise'
+    figures_out_dir = figures_dir / technology / model / 'noise'
     figures_out_dir.mkdir(parents=True, exist_ok=True)
 
     T_list = [-40., 27., 125.]
@@ -37,7 +37,7 @@ def plot_resistor_noise(model: str, test_name: str = 'resistor'):
     for i, (test_name, T) in enumerate(zip(['resistor_1', 'resistor_2', 'resistor_3'], T_list)):
 
         # Load data
-        gc_data, ng_data = load_noise_analysis(test_name, model)
+        gc_data, ng_data = load_noise_analysis(technology, test_name, model)
         f_ng_arr = ng_data[:, 0]
         f_gc_arr = gc_data[:, 0]
         assert np.allclose(f_ng_arr, f_gc_arr)
@@ -147,10 +147,12 @@ def plot_nmos(technology: str, model: str):
     plt.close(fig)
 if __name__ == '__main__':
 
+
     for technology in ['cmos90']:
         for model in supported_models:
             print(f'Plotting nmos noise for {technology} {model}...')
             plot_nmos(technology, model)
+
 
 
 
