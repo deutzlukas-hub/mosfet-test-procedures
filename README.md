@@ -73,8 +73,8 @@ simulation of MOSFET device models that can be built upon.
 
 ## Prerequisites
 
-- **Gnucap** (reference files and figures were produced with version
-  2025.12.18)
+- **Gnucap** (reference outputs were generated using version
+  2025.12.18, tag: 20251222-dev)
 - **Ngspice** (reference files and figures were produced with version 45.2).
 - **Python 3** (with `numpy` and `matplotlib`) for plotting.
 
@@ -135,10 +135,11 @@ support status in Gnucap and ngspice.
 
 Gnucap allows MOSFET device models, parametersets, and technology files to be
 loaded dynamically via command-line flags, enabling the same test suite to be
-easily rerun with different configurations. Loaging models dynamically is
+easily rerun with different configurations. Loading models dynamically is
 currently not supported in ngspice; as a workaround, we use environment
-variables and placeholder technology and device modelcards that are automatically
-updated during test execution. See`docs.md` for more details.
+variables and placeholder files for technology parameters and device modelcards 
+that are automatically updated during test execution. See`docs.md` for more 
+details.
 
 ## Acknowledgements
 
